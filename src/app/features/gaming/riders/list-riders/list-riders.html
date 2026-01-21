@@ -1,0 +1,159 @@
+<div class="p-4">
+  @if (loading()) {
+    <!-- Skeleton loading -->
+    <div class="flex gap-4">
+      <div class="skeleton h-24 w-24 rounded"></div>
+      <div class="flex-1 space-y-3">
+        <div class="skeleton h-6 w-1/3"></div>
+        <div class="skeleton h-4 w-1/2"></div>
+        <div class="skeleton h-4 w-2/3"></div>
+      </div>
+    </div>
+  } @else if (error()) {
+    <div role="alert" class="alert alert-soft alert-error">
+      <span>{{ error() }}</span>
+    </div>
+  } @else {
+
+    <!-- search + controls -->
+        <div class="flex flex-wrap items-center gap-3">
+            <input
+                type="text"
+                class="input input-bordered w-full sm:w-80"
+                placeholder="Search rider name..."
+                [value]="query()"
+                (input)="onSearch($event)"
+            />
+            @if (query()) {
+                <button class="btn btn-sm" (click)="clearSearch()">Clear</button>
+            }
+
+            <div class="flex items-center gap-2">
+            <label class="text-sm text-gray-500">Rows/page</label>
+            <select class="select select-bordered select-sm"
+                    [value]="rowsPerPage()"
+                    (change)="onPageSizeChange($event)">
+                <option [value]="10">10</option>
+                <option [value]="25">25</option>
+                <option [value]="50">50</option>
+                <option [value]="100">100</option>
+            </select>
+            </div>
+
+            <div class="ms-auto text-sm text-gray-500">
+            {{ entries() }}
+            </div>
+        </div>
+
+    <div class="overflow-x-auto">
+      <table class="table table-sm">
+        <thead>
+          <tr class="bg-base-200">
+            <th class="sticky left-0 z-20">Rider</th>
+            <th class="w-[80px] text-right">Scoring</th>
+            <th class="text-center">Team</th>
+            <th class="text-center">Phenotype</th>
+            <th class="text-right">w/kg (1mn / 5mn / 20mn)</th>
+            <th class="text-right">Watts (1mn / 5mn / 20mn)</th>
+            <th class="text-right">Weight</th>
+            <th class="text-right">Height</th>
+            <th class="text-right">BALANCE</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (r of results(); track r.zwiftId) {
+            <tr>
+              <!-- Rider -->
+            <td class="sticky left-0 bg-base-200 z-10 font-medium">
+                @if (r.flag) {
+                    <img
+                    class="inline-block h-4 w-6 me-1"
+                    [src]="'assets/flags/4x3/' + r.flag.toLowerCase() + '.svg'"
+                    [attr.alt]="r.flag + ' flag'"
+                    />
+                }
+                <a class="hover:underline hover:text-primary" 
+                  [routerLink]="['/game/rider-details', r.idClient]"
+                  [innerHtml]=r.racerName>
+                </a>
+
+                @if (r.male === false) {
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="inline-block w-4 h-4 text-pink-500 ms-1 align-middle"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+                      <path d="M12 15v7"/>
+                      <path d="M9 19h6"/>
+                      <circle cx="12" cy="9" r="6"/>
+                    </svg>
+                }
+            </td>
+            
+              <!-- Scoring -->
+              <td class="text-right">
+                {{ r.scoring ?? '—' }}
+              </td>
+
+              <!-- Team -->
+              <td class="text-center">
+                @if (r.teamCode) {
+                  <a class="text-primary hover:underline" [routerLink]="['/game/team-details', r.teamId]">
+                    {{ r.teamCode }}
+                  </a>
+                } @else { — }
+              </td>
+
+              <!-- Phenotype -->
+              <td class="text-center">
+                {{ r.phenotype || '—' }}
+              </td>
+
+              <!-- w/kg -->
+              <td class="text-right">
+                {{ r.wk60 ?? '—' }} / {{ r.wk300 ?? '—' }} / {{ r.wk1200 ?? '—' }}
+              </td>
+
+              <!-- Watts -->
+              <td class="text-right">
+                {{ r.w60 ?? '—' }} / {{ r.w300 ?? '—' }} / {{ r.w1200 ?? '—' }}
+              </td>
+
+              <!-- Weight -->
+              <td class="text-right">
+                {{ r.weight ?? '—' }} <span class="text-xs text-gray-500">kg</span>
+              </td>
+
+              <!-- Height -->
+              <td class="text-right">
+                {{ r.height ?? '—' }} <span class="text-xs text-gray-500">cm</span>
+              </td>
+              <td class="text-right font-medium">{{ r.balanceRider | number:'1.0-2' }} <span class="text-xs text-gray-500">$</span></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex flex-wrap items-center gap-2 justify-center mt-4">
+      <button class="btn btn-sm" (click)="goTo(1)" [disabled]="pageNumber() <= 1">First</button>
+      <button class="btn btn-sm" (click)="prev()" [disabled]="pageNumber() <= 1">Prev</button>
+      <span class="text-sm">Page {{ pageNumber() }} / {{ totalPages() }}</span>
+      <input 
+        type="number"
+        min="1"
+        [max]="totalPages()"
+        class="input input-bordered input-sm w-16 text-center"
+        [value]="pageNumber()"
+        (change)="goTo($any($event.target).value)"
+      />
+      <button class="btn btn-sm" (click)="next()" [disabled]="pageNumber() >= totalPages()">Next</button>
+      <button class="btn btn-sm" (click)="goTo(totalPages())" [disabled]="pageNumber() >= totalPages()">Last</button>
+    </div>
+
+  }
+</div>

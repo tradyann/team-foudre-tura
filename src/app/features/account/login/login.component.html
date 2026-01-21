@@ -1,0 +1,117 @@
+<div class="grid grid-cols-12 sm:h-screen">
+  <!-- Aside image or logo zone -->
+  <app-aside-image  class="relative hidden lg:col-span-7 lg:block xl:col-span-8 2xl:col-span-9
+    bg-[#FFE9D1] dark:bg-[#14181c]
+    overflow-hidden
+    [container-type:inline-size]">
+  </app-aside-image>
+
+  <!-- Main login panel -->
+  <div class="col-span-12 lg:col-span-5 xl:col-span-4 2xl:col-span-3">
+    <div class="flex flex-col items-stretch p-8 lg:p-16">
+      <div class="flex items-center justify-between">
+        <a href="/">
+          <div class="mx-4 flex items-center gap-2 font-black">
+            <div class="mask mask-hexagon font-train bg-primary text-white p-3">T</div>
+              <span class="font-train text-3xl">TURA</span>
+          </div>
+        </a>
+      </div>
+
+      <h3 class="mt-8 text-center text-xl font-semibold md:mt-12 lg:mt-24">
+        {{ 'GLOBAL.SIGN_IN' | translate }}
+      </h3>
+      <h3 class="text-base-content/70 mt-2 text-center text-sm">
+        One click away from your next race.
+      </h3>
+
+      <!-- Info Maintenance -->
+      <section class="note note-primary my-4 text-sm text-info text-center" *ngIf="infoMaintenance() && infoMaintenance() !== ''">
+        <span class="font-medium"><i class="fas fa-info-circle me-2"></i>{{ infoMaintenance() }}</span>
+      </section>
+
+      <!-- Login Form -->
+      <div class="mt-6 md:mt-10">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Email Address</legend>
+            <label class="input w-full">
+              <span-lucide [img]="MailIcon" class="text-base-content/80 size-5"></span-lucide>
+              <input class="grow" placeholder="Email Address" type="email" formControlName="email" />
+            </label>
+            <div class="text-red-500 text-sm mt-1" *ngIf="email?.errors?.['required'] && email?.touched">
+              {{ 'ERROR.EMAIL_REQUIRED' | translate }}
+            </div>
+            <div class="text-red-500 text-sm mt-1" *ngIf="email?.errors?.['email'] && email?.touched">
+              {{ 'ERROR.EMAIL_INVALID' | translate }}
+            </div>
+          </fieldset>
+
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Password</legend>
+            <label class="input w-full">
+              <span-lucide [img]="KeyRoundIcon" class="text-base-content/80 size-5"></span-lucide>
+              <input
+                class="grow"
+                placeholder="Password"
+                [type]="pwdHidden ? 'password' : 'text'"
+                formControlName="password" />
+              <label class="swap btn btn-xs btn-ghost btn-circle text-base-content/60">
+                <input type="checkbox" aria-label="Show password" (click)="showPwd()" />
+                <span-lucide *ngIf="pwdHidden" [img]="EyeIcon" class="size-4"></span-lucide>
+                <span-lucide *ngIf="!pwdHidden" [img]="EyeOffIcon" class="size-4"></span-lucide>
+              </label>
+            </label>
+            <div class="text-red-500 text-sm mt-1" *ngIf="password?.errors?.['required'] && password?.touched">
+              {{ 'ERROR.PASSWORD_REQUIRED' | translate }}
+            </div>
+            <div class="text-red-500 text-sm mt-1" *ngIf="password?.errors?.['password'] && password?.touched">
+              {{ 'ERROR.PASSWORD_INCORRECT' | translate }}
+            </div>
+          </fieldset>
+
+          <!-- 2FA Toggle -->
+          <div class="form-control mt-4">
+            <label class="label cursor-pointer justify-start gap-2">
+              <input type="checkbox" class="checkbox checkbox-primary checkbox-sm" (click)="show2FA()" />
+              <span class="label-text">{{ 'VERIFICATION.TWO_FACTOR_AUTH' | translate }}</span>
+            </label>
+            <div class="text-red-500 text-sm mt-1" *ngIf="pincode?.invalid && (pincode?.dirty || pincode?.touched)">
+              {{ 'LOGIN.INVALID_2FA' | translate }}
+            </div>
+          </div>
+
+          <div class="form-control mt-4" *ngIf="twofactor">
+            <input type="text" placeholder="2FA Code" class="input input-bordered w-full" formControlName="pincode" />
+          </div>
+
+          <div class="form-control mt-4">
+            <label class="label cursor-pointer justify-start gap-2">
+              <input type="checkbox" class="checkbox checkbox-sm" formControlName="rememberMe" />
+              <span class="label-text">{{ 'LOGIN.REMEMBER_ME' | translate }}</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-wide mt-6 max-w-full gap-3" [disabled]="connecting()">
+            <span-lucide [img]="LogInIcon" class="size-4"></span-lucide>
+            {{ connecting() ? 'Connecting...' : ('GLOBAL.SIGN_IN' | translate) }}
+          </button>
+
+          <div class="text-sm text-center text-base-content/70 mt-4">
+            <a class="text-primary hover:underline" routerLink="/account/forgot-password">
+              {{ 'PASSWORD.FORGOT' | translate }}
+            </a>
+          </div>
+          <div class="text-sm text-center text-base-content/70 mt-2">
+            {{ 'LOGIN.NO_ACCOUNT' | translate }}
+            <a class="text-primary ms-1 hover:underline" routerLink="/account/register">
+              {{ 'GLOBAL.REGISTER' | translate }}
+            </a>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

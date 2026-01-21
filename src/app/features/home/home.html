@@ -1,0 +1,215 @@
+<section class="p-4 lg:p-6 space-y-8">
+
+    @if (upcomingLoading() || competitionLoading()) {
+        <!-- Skeleton loading -->
+        <div class="flex gap-4">
+            <div class="skeleton h-24 w-24 rounded"></div>
+            <div class="flex-1 space-y-3">
+                <div class="skeleton h-6 w-1/3"></div>
+                <div class="skeleton h-4 w-1/2"></div>
+                <div class="skeleton h-4 w-2/3"></div>
+            </div>
+        </div>
+    } @else if (error()) {
+        <div role="alert" class="alert alert-soft alert-error mt-2">
+            <span>{{ error() }}</span>
+        </div>
+    } @else {
+
+        <!-- UPCOMING: Long carousel with overlaid texts (no #slide) -->
+        <div>
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-xl font-semibold">Upcoming Competitions</h2>
+                <a class="link link-primary text-sm" [routerLink]="['/game/calendar']">See full calendar</a>
+            </div>
+
+            <!-- Viewport -->
+            <div class="relative w-full rounded-box shadow-sm border overflow-hidden">
+                <!-- Track -->
+                <div class="flex transition-transform duration-500 ease-out"
+                    [style.transform]="'translateX(-' + (activeIndex()*100) + '%)'">
+
+                    <!-- Slides -->
+                    @for (c of upcoming(); track c.competitionId; let i = $index) {
+                        <div class="relative w-full shrink-0">
+                            <!-- background image -->
+                            <img [src]="c.banner" [alt]="c.competitionName"
+                                class="w-full h-[320px] lg:h-[420px] object-cover">
+
+                            <!-- 1) neutral scrim + 2) adaptive blend -->
+                            <div class="absolute inset-0 bg-black/30"></div>
+                            <div class="absolute inset-0 bg-base-content/10 mix-blend-multiply"></div>
+
+                            <!-- 3) bottom overlay with text -->
+                            <div class="absolute bottom-0 left-0 right-0 p-4 lg:p-6
+                                        bg-gradient-to-t from-base-300/90 via-base-300/60 to-transparent">
+                                <div class="flex flex-wrap items-center gap-2 mb-2">
+                                    <span class="badge bg-base-100/80 border-base-200">{{ c.typeCompetition }}</span>
+                                    <span class="badge bg-base-100/80 border-base-200">{{ c.eventClassName }}</span>
+                                </div>
+
+                                <div class="flex items-end justify-between gap-4">
+                                    <div class="min-w-0 drop-shadow-[0_2px_2px_rgba(0,0,0,0.6)]">
+                                        <h3 class="text-2xl lg:text-3xl font-bold leading-tight truncate">{{ c.competitionName }}</h3>
+                                        <p class="text-sm opacity-90 line-clamp-2">
+                                            {{ c.fromDate | date: 'EEE, MMM d' }} 
+                                            @if (c.toDate > c.fromDate) {
+                                                <span></span>- {{ c.toDate | date: 'EEE, MMM d' }}
+                                            }
+                                        </p>
+
+                                        <!-- <div class="mt-2 grid grid-cols-3 gap-2 text-xs">
+                                            <div class="stat bg-base-100/80 rounded-box border border-base-200">
+                                                <div class="stat-title">Slot 1</div>
+                                                <div class="stat-value text-sm">
+                                                {{ c.startDates.EU | date:'MMM d, HH:mm' }}
+                                                </div>
+                                            </div>
+                                            <div class="stat bg-base-100/80 rounded-box border border-base-200">
+                                                <div class="stat-title">Slot 2</div>
+                                                <div class="stat-value text-sm">
+                                                {{ c.startDates.NA | date:'MMM d, HH:mm' }}
+                                                </div>
+                                            </div>
+                                            <div class="stat bg-base-100/80 rounded-box border border-base-200">
+                                                <div class="stat-title">Slot 3</div>
+                                                <div class="stat-value text-sm">
+                                                {{ c.startDates.ASIA | date:'MMM d, HH:mm' }}
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    </div>
+
+                                <div class="shrink-0">
+                                    <a class="btn btn-primary btn-sm" [routerLink]="['/game/competition', c.competitionId]">Details & Signup</a>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    }
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="absolute inset-y-0 left-2 flex items-center">
+                        <button class="btn btn-circle btn-sm" (click)="prev()">❮</button>
+                    </div>
+                    <div class="absolute inset-y-0 right-2 flex items-center">
+                        <button class="btn btn-circle btn-sm" (click)="next()">❯</button>
+                    </div>
+                </div>
+
+                <!-- Dots -->
+                <div class="flex justify-center gap-2 mt-3">
+                    @for (_ of upcoming(); let i = $index; track i) {
+                    <button type="button"
+                            class="btn btn-xs btn-circle"
+                            [ngClass]="{ 'btn-primary': activeIndex() === i }"
+                            (click)="goTo(i)">{{ i + 1 }}</button>
+                    }
+                </div>
+        </div>
+
+        <!-- CURRENT COMP: Jersey holders per category -->
+        @if(competition()?.[0]) {
+            <div>
+                <h2 class="text-xl font-semibold mb-3">Current Competition — Jersey Holders</h2>
+                <div class="card bg-base-100 border shadow-sm">
+                <div class="card-body">
+                    <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-lg font-bold">{{ competition()?.[0]?.competitionName }}</div>
+                        <div class="text-sm opacity-70">{{ competition()?.[0]?.fromDate | date: 'MMM dd' }} - {{ competition()?.[0]?.toDate | date: 'MMM dd' }}</div>
+                    </div>
+                    <a class="btn btn-ghost btn-sm" [routerLink]="['/game/competition', competition()?.[0]?.competitionId]">View details</a>
+                    </div>
+
+                    @if (competition()?.[0]){
+                    <!-- Loop sur les catégories -->
+                    <div class="space-y-4 mt-4">
+                        @for (cat of competition()?.[0]?.categories; track cat.catId) {
+                        <div class="grid grid-cols-1 sm:grid-cols-[60px_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] gap-2 px-2 py-4">
+
+                            <!-- Col Catégorie -->
+                            <div class="flex items-center justify-center bg-base-200">
+                                <span class="text-2xl font-extrabold"
+                                    [ngClass]="{
+                                        'text-pink-900': cat.category === 'E',
+                                        'text-red-600': cat.category === 'A',
+                                        'text-green-500': cat.category === 'B',
+                                        'text-cyan-500': cat.category === 'C',
+                                        'text-yellow-400': cat.category === 'D'
+                                    }"
+                                >{{ cat.category }}
+                                </span>
+                            </div>
+
+                            <!-- GC -->
+                            <div class="p-4 rounded-box bg-base-200">
+                                <div class="flex items-center justify-between">
+                                    <div class="font-semibold opacity-60">GC Leader</div>
+                                    <app-jersey variant="{{competition()?.[0]?.gcVariant}}" [size]="32" fill="{{competition()?.[0]?.gcFillColor}}" stroke="#000" [strokeWidth]="1.4"></app-jersey>
+                                </div>
+                                <div class="mt-2 flex flex-col gap-1">
+                                    @for (l of cat.leaders; track l.zwiftId) {
+                                        @if (l.jerseyId === 1) { <!-- GC -->
+                                        <div class="truncate font-medium hover:text-primary hover:underline cursor-pointer" [innerHTML]=l.racerName
+                                            [routerLink]="['/game/rider-details', l.idClient]"></div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <!-- Climber (KOM) -->
+                            <div class="p-4 rounded-box bg-base-200">
+                                <div class="flex items-center justify-between">
+                                    <div class="font-semibold opacity-60">Climber</div>
+                                    @if(competition()?.[0]?.climberVariant === 'polka') {
+                                        <app-jersey variant="polka" [size]="32" fill="{{competition()?.[0]?.climberFillColor}}" stroke="#000" [strokeWidth]="1.4" 
+                                            dotsColor="{{competition()?.[0]?.climberSecondColor}}" [dotsR]="1.4" [dotsGap]="4">
+                                        </app-jersey>
+                                    } @else {
+                                        <app-jersey variant="full" [size]="32" fill="{{competition()?.[0]?.climberFillColor}}" stroke="#000" [strokeWidth]="1.4"></app-jersey>
+                                    }
+                                </div>
+                                <div class="mt-2 flex flex-col gap-3">
+                                    @for (l of cat.leaders; track l.zwiftId) {
+                                        @if (l.jerseyId === 3) {
+                                        <div class="truncate font-medium hover:text-primary hover:underline cursor-pointer" [innerHTML]=l.racerName
+                                            [routerLink]="['/game/rider-details', l.idClient]"></div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <!-- Sprinter -->
+                            <div class="p-4 rounded-box bg-base-200">
+                                <div class="flex items-center justify-between">
+                                    <div class="font-semibold opacity-60">Sprinter</div>
+                                    @if(competition()?.[0]?.sprinterVariant === 'polka') {
+                                        <app-jersey variant="polka" [size]="32" fill="{{competition()?.[0]?.sprinterFillColor}}" stroke="#000" [strokeWidth]="1.4" 
+                                            dotsColor="{{competition()?.[0]?.sprinterSecondColor}}" [dotsR]="1.4" [dotsGap]="4">
+                                        </app-jersey>
+                                    } @else {
+                                        <app-jersey variant="full" [size]="32" fill="{{competition()?.[0]?.sprinterFillColor}}" stroke="#000" [strokeWidth]="1.4"></app-jersey>
+                                    }
+                                </div>
+                                <div class="mt-2 flex flex-col gap-3">
+                                    @for (l of cat.leaders; track l.zwiftId) {
+                                        @if (l.jerseyId === 2) {
+                                        <div class="truncate font-medium hover:text-primary hover:underline cursor-pointer" [innerHTML]=l.racerName
+                                            [routerLink]="['/game/rider-details', l.idClient]"></div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    </div>
+                    }
+
+                </div>
+                </div>
+            </div>
+        }
+    }
+</section>

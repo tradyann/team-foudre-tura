@@ -1,0 +1,88 @@
+<div class="p-4">
+    @if (loading()) {
+        <!-- Skeleton loading -->
+        <div class="flex gap-4">
+            <div class="skeleton h-24 w-24 rounded"></div>
+            <div class="flex-1 space-y-3">
+                <div class="skeleton h-6 w-1/3"></div>
+                <div class="skeleton h-4 w-1/2"></div>
+                <div class="skeleton h-4 w-2/3"></div>
+            </div>
+        </div>
+    } @else if (error()) {
+        <div role="alert" class="alert alert-soft alert-error">
+            <span>{{ error() }}</span>
+        </div>
+    } @else {
+
+
+        <h2 class="text-xl font-bold mb-3">User Transactions History</h2>
+
+        <!-- Controls -->
+        <div class="flex flex-wrap items-center gap-3">
+            <div class="flex items-center gap-2">
+                <label class="text-sm text-gray-500">Rows/page</label>
+                <select class="select select-bordered select-sm"
+                        [value]="rowsPerPage()"
+                        (change)="onPageSizeChange($event)">
+                    <option [value]="10">10</option>
+                    <option [value]="25">25</option>
+                    <option [value]="50">50</option>
+                    <option [value]="100">100</option>
+                </select>
+            </div>
+
+            <div class="ms-auto text-sm text-gray-500">
+                {{ entries() }}
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="table table-sm">
+                <thead>
+                    <tr class="bg-base-200">
+                        <th>DATE</th>
+                        <th>TYPE</th>
+                        <th>DETAILS</th>
+                        <th class="text-right">AMOUNT</th>
+                        <th class="text-right">BALANCE</th>
+                        <th class="text-right">ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (l of results(); track l.ledgerId) {
+                        <tr>
+                            <td>{{ l.dateLedger | date:'y MMM dd' }}</td>
+                            <td>{{ l.typeTransac }}</td>
+                            <td>{{ l.details }}</td>
+                            <td class="text-right">
+                                {{ l.amount | number:'1.0-2' }} <span class="text-xs text-gray-500">$</span>
+                            </td>
+                            <td class="text-right font-medium">
+                                {{ l.balanceAfter | number:'1.0-2' }} <span class="text-xs text-gray-500">$</span>
+                            </td>
+                            <td class="text-right">{{ l.ledgerId }}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex flex-wrap items-center gap-2 justify-center mt-4">
+            <button class="btn btn-sm" (click)="goTo(1)" [disabled]="pageNumber() <= 1">First</button>
+            <button class="btn btn-sm" (click)="prev()" [disabled]="pageNumber() <= 1">Prev</button>
+            <span class="text-sm">Page {{ pageNumber() }} / {{ totalPages() }}</span>
+            <input 
+                type="number"
+                min="1"
+                [max]="totalPages()"
+                class="input input-bordered input-sm w-16 text-center"
+                [value]="pageNumber()"
+                (change)="goTo($any($event.target).value)"
+            />
+            <button class="btn btn-sm" (click)="next()" [disabled]="pageNumber() >= totalPages()">Next</button>
+            <button class="btn btn-sm" (click)="goTo(totalPages())" [disabled]="pageNumber() >= totalPages()">Last</button>
+        </div>
+    }
+</div>

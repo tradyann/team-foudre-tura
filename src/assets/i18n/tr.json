@@ -1,0 +1,145 @@
+{
+    "ERROR": {
+        "ACCEPT_TERMS": "Şartlar ve Koşulları kabul etmelisiniz",
+        "CHARACTERS_MINIMAX": "En az 6, en fazla 20 karakter",
+        "CONTACT_SUPPORT": "Lütfen destek ekibimizle iletişime geçin",
+        "EMAIL_INVALID": "Lütfen geçerli bir e-posta adresi girin",
+        "EMAIL_REQUIRED": "E-posta gereklidir",
+        "EMAIL_TAKEN": "Bu e-posta zaten kullanımda",
+        "INVALID_LINK": "Bu bağlantı artık geçerli değil, lütfen yenisini talep edin",
+        "LINK_INVALID": "Bu bağlantı artık geçerli değil",
+        "LINK_UNAVAILABLE": "Bağlantı kullanılamıyor",
+        "NOT_RECEIVED": "E-posta almadınız mı?",
+        "PASSWORD_INCORRECT": "Şifreniz yanlış",
+        "PASSWORD_REQUIRED": "Şifre gereklidir",
+        "UNKNOW_ERROR": "Bilinmeyen hata"
+    },
+    "FINANCIAL": {
+        "ADD_ADDRESS": "Yeni bir adres ekle",
+        "ADD_MEMO": "lütfen MEMO’yu sona ekleyin",
+        "CHANGE_ADDRESS": "Devam eden bir çekim yoksa adres değiştirilebilir",
+        "NETWORK_FEES": "ağ ücretleri",
+        "TRANSACTION_HISTORY": "İşlem Geçmişi",
+        "WITHDRAWAL_DETAILS": "Lütfen çekim talebinizin miktarını ve para birimini belirtin",
+        "WITHD_ADDRESS": "Çekim adresi"
+    },
+    "FIXED": {
+        "LOGIN": "Giriş Yap",
+        "SIGN_UP": "Kayıt Ol"
+    },
+    "GLOBAL": {
+        "ACCOUNT": "Hesap",
+        "ACTIVATE": "Aktifleştir",
+        "ACTIVATED": "aktifleştirildi",
+        "CANCEL": "İptal Et",
+        "CONFIRM": "Onayla",
+        "CONFIRM_REQUEST": "Talebinizi onaylıyor musunuz?",
+        "DEPOSIT": "Yatırma",
+        "DISABLE": "Devre Dışı Bırak",
+        "DISABLED": "devre dışı",
+        "EMAIL_SENT": "E-posta gönderildi!",
+        "HELP_CENTER": "Yardım Merkezi",
+        "LOGOUT": "Çıkış Yap",
+        "LOST": "kayıp",
+        "NO_RECORDS": "Kayıt bulunamadı",
+        "PLEASE_WAIT": "Lütfen bekleyin",
+        "REGISTER": "Kayıt Ol",
+        "SEARCH": "Ara",
+        "SIGN_IN": "Giriş Yap",
+        "WITHDRAWAL": "Çekim",
+        "MORE_EVENTS": "daha fazla etkinlik",
+        "SEE_MORE": "Daha fazla göster",
+        "MORE_DETAILS": "Daha fazla detay",
+        "TODAY": "Bugün",
+        "TOMORROW": "Yarın",
+        "OTHER_DATES": "Diğer tarihler",
+        "SUBMIT": "Gönder",
+        "SEND": "Gönder"
+    },
+    "LANGUAGE": {
+        "CHOOSE": "DİLİNİZİ SEÇİN"
+    },
+    "LISTING": {
+        "NO_BETS": "Gösterilecek bahis yok"
+    },
+    "LOGIN": {
+        "FAILED_LOGIN": "Çok fazla başarısız giriş denemesi. Hesabınız kilitlendi. Lütfen şifrenizi sıfırlayın.",
+        "FORGOT_EMAIL": "E-postanızı mı unuttunuz?",
+        "INVALID_2FA": "İki faktörlü doğrulama geçersiz",
+        "INVALID_CREDENTIALS": "Geçersiz kimlik bilgileri",
+        "NO_ACCOUNT": "Henüz bir hesabınız yok mu?",
+        "REGISTERED_EMAIL": "Kayıtlı e-posta adresiniz",
+        "REMEMBER_ME": "Beni Hatırla",
+        "TWO_FACTOR": "İki faktörlü 4 haneli doğrulama kodu (aktifse)"
+    },
+    "PASSWORD": {
+        "FORGOT": "Şifrenizi mi unuttunuz",
+        "MATCH_NO": "Şifre ve doğrulama şifresi eşleşmiyor",
+        "PASSWORD_CONFIRM": "Yeni şifreyi onayla",
+        "PASSWORD_CURRENT": "Mevcut şifre",
+        "PASSWORD_DESC": "Şifrenizi değiştirmek için aşağıdaki formu kullanın. Yeni şifre en az 6 karakter olmalıdır",
+        "PASSWORD_HEADER": "Şifrenizi değiştirin",
+        "PASSWORD_NEW": "Yeni şifre",
+        "RESET": "Şifrenizi sıfırlayın"
+    },
+    "PAYMENT": {
+        "BACK_METHODS": "Yatırma yöntemlerine geri dön",
+        "BEFORE_PAY": "Yatırma yapmadan önce lütfen miktarı belirtin",
+        "CONVERTED": "Tüm yatırımlar otomatik olarak USD stablecoin'e çevrilir.",
+        "COPY_ADDRESS": "Adresi kopyala",
+        "RECOMMENDED": "Önerilen kripto borsaları:",
+        "SEND_ADDRESS": "Yatırmak için işleminizi aşağıdaki adrese gönderin"
+    },
+    "REGISTER": {
+        "ACTIVATE_ACCOUNT": "Hesabınızı aktifleştirin",
+        "AGREE_AGE": "18 yaşından büyük olduğumu onaylıyorum",
+        "AGREE_TC": "Şartları kabul ediyorum",
+        "ALREADY_ACCOUNT": "Zaten bir hesabınız var mı?",
+        "DONE": "Kayıt tamamlandı!",
+        "SPAM": "E-postayı birkaç dakika içinde göremiyorsanız, spam klasörünü kontrol edin.",
+        "TICK_BOX_AGE": "18 yaşından büyükseniz lütfen kutuyu işaretleyin"
+    },
+    "RIGHTMENU": {
+        "BASKETBALL": "NBA, EuroLeague ve uluslararası şampiyonalarla aksiyona katılın",
+        "EXPLORE_SPORTS": "Yıl boyunca en büyük spor organizasyonlarını keşfedin",
+        "FOOTBALL": "Dünya Kupası, Şampiyonlar Ligi ve yerel ligler gibi büyük etkinliklere bahis yapın",
+        "ICEHOCKEY": "NHL, Olimpiyatlar ve Dünya Şampiyonalarına bahis yaparak heyecanı yaşayın",
+        "OTHERSPORTS": "Kriket, bisiklet, motor sporları, golf ve daha fazlasında heyecan verici yarışmaları keşfedin",
+        "RUGBY": "Rugby Dünya Kupası, Altı Ulus ve Super Rugby’ye bahis yapın",
+        "TENNIS": "Wimbledon, Avustralya Açık, Roland Garros ve ABD Açık gibi Grand Slam turnuvalarına bahis yapın"
+    },
+    "SUCCESS": {
+        "ACCOUNT_VALIDATED": "Hesap doğrulandı, lütfen tekrar giriş yapın"
+    },
+    "USER": {
+        "ACCOUNT_DETAILS": "Hesap Detayları",
+        "CHANGE_PASSWORD": "Şifrenizi değiştirin",
+        "EMAIL_USAGE": "Lütfen her zaman kayıtlı e-posta adresinizle destek ekibimize ulaşın",
+        "ISSUE_DETAILS": "Bir sorun durumunda, bahis referansı veya görüntülenen hata mesajı gibi mümkün olduğunca fazla bilgi sağlayın. Ekran görüntüsü de gönderebilirsiniz.",
+        "MAX_PROFIT_EVENT": "Etkinlik başına izin verilen maksimum kazanç",
+        "MAX_PROFIT_MARKET": "Pazar başına izin verilen maksimum kazanç",
+        "OPERATIONAL": "Tüm sistemler çalışıyor",
+        "PLATFORM_STATUS": "Platform Durumu",
+        "USER_ACCOUNT": "Kullanıcı Hesabı",
+        "TIME_ZONE": "Zaman dilimi",
+        "CHATBOT_QUESTION": "Sorunuzu yapay zeka asistanına sorun",
+        "CHATBOT_PLACEHOLDER": "Sorunuzu buraya yazın",
+        "CHATBOT_ANSWER": "Asistan cevabı",
+        "CHATBOT_NOTE": "Yapay zeka asistanı yeterli bir yanıt vermedi mi?"
+    },
+    "VERIFICATION": {
+        "TWO_FACTOR_AUTH": "İki faktörlü kimlik doğrulama (2FA)",
+        "TWO_FACTOR_DESC": "İki faktörlü kimlik doğrulama, yalnızca sizin hesabınıza erişmenizi sağlayan ekstra bir güvenlik katmanıdır"
+    },
+    "FOOTER": {
+        "DESC": "Novaxbet, profesyoneller gibi bahis yapabileceğin veya lay oynayabileceğin yeni nesil bir bahis borsasıdır. Kendi bahislerin üzerinde tam kontrol sağla: eşler arası işlem, şeffaf oranlar ve adil ödeme kurallarıyla. Bilinçli oyuncular ve adil oyun için tasarlandı.",
+        "LINKS": "Bağlantılar",
+        "TERMS": "Şartlar & Koşullar",
+        "LANGUAGES": "Diller",
+        "AFFILIATES": "Ortaklar"
+    },
+    "PARTNER": {
+        "BECOME_AFFILIATES": "Novaxbet Ortaklık Programı ile performans ortağı olun. Web yöneticisi, influencer veya bahis uzmanı olun; platformumuza oyuncu yönlendirerek düzenli gelir elde edin. Karlılık ve şeffaflık için tasarlanmış bir ekosisteme katılın.",
+        "YOUR_REVENUES": "Gelirleriniz"
+    }
+}

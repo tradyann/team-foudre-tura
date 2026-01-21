@@ -1,0 +1,159 @@
+<div class="p-6 space-y-8">
+    @if (loading()) {
+        <!-- Skeleton loading -->
+        <div class="flex gap-4">
+            <div class="skeleton h-24 w-24 rounded"></div>
+            <div class="flex-1 space-y-3">
+                <div class="skeleton h-6 w-1/3"></div>
+                <div class="skeleton h-4 w-1/2"></div>
+                <div class="skeleton h-4 w-2/3"></div>
+            </div>
+        </div>
+    } @else if (error()) {
+        <div class="text-red-600 font-semibold">{{ error() }}</div>
+    } @else {
+
+        <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+            Query results 
+        </h2>
+        <p class="text-base-content/50 text-sm italic">Results are limited to 20 per category</p>
+
+        <!-- Competitions -->
+        @if (competitions().length > 0) {
+        <div class="space-y-3">
+            <h3 class="text-xl font-semibold flex items-center gap-2">
+                <span-lucide [img]="TrophyIcon" class="size-5"></span-lucide>
+                Competitions
+                <span class="badge badge-sm">{{ competitions().length }}</span>
+            </h3>
+
+            <div class="overflow-x-auto">
+            <table class="table table-zebra w-full border border-base-300">
+                <thead>
+                <tr class="bg-base-200">
+                    <th class="w-[40%]">NAME</th>
+                    <th class="text-center">TYPE</th>
+                    <th class="text-center">ACCESS</th>
+                    <th class="text-center">STAGES</th>
+                    <th class="text-right">STATUS</th>
+                </tr>
+                </thead>
+                <tbody>
+                @for (c of competitions(); track c.competitionId) {
+                    <tr>
+                        <td class="font-medium">
+                            <a class="hover:underline hover:text-primary"  [routerLink]="['/game/competition', c.competitionId]">{{ c.competitionName }}</a> 
+                        </td>
+                        <td class="text-center">{{ c.typeCompetition || '—' }}</td>
+                        <td class="text-center">{{ c.eventClassName }}</td>
+                        <td class="text-center">{{ c.stagesCount ?? '—' }}</td>
+                        <td class="text-right">{{ c.isClosed ? 'Settled' : 'Open' }}</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            </div>
+        </div>
+        }
+
+        <!-- Teams -->
+        @if (teams().length > 0) {
+        <div class="space-y-3">
+            <h3 class="text-xl font-semibold flex items-center gap-2">
+            <span-lucide [img]="UsersIcon" class="size-5"></span-lucide>
+            Teams
+            <span class="badge badge-sm">{{ teams().length }}</span>
+            </h3>
+
+            <div class="overflow-x-auto">
+            <table class="table table-zebra w-full border border-base-300">
+                <thead>
+                <tr class="bg-base-200">
+                    <th class="w-[40%]">TEAM</th>
+                    <th class="text-center">COUNTRY</th>
+                    <th class="text-center">MEMBERS</th>
+                    <th class="text-center">OWNERS</th>
+                    <th class="text-right">CODE</th>
+                </tr>
+                </thead>
+                <tbody>
+                @for (t of teams(); track t.teamId) {
+                    <tr>
+                        <td class="font-medium"><a class="hover:underline hover:text-primary"  [routerLink]="['/game/team-details', t.teamId]">{{ t.teamName }}</a></td>
+                        <td class="text-center">
+                            @if (t.flag) {
+                            <span class="inline-flex items-center justify-center gap-2">
+                                <img
+                                class="inline h-4 w-5 me-2"
+                                [src]="'assets/flags/4x3/' + t.flag.toLowerCase() + '.svg'"
+                                [alt]="t.flag"
+                                referrerpolicy="no-referrer"
+                                />
+                            </span>
+                            } @else { — }
+                        </td>
+                        <td class="text-center">{{ t.nbrRiders || '—' }}</td>
+                        <td class="text-center">{{ t.owners || '—' }}</td>
+                        <td class="text-right">{{ t.teamCode || '—' }}</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            </div>
+        </div>
+        }
+
+        <!-- Riders -->
+        @if (racers().length > 0) {
+        <div class="space-y-3">
+            <h3 class="text-xl font-semibold flex items-center gap-2">
+                <span-lucide [img]="BikeIcon" class="size-5"></span-lucide>
+                Riders
+                <span class="badge badge-sm">{{ racers().length }}</span>
+            </h3>
+
+            <div class="overflow-x-auto">
+            <table class="table table-zebra w-full border border-base-300">
+                <thead>
+                <tr class="bg-base-200">
+                    <th class="w-[40%]">NAME</th>
+                    <th class="text-center">COUNTRY</th>
+                    <th class="text-center">TEAM</th>
+                    <th class="text-center">GENDER</th>
+                    <th class="text-right">SCORING</th>
+                </tr>
+                </thead>
+                <tbody>
+                @for (r of racers(); track r.zwiftId) {
+                    <tr>
+                    <td class="font-medium">
+                        <a class="hover:underline hover:text-primary" 
+                            [routerLink]="['/game/rider-details', r.idClient]"
+                            [innerHtml]=r.racerName
+                        >
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        @if (r.flag) {
+                        <span class="inline-flex items-center justify-center gap-2">
+                            <img
+                            class="inline h-4 w-5 me-2"
+                            [src]="'assets/flags/4x3/' + r.flag.toLowerCase() + '.svg'"
+                            [alt]="r.flag"
+                            referrerpolicy="no-referrer"
+                            />
+                        </span>
+                        } @else { — }
+                    </td>
+                    <td class="text-center">{{ r.teamCode }}</td>
+                    <td class="text-center">{{ r.male === true ? 'M' : (r.male === false ? 'F' : '—') }}</td>
+                    <td class="text-right">{{ r.scoring ?? '—' }}</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            </div>
+        </div>
+        }
+    }
+</div>

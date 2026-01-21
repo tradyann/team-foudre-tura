@@ -1,0 +1,52 @@
+<!-- SVG SPRITE (hidden) -->
+<svg xmlns="http://www.w3.org/2000/svg" class="hidden">
+  <!-- Forme commune -->
+  <symbol id="jersey-shape" viewBox="0 0 24 24">
+    <path id="jersey-path"
+      d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/>
+  </symbol>
+
+  <!-- Maillot uni qui prend currentColor -->
+  <symbol id="jersey-full" viewBox="0 0 24 24">
+    <use href="#jersey-shape" fill="currentColor" stroke="black" stroke-width="1.3"/>
+  </symbol>
+
+  <!-- Maillot à pois rouges -->
+  <symbol id="jersey-polka-red" viewBox="0 0 24 24">
+    <defs>
+      <pattern id="jersey-polka-red__pattern" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="2" fill="red"/>
+      </pattern>
+    </defs>
+    <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"
+          fill="url(#jersey-polka-red__pattern)" stroke="white" stroke-width="1.3"/>
+  </symbol>
+
+  <!-- Maillot à pois bleus -->
+  <symbol id="jersey-polka-blue" viewBox="0 0 24 24">
+    <defs>
+      <pattern id="jersey-polka-blue__pattern" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="2" fill="royalblue"/>
+      </pattern>
+    </defs>
+    <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"
+          fill="url(#jersey-polka-blue__pattern)" stroke="white" stroke-width="1.3"/>
+  </symbol>
+
+  <!-- Maillot UCI -->
+  <symbol id="jersey-uci" viewBox="0 0 24 24">
+    <defs>
+      <clipPath id="jersey-uci__clip">
+        <use href="#jersey-shape"/>
+      </clipPath>
+    </defs>
+    <use href="#jersey-shape" fill="#fff" stroke="black" stroke-width="1.2"/>
+    <g clip-path="url(#jersey-uci__clip)">
+      <rect x="6.2" y="10.2" width="11.8" height="2.0" fill="#1C75BC"/>
+      <rect x="6.2" y="12.4" width="11.8" height="2.0" fill="#ED1C24"/>
+      <rect x="6.2" y="14.6" width="11.8" height="2.0" fill="#000000"/>
+      <rect x="6.2" y="16.8" width="11.8" height="2.0" fill="#FFD100"/>
+      <rect x="6.2" y="19.0" width="11.8" height="2.0" fill="#00A651"/>
+    </g>
+  </symbol>
+</svg>

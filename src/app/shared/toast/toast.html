@@ -1,0 +1,19 @@
+<div class="toast toast-top toast-end z-50">
+    <div
+        *ngFor="let toast of messages()"
+        class="alert pr-10"
+        [ngClass]="{
+            'alert-success': toast.type === 'success',
+            'alert-info': toast.type === 'info',
+            'alert-error': toast.type === 'error',
+            'alert-warning': toast.type === 'warning'
+        }"
+    >
+        <span>{{ toast.message }}</span>
+        <button
+            class="btn btn-xs btn-circle btn-ghost absolute top-2 right-2"
+            (click)="toastService.dismiss(toast.id)">
+            ✕
+        </button>
+    </div>
+</div>

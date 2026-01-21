@@ -1,0 +1,145 @@
+{
+    "ERROR": {
+        "ACCEPT_TERMS": "Debe aceptar los T&C",
+        "CHARACTERS_MINIMAX": "Mínimo 6 y máximo 20 caracteres",
+        "CONTACT_SUPPORT": "Por favor contacte con nuestro soporte",
+        "EMAIL_INVALID": "Por favor ingrese una dirección de correo válida",
+        "EMAIL_REQUIRED": "El correo electrónico es obligatorio",
+        "EMAIL_TAKEN": "Este correo electrónico ya está en uso",
+        "INVALID_LINK": "Este enlace ya no es válido, solicite uno nuevo",
+        "LINK_INVALID": "Este enlace ya no es válido",
+        "LINK_UNAVAILABLE": "Enlace no disponible",
+        "NOT_RECEIVED": "¿No recibió el correo?",
+        "PASSWORD_INCORRECT": "Su contraseña es incorrecta",
+        "PASSWORD_REQUIRED": "La contraseña es obligatoria",
+        "UNKNOW_ERROR": "Error desconocido"
+    },
+    "FINANCIAL": {
+        "ADD_ADDRESS": "Añadir nueva dirección",
+        "ADD_MEMO": "por favor agregue el MEMO al final",
+        "CHANGE_ADDRESS": "Cambio permitido solo si no hay retiro en curso",
+        "NETWORK_FEES": "comisiones de red",
+        "TRANSACTION_HISTORY": "Historial de transacciones",
+        "WITHDRAWAL_DETAILS": "Especifique el monto y la moneda de su solicitud de retiro",
+        "WITHD_ADDRESS": "Dirección de retiro"
+    },
+    "FIXED": {
+        "LOGIN": "Iniciar sesión",
+        "SIGN_UP": "Registrarse"
+    },
+    "GLOBAL": {
+        "ACCOUNT": "Cuenta",
+        "ACTIVATE": "Activar",
+        "ACTIVATED": "activado",
+        "CANCEL": "Cancelar",
+        "CONFIRM": "Confirmar",
+        "CONFIRM_REQUEST": "¿Confirma su solicitud?",
+        "DEPOSIT": "Depósito",
+        "DISABLE": "Desactivar",
+        "DISABLED": "desactivado",
+        "EMAIL_SENT": "¡Correo enviado!",
+        "HELP_CENTER": "Centro de ayuda",
+        "LOGOUT": "Cerrar sesión",
+        "LOST": "perdido",
+        "NO_RECORDS": "No se encontraron registros",
+        "PLEASE_WAIT": "Por favor espere",
+        "REGISTER": "Registrarse",
+        "SEARCH": "Buscar",
+        "SIGN_IN": "Iniciar sesión",
+        "WITHDRAWAL": "Retiro",
+        "MORE_EVENTS": "más eventos",
+        "SEE_MORE": "Ver más",
+        "MORE_DETAILS": "Más detalles",
+        "TODAY": "Hoy",
+        "TOMORROW": "Mañana",
+        "OTHER_DATES": "Otras fechas",
+        "SUBMIT": "Enviar",
+        "SEND": "Enviar"
+    },
+    "LANGUAGE": {
+        "CHOOSE": "ELIJA SU IDIOMA"
+    },
+    "LISTING": {
+        "NO_BETS": "No hay apuestas para mostrar"
+    },
+    "LOGIN": {
+        "FAILED_LOGIN": "Demasiados intentos fallidos. Su cuenta ha sido bloqueada. Por favor restablezca su contraseña.",
+        "FORGOT_EMAIL": "¿Olvidó su correo electrónico?",
+        "INVALID_2FA": "Autenticación de dos factores inválida",
+        "INVALID_CREDENTIALS": "Credenciales inválidas",
+        "NO_ACCOUNT": "¿Aún no tiene una cuenta?",
+        "REGISTERED_EMAIL": "Su correo electrónico registrado",
+        "REMEMBER_ME": "Recordarme",
+        "TWO_FACTOR": "Código de 4 dígitos para autenticación de dos factores (si está activada)"
+    },
+    "PASSWORD": {
+        "FORGOT": "¿Olvidó su contraseña?",
+        "MATCH_NO": "La contraseña y su confirmación no coinciden",
+        "PASSWORD_CONFIRM": "Confirmar nueva contraseña",
+        "PASSWORD_CURRENT": "Contraseña actual",
+        "PASSWORD_DESC": "Use el formulario a continuación para modificar su contraseña. La nueva contraseña requiere un mínimo de 6 caracteres",
+        "PASSWORD_HEADER": "Modificar su contraseña",
+        "PASSWORD_NEW": "Nueva contraseña",
+        "RESET": "Restablecer su contraseña"
+    },
+    "PAYMENT": {
+        "BACK_METHODS": "Volver a los métodos de depósito",
+        "BEFORE_PAY": "Antes de hacer su depósito, indique el monto",
+        "CONVERTED": "Todos los depósitos se convierten automáticamente en stablecoin USD.",
+        "COPY_ADDRESS": "Copiar dirección",
+        "RECOMMENDED": "Exchanges de criptomonedas recomendados:",
+        "SEND_ADDRESS": "Para depositar, envíe su transacción a la siguiente dirección"
+    },
+    "REGISTER": {
+        "ACTIVATE_ACCOUNT": "Active su cuenta",
+        "AGREE_AGE": "Certifico que tengo más de 18 años",
+        "AGREE_TC": "Acepto los",
+        "ALREADY_ACCOUNT": "¿Ya tiene una cuenta?",
+        "DONE": "¡Registro completado!",
+        "SPAM": "Si no ve el correo en unos minutos, revise su carpeta de correo no deseado o spam.",
+        "TICK_BOX_AGE": "Por favor marque la casilla si tiene más de 18 años"
+    },
+    "RIGHTMENU": {
+        "BASKETBALL": "Participe en la acción con la NBA, EuroLeague y los campeonatos internacionales",
+        "EXPLORE_SPORTS": "Explore algunas de las mayores competiciones deportivas del año",
+        "FOOTBALL": "Apueste en los mayores eventos como la Copa del Mundo, la Champions League y las principales ligas",
+        "ICEHOCKEY": "Apueste en la NHL, Juegos Olímpicos y Campeonatos del Mundo para máxima emoción",
+        "OTHERSPORTS": "Explore competiciones emocionantes en críquet, ciclismo, deportes de motor, golf y más",
+        "RUGBY": "Apueste en la Copa Mundial de Rugby, el Seis Naciones y el Super Rugby",
+        "TENNIS": "Apueste en torneos Grand Slam como Wimbledon, Abierto de Australia, Roland Garros y US Open"
+    },
+    "SUCCESS": {
+        "ACCOUNT_VALIDATED": "Cuenta validada, por favor inicie sesión nuevamente"
+    },
+    "USER": {
+        "ACCOUNT_DETAILS": "Detalles de la cuenta",
+        "CHANGE_PASSWORD": "Cambiar su contraseña",
+        "EMAIL_USAGE": "Por favor contacte siempre a nuestro soporte con su correo registrado",
+        "ISSUE_DETAILS": "En caso de problema, proporcione toda la información posible como la referencia de la apuesta o el mensaje de error mostrado. También puede enviar una captura de pantalla.",
+        "MAX_PROFIT_EVENT": "Ganancia máxima permitida por evento",
+        "MAX_PROFIT_MARKET": "Ganancia máxima permitida por mercado",
+        "OPERATIONAL": "Todos los sistemas están operativos",
+        "PLATFORM_STATUS": "Estado de la plataforma",
+        "USER_ACCOUNT": "Cuenta de usuario",
+        "TIME_ZONE": "Zona horaria",
+        "CHATBOT_QUESTION": "Haz tu pregunta al asistente de IA",
+        "CHATBOT_PLACEHOLDER": "Escribe tu pregunta aquí",
+        "CHATBOT_ANSWER": "Respuesta del asistente",
+        "CHATBOT_NOTE": "¿El asistente de IA no dio una respuesta suficiente?"
+    },
+    "VERIFICATION": {
+        "TWO_FACTOR_AUTH": "Autenticación en dos pasos (2FA)",
+        "TWO_FACTOR_DESC": "La autenticación en dos pasos es una capa adicional de seguridad para asegurar que usted sea la única persona que puede acceder a su cuenta"
+    },
+    "FOOTER": {
+        "DESC": "Novaxbet es una casa de apuestas de nueva generación donde puedes apostar o aceptar apuestas como un profesional. Disfruta de control total sobre tus apuestas con intercambio entre usuarios, cuotas transparentes y reglas justas de liquidación. Diseñado para apostadores expertos y juego limpio.",
+        "LINKS": "Enlaces",
+        "TERMS": "Términos y Condiciones",
+        "LANGUAGES": "Idiomas",
+        "AFFILIATES": "Afiliados"
+    },
+    "PARTNER": {
+        "BECOME_AFFILIATES": "Conviértete en socio de rendimiento con el programa de afiliados de Novaxbet. Ya seas webmaster, influencer o experto en apuestas, gana ingresos recurrentes refiriendo jugadores a nuestra plataforma. Únete a un ecosistema diseñado para la rentabilidad y la transparencia.",
+        "YOUR_REVENUES": "Tus ingresos"
+    }
+}

@@ -1,0 +1,22 @@
+<div class="container mx-auto max-w-md p-6">
+  <h1 class="text-2xl font-bold mb-4 text-center">Guest Category Estimator</h1>
+
+  <form (ngSubmit)="checkCategory()" class="space-y-4">
+    <input type="text" formControlName="zwiftId"
+           placeholder="Enter your Zwift ID"
+           class="input input-bordered w-full" />
+
+    <button class="btn btn-primary w-full" type="submit">Check My Category</button>
+  </form>
+
+  @if(result()){
+    <div class="card bg-base-200 shadow-md mt-6 p-4">
+      <h2 class="text-lg font-semibold">Result</h2>
+      <p><b>Name:</b> {{ result().firstName }} {{ result().lastName }}</p>
+      <p><b>TURA Score:</b> {{ result().turaScore }}</p>
+      <p><b>Estimated Category:</b>
+        <span class="badge badge-lg badge-accent">{{ result().category }}</span>
+      </p>
+    </div>
+  }
+</div>

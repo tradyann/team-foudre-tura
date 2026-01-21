@@ -1,0 +1,51 @@
+<div class="p-4">
+    @if (loading()) {
+        <!-- Skeleton loading -->
+        <div class="flex gap-4">
+            <div class="skeleton h-24 w-24 rounded"></div>
+            <div class="flex-1 space-y-3">
+                <div class="skeleton h-6 w-1/3"></div>
+                <div class="skeleton h-4 w-1/2"></div>
+                <div class="skeleton h-4 w-2/3"></div>
+            </div>
+        </div>
+    } @else if (error()) {
+        <div role="alert" class="alert alert-soft alert-error">
+            <span>{{ error() }}</span>
+        </div>
+    } @else {
+
+        <div class="overflow-x-auto">
+            <table class="table table-xs">
+                <thead>
+                    <tr class="bg-base-200 text-xs">
+                        <th>NAME</th>
+                        <th class="text-right">WK</th>
+                        <th class="text-right">15'</th>
+                        <th class="text-right">1m</th>
+                        <th class="text-right">5m</th>
+                        <th class="text-right">20</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (m of results(); track m.zwiftId) {
+                        <tr>
+                            <td class="whitespace-nowrap">
+                                {{ m.lastName }}
+                                @if (!m.male) {
+                                <span class="badge badge-ghost badge-xs text-pink-400 ml-1">F</span>
+                                }
+                                <span class="badge badge-ghost badge-xs ml-1">{{ m.poids }}</span>
+                            </td>
+                            <td class="text-right">{{ m.wkgAdj | number:'1.0-2' }}</td>
+                            <td class="text-right">{{ m.wk15 }}</td>
+                            <td class="text-right">{{ m.wk60 }}</td>
+                            <td class="text-right">{{ m.wk300 }}</td>
+                            <td class="text-right">{{ m.wk1200 }}</td>
+                        </tr>
+                    }
+                    </tbody>
+            </table>
+        </div>
+    }
+</div>

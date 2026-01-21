@@ -1,0 +1,259 @@
+<section class="p-4 lg:p-6 space-y-8">
+
+  <!-- (1) Access & Service Layers — pricing style -->
+  <div>
+
+<section class="relative overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 bg-base-200/80"></div>
+  <div class="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-primary/10 blur-3xl"></div>
+  <div class="absolute -right-16 bottom-0 h-72 w-72 rounded-full bg-secondary/10 blur-3xl"></div>
+
+  <!-- Content container -->
+  <div class="relative mx-auto max-w-7xl px-4 py-10 lg:px-8 lg:py-16">
+    <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+
+      <!-- Left: Diorama image -->
+      <div class="w-full max-w-sm sm:max-w-md mx-auto">
+        <div class="relative">
+          <!-- subtle card base for transparent PNG -->
+          <div class="absolute -inset-3 rounded-3xl bg-base-100/40 ring-1 ring-base-300/50"></div>
+          <img
+            src="/images/welcome-tura.png"
+            alt="Virtual cycling diorama for TURA"
+            class="w-full h-auto drop-shadow-2xl"
+            loading="eager"
+            width="640" height="640"
+          />
+        </div>
+      </div>
+
+      <!-- Right: Copy + CTAs -->
+      <div class="text-center lg:text-left">
+        <h1 class="text-3xl font-semibold tracking-tight lg:text-4xl">
+          Race your way: casual try‑out or full strategy mode
+        </h1>
+
+        <p class="mt-3 text-base opacity-80 leading-relaxed">
+          Join public races as a guest, climb seasonal rankings as an individual,
+          or build a private team with sponsor goals and advanced strategy tools.
+          GC (General Classification time), Climber & Sprinter jerseys with FAL (First Across the Line) or FTS (Fastest Through Segment), multi‑slots — pick your path and chase the podium.
+        </p>
+
+        <!-- CTAs -->
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+          <a [routerLink]="['/game/calendar']" class="btn btn-primary">
+            Explore events
+          </a>
+          <a [routerLink]="['/account/register']" class="btn btn-outline">
+            Create account
+          </a>
+        </div>
+
+        <!-- Helper link -->
+        <div class="mt-3">
+          <a [routerLink]="['/game/rules']" class="link link-hover text-sm opacity-70">
+            How it works?
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+      <!-- Guest -->
+      <div class="card bg-base-100 border shadow-sm hover:shadow-md transition">
+        <div class="card-body h-full flex flex-col">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xl font-bold flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-door-open-icon lucide-door-open"><path d="M11 20H2"/><path d="M11 4.562v16.157a1 1 0 0 0 1.242.97L19 20V5.562a2 2 0 0 0-1.515-1.94l-4-1A2 2 0 0 0 11 4.561z"/><path d="M11 4H8a2 2 0 0 0-2 2v14"/><path d="M14 12h.01"/><path d="M22 20h-3"/></svg>
+              Guest</h3>
+            <span class="badge">Free</span>
+          </div>
+          <p class="opacity-70">Try without an account</p>
+          <ul class="mt-3 space-y-2">
+            <li class="flex items-start gap-2"><span>✅</span><span>Join public races without an account</span></li>
+            <li class="flex items-start gap-2"><span>✅</span><span>Instant try‑out</span></li>
+            <li class="flex items-start gap-2"><span>❌</span><span>Seasonal ranking</span></li>
+            <li class="flex items-start gap-2"><span>❌</span><span>Prize rewards</span></li>
+          </ul>
+          <div class="card-actions mt-4 pt-2 border-t border-base-200 mt-auto">
+            <a class="btn btn-sm btn-outline" [routerLink]="['/game/calendar']">Join</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Individual -->
+      <div class="card bg-base-100 border border-primary shadow-sm hover:shadow-md transition">
+        <div class="card-body h-full flex flex-col">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xl font-bold flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Individual</h3>
+            <span class="badge badge-primary">Ranked</span>
+          </div>
+          <p class="opacity-70">Solo progression &amp; virtual prizes</p>
+          <ul class="mt-3 space-y-2">
+            <li class="flex items-start gap-2"><span>✅</span><span>Official GC / FAL / FTS ranking</span></li>
+            <li class="flex items-start gap-2"><span>✅</span><span>Earn virtual prizes (TURA$)</span></li>
+            <li class="flex items-start gap-2"><span>✅</span><span>No team required</span></li>
+            <li class="flex items-start gap-2"><span>❌</span><span>No team primes</span></li>
+          </ul>
+          <div class="card-actions mt-4 pt-2 border-t border-base-200 mt-auto">
+            <a class="btn btn-sm btn-primary" [routerLink]="['/account/register']">Sign up</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Public Teams -->
+      <div class="card bg-base-100 border border-success shadow-sm hover:shadow-md transition">
+        <div class="card-body h-full flex flex-col">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xl font-bold flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+              Public Teams</h3>
+            <span class="badge badge-success">Open</span>
+          </div>
+          <p class="opacity-70">Community squads &amp; basic goals</p>
+          <ul class="mt-3 space-y-2">
+            <li class="flex items-start gap-2"><span>✅</span><span>Join auto‑managed team freely</span></li>
+            <li class="flex items-start gap-2"><span>✅</span><span>Individual prize rewards (TURA$)</span></li>
+            <li class="flex items-start gap-2"><span>✅</span><span>Team primes</span></li>
+            <li class="flex items-start gap-2"><span>❌</span><span>Limited team options</span></li>
+          </ul>
+          <div class="card-actions mt-4 pt-2 border-t border-base-200 mt-auto">
+            <a class="btn btn-sm btn-success" [routerLink]="['/game/teams']">Explore</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Private Teams -->
+      <div class="card bg-base-100 border border-warning shadow-sm hover:shadow-md transition">
+        <div class="card-body h-full flex flex-col">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xl font-bold flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-user-icon lucide-shield-user"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M6.376 18.91a6 6 0 0 1 11.249.003"/><circle cx="12" cy="11" r="4"/></svg>
+              Private Teams</h3>
+            <span class="badge badge-warning">Invite‑only</span>
+          </div>
+          <p class="opacity-70">Player‑created teams funded by earned prizes</p>
+          <ul class="mt-3 space-y-2">
+            <li class="flex items-start gap-2"><span>✅</span><span>All from “Public Teams”</span></li>
+            <li class="flex items-start gap-2"><span>✅</span><span>Managed roster &amp; transfers</span></li>
+            <li class="flex items-start gap-2"><span>✅</span><span>Custom sponsor goals selection</span></li>
+            <li class="flex items-start gap-2"><span>✅</span><span>Advanced strategy tools</span></li>
+          </ul>
+          <div class="card-actions mt-4 pt-2 border-t border-base-200 mt-auto">
+            <a class="btn btn-sm btn-warning" disabled>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban-icon lucide-ban"><path d="M4.929 4.929 19.07 19.071"/><circle cx="12" cy="12" r="10"/></svg>
+              Available soon 
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- TURA Lite Rules -->
+<section class="max-w-4xl mx-auto mt-10">
+  <div class="card bg-base-100 shadow-sm border">
+    <div class="card-body">
+      <h2 class="card-title text-lg"><span class="font-train text-3xl">TURA</span> Lite Rules — Top 10 Essentials</h2>
+
+      <ol class="steps steps-vertical w-full mt-4">
+  <li class="step step-primary" data-content="1">
+    <div class="flex flex-col gap-1">
+      <span class="text-left font-medium">TURA Account required</span>
+      <p class="text-left text-sm opacity-70">Link your Zwift ID to a TURA account to be ranked and earn TURA$.</p>
+    </div>
+  </li>
+
+  <li class="step step-primary" data-content="2">
+    <div class="flex flex-col gap-1">
+      <span class="text-left font-medium">ZwiftPower mandatory</span>
+      <p class="text-left text-sm opacity-70">
+        Register with public activities enabled. Violations (hidden data, no HRM, wrong category) ⇒ DQ or auto-upgrade.
+      </p>
+    </div>
+  </li>
+
+  <li class="step step-primary" data-content="3">
+    <div class="flex flex-col gap-1">
+      <span class="text-left font-medium">Fair equipment only</span>
+      <p class="text-left text-sm opacity-70">
+        HRM required, smart trainer only, ZPower not allowed. Violations are penalized (DQ, neutral time, or recategorization).
+      </p>
+    </div>
+  </li>
+
+  <li class="step step-primary" data-content="4">
+    <div class="flex flex-col gap-1">
+      <span class="text-left font-medium">Fast checks</span>
+      <p class="text-left text-sm opacity-70">
+        Video weigh-in, FIT file, or dual recording may be requested and can be uploaded easily on the website.
+      </p>
+    </div>
+  </li>
+
+  <li class="step step-primary" data-content="5">
+    <div class="flex flex-col gap-1">
+      <span class="text-left font-medium">Categories (A–B–C–D-E)</span>
+      <p class="text-left text-sm opacity-70">Based on TURA score ("TRS"). You may race higher, but never lower.</p>
+    </div>
+  </li>
+
+  <li class="step step-primary" data-content="6">
+    <div class="flex flex-col gap-1">
+      <span class="text-left font-medium">Guests welcome</span>
+      <p class="text-left text-sm opacity-70">Not ranked, but must use the category estimator to pick the right pen.</p>
+    </div>
+  </li>
+
+  <li class="step step-primary" data-content="7">
+    <div class="flex flex-col gap-1">
+      <span class="text-left font-medium">Multi-slot races</span>
+      <p class="text-left text-sm opacity-70">Up to 3–4 slots per race. Only your first slot counts.</p>
+    </div>
+  </li>
+
+  <li class="step step-primary" data-content="8">
+    <div class="flex flex-col gap-1">
+      <span class="text-left font-medium">Rankings</span>
+      <p class="text-left text-sm opacity-70">
+        cGap (compressed inter-slot time gaps with cRatio) ensures fair cross-slot results.
+      </p>
+    </div>
+  </li>
+
+  <li class="step step-primary" data-content="9">
+    <div class="flex flex-col gap-1">
+      <span class="text-left font-medium">Jerseys & Sponsor Goals</span>
+      <p class="text-left text-sm opacity-70">
+        Climber &amp; Sprinter jerseys are awarded by points (FAL/FTS). 
+        Sponsor objectives (e.g. GC, KOM, sprint) for bonus rewards.
+      </p>
+    </div>
+  </li>
+
+  <li class="step step-primary" data-content="10">
+    <div class="flex flex-col gap-1">
+      <span class="text-left font-medium">Teams</span>
+      <p class="text-left text-sm opacity-70">
+        Up to 15 riders. Team prizes = members’ rewards + primes. Sponsor bonuses may boost team earnings.
+      </p>
+    </div>
+  </li>
+</ol>
+
+
+      <p class="text-xs opacity-60 mt-4">
+        💡 For full details, see the complete <a [routerLink]="['/game/rules']" class="link">TURA Rules</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+</section>

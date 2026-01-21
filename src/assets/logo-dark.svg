@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="30.90328mm"
+   height="4.0188379mm"
+   viewBox="0 0 30.90328 4.0188379"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="logo-dark.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="4.3389453"
+     inkscape:cx="7.9512411"
+     inkscape:cy="35.838202"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <rect
+       x="115.00491"
+       y="504.27002"
+       width="124.68468"
+       height="26.734608"
+       id="rect2" />
+    <rect
+       x="101.69168"
+       y="479.77612"
+       width="595.80896"
+       height="161.6637"
+       id="rect1" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-30.801166,-134.37522)">
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;font-family:'Zwift Sprint';-inkscape-font-specification:'Zwift Sprint';white-space:pre;shape-inside:url(#rect1);fill:#f34700" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;font-family:'Zwift Sprint';-inkscape-font-specification:'Zwift Sprint';white-space:pre;shape-inside:url(#rect2);fill:#f34700"><tspan
+         x="115.00586"
+         y="522.93617"
+         id="tspan5"><tspan
+   style="fill:#ffffff"
+   id="tspan1">NOVA</tspan>X<tspan
+   style="fill:#ffffff"
+   id="tspan2">BET</tspan></tspan></text>
+  </g>
+</svg>

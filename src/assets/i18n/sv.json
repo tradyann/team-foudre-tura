@@ -1,0 +1,145 @@
+{
+    "ERROR": {
+        "ACCEPT_TERMS": "Du måste acceptera villkoren",
+        "CHARACTERS_MINIMAX": "Minst 6 och högst 20 tecken",
+        "CONTACT_SUPPORT": "Vänligen kontakta vår support",
+        "EMAIL_INVALID": "Ange en giltig e-postadress",
+        "EMAIL_REQUIRED": "E-postadress krävs",
+        "EMAIL_TAKEN": "Denna e-post används redan",
+        "INVALID_LINK": "Den här länken är inte längre giltig, begär en ny",
+        "LINK_INVALID": "Den här länken är inte längre giltig",
+        "LINK_UNAVAILABLE": "Länken är inte tillgänglig",
+        "NOT_RECEIVED": "Har du inte fått något mejl?",
+        "PASSWORD_INCORRECT": "Ditt lösenord är felaktigt",
+        "PASSWORD_REQUIRED": "Lösenord krävs",
+        "UNKNOW_ERROR": "Okänt fel"
+    },
+    "FINANCIAL": {
+        "ADD_ADDRESS": "Lägg till ny adress",
+        "ADD_MEMO": "vänligen lägg till MEMO i slutet",
+        "CHANGE_ADDRESS": "Ändring tillåts endast om inget uttag pågår",
+        "NETWORK_FEES": "nätverksavgifter",
+        "TRANSACTION_HISTORY": "Transaktionshistorik",
+        "WITHDRAWAL_DETAILS": "Ange belopp och valuta för din uttagsbegäran",
+        "WITHD_ADDRESS": "Uttagsadress"
+    },
+    "FIXED": {
+        "LOGIN": "Logga in",
+        "SIGN_UP": "Registrera dig"
+    },
+    "GLOBAL": {
+        "ACCOUNT": "Konto",
+        "ACTIVATE": "Aktivera",
+        "ACTIVATED": "aktiverad",
+        "CANCEL": "Avbryt",
+        "CONFIRM": "Bekräfta",
+        "CONFIRM_REQUEST": "Bekräftar du din begäran?",
+        "DEPOSIT": "Insättning",
+        "DISABLE": "Inaktivera",
+        "DISABLED": "inaktiverad",
+        "EMAIL_SENT": "E-post skickad!",
+        "HELP_CENTER": "Hjälpcenter",
+        "LOGOUT": "Logga ut",
+        "LOST": "förlorad",
+        "NO_RECORDS": "Inga poster hittades",
+        "PLEASE_WAIT": "Vänligen vänta",
+        "REGISTER": "Registrera dig",
+        "SEARCH": "Sök",
+        "SIGN_IN": "Logga in",
+        "WITHDRAWAL": "Uttag",
+        "MORE_EVENTS": "fler evenemang",
+        "SEE_MORE": "Visa mer",
+        "MORE_DETAILS": "Mer information",
+        "TODAY": "Idag",
+        "TOMORROW": "Imorgon",
+        "OTHER_DATES": "Andra datum",
+        "SUBMIT": "Skicka",
+        "SEND": "Skicka"
+    },
+    "LANGUAGE": {
+        "CHOOSE": "VÄLJ DITT SPRÅK"
+    },
+    "LISTING": {
+        "NO_BETS": "Inga spel att visa"
+    },
+    "LOGIN": {
+        "FAILED_LOGIN": "För många misslyckade försök. Ditt konto har låsts. Återställ ditt lösenord.",
+        "FORGOT_EMAIL": "Glömt din e-post?",
+        "INVALID_2FA": "Ogiltig tvåfaktorsautentisering",
+        "INVALID_CREDENTIALS": "Ogiltiga inloggningsuppgifter",
+        "NO_ACCOUNT": "Har du inget konto?",
+        "REGISTERED_EMAIL": "Din registrerade e-postadress",
+        "REMEMBER_ME": "Kom ihåg mig",
+        "TWO_FACTOR": "Fyrsiffrig tvåfaktorskod (om aktiverad)"
+    },
+    "PASSWORD": {
+        "FORGOT": "Glömt ditt lösenord",
+        "MATCH_NO": "Lösenord och bekräftelse stämmer inte överens",
+        "PASSWORD_CONFIRM": "Bekräfta nytt lösenord",
+        "PASSWORD_CURRENT": "Nuvarande lösenord",
+        "PASSWORD_DESC": "Använd formuläret nedan för att ändra ditt lösenord. Det nya lösenordet måste vara minst 6 tecken",
+        "PASSWORD_HEADER": "Ändra ditt lösenord",
+        "PASSWORD_NEW": "Nytt lösenord",
+        "RESET": "Återställ ditt lösenord"
+    },
+    "PAYMENT": {
+        "BACK_METHODS": "Tillbaka till insättningsmetoder",
+        "BEFORE_PAY": "Ange beloppet innan du gör din insättning",
+        "CONVERTED": "Alla insättningar konverteras automatiskt till USD stablecoin.",
+        "COPY_ADDRESS": "Kopiera adress",
+        "RECOMMENDED": "Rekommenderade kryptobörser:",
+        "SEND_ADDRESS": "För att sätta in, skicka din transaktion till adressen nedan"
+    },
+    "REGISTER": {
+        "ACTIVATE_ACCOUNT": "Aktivera ditt konto",
+        "AGREE_AGE": "Jag intygar att jag är över 18 år",
+        "AGREE_TC": "Jag godkänner",
+        "ALREADY_ACCOUNT": "Har du redan ett konto?",
+        "DONE": "Registrering klar!",
+        "SPAM": "Om du inte ser mejlet inom några minuter, kontrollera skräppostmappen.",
+        "TICK_BOX_AGE": "Vänligen kryssa i rutan om du är över 18"
+    },
+    "RIGHTMENU": {
+        "BASKETBALL": "Var med i spelet med NBA, EuroLeague och internationella mästerskap",
+        "EXPLORE_SPORTS": "Utforska de största sportevenemangen under året",
+        "FOOTBALL": "Satsa på stora evenemang som VM, Champions League och toppligor",
+        "ICEHOCKEY": "Satsa på NHL, OS och världsmästerskap för maximal spänning",
+        "OTHERSPORTS": "Upptäck spännande tävlingar inom cricket, cykling, motorsport, golf och mer",
+        "RUGBY": "Satsa på Rugby-VM, Six Nations och Super Rugby",
+        "TENNIS": "Satsa på Grand Slam-turneringar som Wimbledon, Australian Open, Roland Garros och US Open"
+    },
+    "SUCCESS": {
+        "ACCOUNT_VALIDATED": "Konto verifierat, vänligen logga in igen"
+    },
+    "USER": {
+        "ACCOUNT_DETAILS": "Kontouppgifter",
+        "CHANGE_PASSWORD": "Byt ditt lösenord",
+        "EMAIL_USAGE": "Vänligen kontakta alltid supporten med din registrerade e-postadress",
+        "ISSUE_DETAILS": "Vid problem, ge så mycket information som möjligt, som spelreferens eller felmeddelande. Du kan även bifoga en skärmbild.",
+        "MAX_PROFIT_EVENT": "Maxvinst per evenemang",
+        "MAX_PROFIT_MARKET": "Maxvinst per marknad",
+        "OPERATIONAL": "Alla system fungerar",
+        "PLATFORM_STATUS": "Plattformsstatus",
+        "USER_ACCOUNT": "Användarkonto",
+        "TIME_ZONE": "Tidszon",
+        "CHATBOT_QUESTION": "Ställ din fråga till AI-assistenten",
+        "CHATBOT_PLACEHOLDER": "Skriv din fråga här",
+        "CHATBOT_ANSWER": "Assistentens svar",
+        "CHATBOT_NOTE": "AI-assistenten gav inte ett tillräckligt svar?"
+    },
+    "VERIFICATION": {
+        "TWO_FACTOR_AUTH": "Tvåfaktorsautentisering (2FA)",
+        "TWO_FACTOR_DESC": "Tvåfaktorsautentisering är ett extra säkerhetslager för att säkerställa att endast du har tillgång till ditt konto"
+    },
+    "FOOTER": {
+        "DESC": "Novaxbet är en nästa generations bettingbörs där du kan backa eller lägga spel som ett proffs. Få full kontroll över dina spel med peer-to-peer-handel, transparenta odds och rättvisa regler. Skapad för skarpa spelare och fair play.",
+        "LINKS": "Länkar",
+        "TERMS": "Villkor",
+        "LANGUAGES": "Språk",
+        "AFFILIATES": "Affiliates"
+    },
+    "PARTNER": {
+        "BECOME_AFFILIATES": "Bli en prestationspartner med Novaxbets affiliateprogram. Oavsett om du är webbansvarig, influencer eller bettingexpert kan du tjäna återkommande intäkter genom att hänvisa spelare till vår plattform. Gå med i ett ekosystem byggt för lönsamhet och transparens.",
+        "YOUR_REVENUES": "Dina intäkter"
+    }
+}

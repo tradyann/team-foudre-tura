@@ -1,0 +1,58 @@
+<div class="container">
+<div class="row">
+<div class="col my-5">
+    <button type="button" class="btn-close float-end" aria-label="Close" [routerLink]="['/']"></button>
+    <h1 class="hero-text">TERMS & CONDITIONS</h1>
+    <p class="text-xs text-muted">Last update 7th july 2024</p>
+    <section *ngIf="datas">    
+            <div class="table-responsive mb-4">
+                <table class="table table-borderless table-sm">
+                    <thead>
+                        <th style="width: 5%"></th>
+                        <th style="width: 95%"></th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let d of datas.Terms">
+                            <td>
+                                <span *ngIf="d.articleId>0" class="text-primary">{{d.chapterId}}.{{d.articleId}}</span> {{d.longId}}
+                                <span class="badge badge-primary" *ngIf="d.amendedDate" mdbToolip="article modified since your last acceptance">NEW</span>
+                            </td>
+                            <td>
+                                <div class="text-primary fw-bold mt-4" *ngIf="d.articleId===0">{{d.chapterId}}. {{d.terms}}</div>
+                                <div *ngIf="d.articleId>0" [innerHtml]="d.terms"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+                
+    </section>
+    <div class="text-center">
+        <a [routerLink]="['/']" class="btn btn-primary btn-rounded btn-lg" type="button">Home page</a>
+    </div>  
+</div>
+</div>
+</div>
+
+<!-- <section class="my-5">
+    <h1 class="hero-text"><span class="gradient-text">Terms And Conditions</span></h1>
+    <p class="text-xs text-muted">Last update 7th july 2024</p>
+    <div class="table-responsive mb-4" *ngIf="dataTerms">
+        <table class="table table-borderless table-sm">
+            <tbody>
+                <tr *ngFor="let d of dataTerms">
+                    <th scope="row">
+                        <span *ngIf="d.articleId>0" class="text-primary">{{d.chapterId}}.{{d.articleId}}</span>
+                    </th>
+                    <td>
+                        <div class="text-primary fw-bold mt-4" *ngIf="d.articleId===0">{{d.chapterId}}. {{d.terms}}</div>
+                        <div *ngIf="d.articleId>0" [innerHtml]="d.terms"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table> 
+    </div>
+    <div class="text-center">
+        <a [routerLink]="['/']" class="btn btn-primary btn-rounded btn-lg" type="button">Home page</a>
+    </div>     
+</section> -->

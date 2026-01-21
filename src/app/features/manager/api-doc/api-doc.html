@@ -1,0 +1,55 @@
+<div class="p-6 space-y-8">
+
+  <!-- Header principal -->
+  <section class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h1 class="card-title text-2xl">API Documentation</h1>
+      <p class="text-sm opacity-70">
+        Here are the main endpoints available in the TURA API: https://api.turaracing.com </p>
+        example https://api.turaracing.com/api/public/news
+    </div>
+  </section>
+
+  <!-- Section Authentication -->
+  <section class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h2 class="card-title">Authentication</h2>
+
+      <div class="flex items-center gap-2">
+        <span class="badge  badge-outline  badge-info">POST</span>
+        <code>/api/token</code>
+      </div>
+      <pre class="bg-base-200">{{ tokenModel | json }}</pre>
+      <p>You can retrieve your bearer token directly in the website API console if you want to avoid this external connection process</p>
+    </div>
+  </section>
+
+<section class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h2 class="card-title">Lists</h2>
+
+      <div class="flex items-center gap-2">
+        <span class="badge  badge-outline badge-success">GET</span>
+        <code>/api/gaming/riders-list</code>
+      </div>
+      <p class="text-sm opacity-80">Get the list...</p>
+      <p>https://api.turaracing.com/api/gaming/riders-list?query=&pageIndex=0&rowsPerPage=3</p>
+    </div>
+  </section>
+
+  <section class="card bg-base-100 shadow-md">
+    <div class="card-body">
+      <h2 class="card-title">Segments</h2>
+
+      <div class="flex items-center gap-2">
+        <span class="badge badge-outline badge-info">POST</span>
+        <code>/api/manager/segments-create</code>
+      </div>
+      <pre class="bg-base-200">{{ segmentModel | json }}</pre>
+      <p>typeSegment = finish | sprint | kom.</p>
+      <p>stakePointId & stakeTimeId = see IDs <a class="text-primary hover:underline" [routerLink]="['/game/jersey-structure']">jersey structure</a></p>
+      <p>segmentId (string) = <a class="text-primary hover:underline" [routerLink]="['/manager/competition-routes/228']">segments routes</a></p>
+    </div>
+  </section>
+
+</div>

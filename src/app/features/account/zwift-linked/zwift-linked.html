@@ -1,0 +1,75 @@
+<div class="grid grid-cols-12 overflow-auto sm:h-screen">
+    <!-- Aside image branding -->
+    <app-aside-image class="relative hidden bg-[#FFE9D1] lg:col-span-7 lg:block xl:col-span-8 2xl:col-span-9 dark:bg-[#14181c]"></app-aside-image>
+
+    <!-- Zwift link main panel -->
+    <div class="col-span-12 lg:col-span-5 xl:col-span-4 2xl:col-span-3">
+        <div class="flex flex-col items-stretch p-8 lg:p-16">
+        <div class="flex items-center justify-between">
+            <a href="/">
+            <div class="mx-4 flex items-center gap-2 font-black">
+                <div class="mask mask-hexagon font-train bg-primary text-white p-3">T</div>
+                <span class="font-train text-3xl">TURA</span>
+            </div>
+            </a>
+        </div>
+
+        <h3 class="mt-8 text-center text-xl font-semibold md:mt-12 lg:mt-24">
+            {{ 'ZWIFT.LINK_ACCOUNT' | translate }}
+        </h3>
+        <h3 class="text-base-content/70 mt-2 text-center text-sm">
+            Enter your Zwift ID and email to link your account.
+        </h3>
+
+        <form class="mt-6 md:mt-10" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+            <fieldset class="fieldset">
+            <legend class="fieldset-legend">Email Address</legend>
+            <label class="input w-full">
+                <span-lucide [img]="MailIcon" class="text-base-content/80 size-5"></span-lucide>
+                <input
+                autocomplete="off"
+                type="email"
+                placeholder="Email"
+                class="grow"
+                formControlName="email"
+                />
+            </label>
+            <div class="text-red-500 text-sm mt-1" *ngIf="email?.errors?.['required'] && email?.touched">
+                {{ 'ERROR.EMAIL_REQUIRED' | translate }}
+            </div>
+            <div class="text-red-500 text-sm mt-1" *ngIf="email?.errors?.['email'] && email?.touched">
+                {{ 'ERROR.EMAIL_INVALID' | translate }}
+            </div>
+            </fieldset>
+
+            <fieldset class="fieldset mt-4">
+            <legend class="fieldset-legend">Zwift ID</legend>
+            <label class="input w-full">
+                <span-lucide [img]="LinkIcon" class="text-base-content/80 size-5"></span-lucide>
+                <input
+                type="number"
+                placeholder="Zwift ID"
+                class="grow"
+                formControlName="zwiftId"
+                />
+            </label>
+            <div class="text-red-500 text-sm mt-1" *ngIf="zwiftId?.errors?.['required'] && zwiftId?.touched">
+                {{ 'ERROR.ZWIFTID_REQUIRED' | translate }}
+            </div>
+            <div class="text-red-500 text-sm mt-1" *ngIf="zwiftId?.errors?.['min'] && zwiftId?.touched">
+                {{ 'ERROR.ZWIFTID_INVALID' | translate }}
+            </div>
+            </fieldset>
+
+            <div class="mt-6 flex flex-col gap-3">
+            <button type="submit" class="btn btn-primary w-full">
+                {{ 'ZWIFT.LINK_NOW' | translate }}
+            </button>
+            <a [routerLink]="['/account/login']" class="btn btn-ghost w-full">
+                {{ 'GLOBAL.CANCEL' | translate }}
+            </a>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

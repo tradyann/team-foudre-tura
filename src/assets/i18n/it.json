@@ -1,0 +1,145 @@
+{
+    "ERROR": {
+        "ACCEPT_TERMS": "Devi accettare i T&C",
+        "CHARACTERS_MINIMAX": "Minimo 6 e massimo 20 caratteri",
+        "CONTACT_SUPPORT": "Si prega di contattare il nostro supporto",
+        "EMAIL_INVALID": "Inserisci un indirizzo email valido",
+        "EMAIL_REQUIRED": "L'email è obbligatoria",
+        "EMAIL_TAKEN": "Questa email è già in uso",
+        "INVALID_LINK": "Questo link non è più valido, richiedine uno nuovo",
+        "LINK_INVALID": "Questo link non è più valido",
+        "LINK_UNAVAILABLE": "Link non disponibile",
+        "NOT_RECEIVED": "Non hai ricevuto l’email?",
+        "PASSWORD_INCORRECT": "La tua password è errata",
+        "PASSWORD_REQUIRED": "La password è obbligatoria",
+        "UNKNOW_ERROR": "Errore sconosciuto"
+    },
+    "FINANCIAL": {
+        "ADD_ADDRESS": "Aggiungi un nuovo indirizzo",
+        "ADD_MEMO": "per favore aggiungi il MEMO alla fine",
+        "CHANGE_ADDRESS": "Cambio consentito solo se non ci sono prelievi in corso",
+        "NETWORK_FEES": "commissioni di rete",
+        "TRANSACTION_HISTORY": "Cronologia delle transazioni",
+        "WITHDRAWAL_DETAILS": "Specifica l'importo e la valuta della richiesta di prelievo",
+        "WITHD_ADDRESS": "Indirizzo di prelievo"
+    },
+    "FIXED": {
+        "LOGIN": "Accedi",
+        "SIGN_UP": "Registrati"
+    },
+    "GLOBAL": {
+        "ACCOUNT": "Account",
+        "ACTIVATE": "Attiva",
+        "ACTIVATED": "attivato",
+        "CANCEL": "Annulla",
+        "CONFIRM": "Conferma",
+        "CONFIRM_REQUEST": "Confermi la tua richiesta?",
+        "DEPOSIT": "Deposito",
+        "DISABLE": "Disattiva",
+        "DISABLED": "disattivato",
+        "EMAIL_SENT": "Email inviata!",
+        "HELP_CENTER": "Centro assistenza",
+        "LOGOUT": "Disconnetti",
+        "LOST": "perso",
+        "NO_RECORDS": "Nessun record trovato",
+        "PLEASE_WAIT": "Attendere prego",
+        "REGISTER": "Registrati",
+        "SEARCH": "Cerca",
+        "SIGN_IN": "Accedi",
+        "WITHDRAWAL": "Prelievo",
+        "MORE_EVENTS": "altri eventi",
+        "SEE_MORE": "Vedi di più",
+        "MORE_DETAILS": "Più dettagli",
+        "TODAY": "Oggi",
+        "TOMORROW": "Domani",
+        "OTHER_DATES": "Altre date",
+        "SUBMIT": "Invia",
+        "SEND": "Invia"
+    },
+    "LANGUAGE": {
+        "CHOOSE": "SCEGLI LA TUA LINGUA"
+    },
+    "LISTING": {
+        "NO_BETS": "Nessuna scommessa da mostrare"
+    },
+    "LOGIN": {
+        "FAILED_LOGIN": "Troppi tentativi falliti. Il tuo account è stato bloccato. Reimposta la tua password.",
+        "FORGOT_EMAIL": "Hai dimenticato la tua email?",
+        "INVALID_2FA": "Autenticazione a due fattori non valida",
+        "INVALID_CREDENTIALS": "Credenziali non valide",
+        "NO_ACCOUNT": "Non hai un account?",
+        "REGISTERED_EMAIL": "La tua email registrata",
+        "REMEMBER_ME": "Ricordami",
+        "TWO_FACTOR": "Codice a 4 cifre dell'autenticazione a due fattori (se attivata)"
+    },
+    "PASSWORD": {
+        "FORGOT": "Hai dimenticato la password",
+        "MATCH_NO": "la password e la conferma non corrispondono",
+        "PASSWORD_CONFIRM": "Conferma la nuova password",
+        "PASSWORD_CURRENT": "Password attuale",
+        "PASSWORD_DESC": "Utilizza il modulo qui sotto per modificare la tua password. La nuova password deve contenere almeno 6 caratteri",
+        "PASSWORD_HEADER": "Modifica la tua password",
+        "PASSWORD_NEW": "Nuova password",
+        "RESET": "Reimposta la tua password"
+    },
+    "PAYMENT": {
+        "BACK_METHODS": "Torna ai metodi di deposito",
+        "BEFORE_PAY": "Prima di effettuare il deposito, specifica l'importo",
+        "CONVERTED": "Tutti i depositi vengono automaticamente convertiti in stablecoin USD.",
+        "COPY_ADDRESS": "Copia indirizzo",
+        "RECOMMENDED": "Exchange crypto consigliati:",
+        "SEND_ADDRESS": "Per depositare invia la tua transazione all'indirizzo qui sotto"
+    },
+    "REGISTER": {
+        "ACTIVATE_ACCOUNT": "Attiva il tuo account",
+        "AGREE_AGE": "Certifico di avere più di 18 anni",
+        "AGREE_TC": "Accetto i",
+        "ALREADY_ACCOUNT": "Hai già un account?",
+        "DONE": "Registrazione completata!",
+        "SPAM": "Se non visualizzi l'email entro pochi minuti, controlla la cartella della posta indesiderata o dello spam.",
+        "TICK_BOX_AGE": "Se hai più di 18 anni, seleziona la casella"
+    },
+    "RIGHTMENU": {
+        "BASKETBALL": "Partecipa all’azione con NBA, EuroLeague e i campionati internazionali",
+        "EXPLORE_SPORTS": "Scopri alcune delle più grandi competizioni sportive dell'anno",
+        "FOOTBALL": "Scommetti sui grandi eventi come Coppa del Mondo, Champions League e i campionati nazionali",
+        "ICEHOCKEY": "Scommetti su NHL, Olimpiadi e Mondiali per il massimo del divertimento",
+        "OTHERSPORTS": "Scopri competizioni emozionanti in cricket, ciclismo, sport motoristici, golf e altro",
+        "RUGBY": "Scommetti sulla Coppa del Mondo di Rugby, Sei Nazioni e Super Rugby",
+        "TENNIS": "Scommetti sui tornei del Grande Slam come Wimbledon, Australian Open, Roland Garros e US Open"
+    },
+    "SUCCESS": {
+        "ACCOUNT_VALIDATED": "Account validato, accedi di nuovo per favore"
+    },
+    "USER": {
+        "ACCOUNT_DETAILS": "Dettagli account",
+        "CHANGE_PASSWORD": "Cambia la tua password",
+        "EMAIL_USAGE": "Si prega di contattare sempre il nostro supporto con la tua email registrata",
+        "ISSUE_DETAILS": "In caso di problemi, fornisci più informazioni possibili come il riferimento della scommessa o il messaggio di errore. Puoi anche inviare uno screenshot.",
+        "MAX_PROFIT_EVENT": "Profitto massimo per evento",
+        "MAX_PROFIT_MARKET": "Profitto massimo per mercato",
+        "OPERATIONAL": "Tutti i sistemi sono operativi",
+        "PLATFORM_STATUS": "Stato della piattaforma",
+        "USER_ACCOUNT": "Account utente",
+        "TIME_ZONE": "Fuso orario",
+        "CHATBOT_QUESTION": "Fai la tua domanda all’assistente AI",
+        "CHATBOT_PLACEHOLDER": "Scrivi qui la tua domanda",
+        "CHATBOT_ANSWER": "Risposta dell’assistente",
+        "CHATBOT_NOTE": "L’assistente AI non ha fornito una risposta adeguata?"
+    },
+    "VERIFICATION": {
+        "TWO_FACTOR_AUTH": "Autenticazione a due fattori (2FA)",
+        "TWO_FACTOR_DESC": "L'autenticazione a due fattori è un livello di sicurezza aggiuntivo per garantire che solo tu possa accedere al tuo account"
+    },
+    "FOOTER": {
+        "DESC": "Novaxbet è una piattaforma di scommesse di nuova generazione dove puoi puntare o bancare come un professionista. Goditi il pieno controllo delle tue scommesse con scambi peer-to-peer, quote trasparenti e regole eque di liquidazione. Progettato per scommettitori esperti e gioco corretto.",
+        "LINKS": "Link",
+        "TERMS": "Termini & Condizioni",
+        "LANGUAGES": "Lingue",
+        "AFFILIATES": "Affiliati"
+    },
+    "PARTNER": {
+        "BECOME_AFFILIATES": "Diventa partner di performance con il Programma Affiliazione Novaxbet. Che tu sia webmaster, influencer o esperto di scommesse, guadagna entrate ricorrenti segnalando giocatori sulla nostra piattaforma. Unisciti a un ecosistema pensato per la redditività e la trasparenza.",
+        "YOUR_REVENUES": "Le tue entrate"
+    }
+}

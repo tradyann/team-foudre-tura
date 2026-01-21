@@ -1,0 +1,78 @@
+<!-- app-jersey.component.html -->
+<svg
+    [attr.width]="size"
+    [attr.height]="size"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-label="jersey"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+
+    <!-- FULL -->
+    <g *ngIf="variant === 'full'">
+        <path
+        [attr.d]="jerseyPathD"
+        [attr.fill]="fill"
+        [attr.stroke]="stroke"
+        [attr.stroke-width]="strokeWidth"/>
+    </g>
+
+    <!-- POLKA -->
+    <g *ngIf="variant === 'polka'">
+        <defs>
+        <pattern
+            [attr.id]="patId"
+            patternUnits="userSpaceOnUse"
+            [attr.width]="dotsGap"
+            [attr.height]="dotsGap">
+            <circle
+            [attr.cx]="dotsGap / 2"
+            [attr.cy]="dotsGap / 2"
+            [attr.r]="dotsR"
+            [attr.fill]="dotsColor"/>
+        </pattern>
+
+        <clipPath [attr.id]="clipId">
+            <path [attr.d]="jerseyPathD"></path>
+        </clipPath>
+        </defs>
+
+        <!-- Fond + contour -->
+        <path
+        [attr.d]="jerseyPathD"
+        [attr.fill]="fill"
+        [attr.stroke]="stroke"
+        [attr.stroke-width]="strokeWidth"/>
+
+        <!-- Pois clippés -->
+        <rect x="0" y="0" width="24" height="24"
+            [attr.fill]="'url(#' + patId + ')'"
+            [attr.clip-path]="'url(#' + clipId + ')'"/>
+    </g>
+
+    <!-- UCI -->
+    <g *ngIf="variant === 'uci'">
+        <defs>
+        <clipPath [attr.id]="clipId">
+            <path [attr.d]="jerseyPathD"></path>
+        </clipPath>
+        </defs>
+
+        <!-- Fond + contour -->
+        <path
+        [attr.d]="jerseyPathD"
+        [attr.fill]="fill"
+        [attr.stroke]="stroke"
+        [attr.stroke-width]="strokeWidth"/>
+
+        <!-- Bandes UCI clippées -->
+        <g [attr.clip-path]="'url(#' + clipId + ')'">
+        <rect x="6.5" y="10" width="11" height="2.0" fill="#1C75BC"/>
+        <rect x="6.5" y="12" width="11" height="2.0" fill="#ED1C24"/>
+        <rect x="6.5" y="14" width="11" height="2.0" fill="#000000"/>
+        <rect x="6.5" y="16" width="11" height="2.0" fill="#FFD100"/>
+        <rect x="6.5" y="18" width="11" height="2.0" fill="#00A651"/>
+        </g>
+    </g>
+</svg>

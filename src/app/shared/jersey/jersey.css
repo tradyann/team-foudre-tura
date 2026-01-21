@@ -1,0 +1,4 @@
+:host {
+    display: inline-block;
+    line-height: 0; /* évite le petit espace baseline autour du svg */
+}

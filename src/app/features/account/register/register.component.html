@@ -1,0 +1,144 @@
+<div class="grid grid-cols-12 overflow-auto sm:h-screen">
+
+    <app-aside-image  class="relative hidden bg-[#FFE9D1] lg:col-span-7 lg:block xl:col-span-8 2xl:col-span-9 dark:bg-[#14181c]"></app-aside-image>
+
+    <div class="col-span-12 lg:col-span-5 xl:col-span-4 2xl:col-span-3">
+        <div class="flex flex-col items-stretch p-8 lg:p-16">
+            <div class="flex items-center justify-between">
+                <a href="/">
+                  <div class="mx-4 flex items-center gap-2 font-black">
+                    <div class="mask mask-hexagon font-train bg-primary text-white p-3">T</div><span class="font-train text-3xl">TURA</span>
+                  </div>
+                </a>
+            </div>
+            <h3 class="mt-8 text-center text-xl font-semibold md:mt-12 lg:mt-24">
+                {{'GLOBAL.REGISTER' | translate}}
+            </h3>
+            <h3 class="text-base-content/70 mt-2 text-center text-sm">
+                Verified Access. Smarter Racing. Your journey starts here.
+            </h3>
+            
+            <!-- register form -->
+            <div class="mt-6 md:mt-10">
+              <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()" *ngIf="!isRegistered() && !linkInvalid()">
+
+                <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Email Address</legend>
+                    <label class="input w-full focus:outline-0">
+                        <span-lucide
+                          [img]="MailIcon"
+                            class="text-base-content/80 size-5"></span-lucide>
+                        <input
+                            class="grow focus:outline-0"
+                            placeholder="Email Address"
+                            type="email"
+                            formControlName="email" />
+                    </label>
+                  <div class="text-red-500 text-sm mt-1" *ngIf="email?.errors?.['required'] && email?.touched">
+                    {{ 'ERROR.EMAIL_REQUIRED' | translate }}
+                  </div>
+                  <div class="text-red-500 text-sm mt-1" *ngIf="email?.errors?.['email'] && email?.touched">
+                    {{ 'ERROR.EMAIL_INVALID' | translate }}
+                  </div>
+                  <div class="text-red-500 text-sm mt-1" *ngIf="email?.errors?.['emailTaken']">
+                    {{ 'ERROR.EMAIL_TAKEN' | translate }}
+                  </div>
+                </fieldset>
+                <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Password</legend>
+                    <label class="input w-full focus:outline-0">
+                        <span-lucide
+                          [img]="KeyRoundIcon"
+                            class="text-base-content/80 size-5"></span-lucide>
+                        <input
+                            class="grow focus:outline-0"
+                            placeholder="Password"
+                            id="password"
+                            [type]="pwdHidden ? 'password' : 'text'"
+                            formControlName="password" />
+                        <label
+                            class="swap btn btn-xs btn-ghost btn-circle text-base-content/60">
+                            <input
+                                type="checkbox"
+                                aria-label="Show password" 
+                                (click)="showPwd()"/>
+                            <span-lucide *ngIf="pwdHidden" [img]="EyeIcon" class="size-4"></span-lucide>
+                            <span-lucide *ngIf="!pwdHidden" [img]="EyeOffIcon" class="size-4"></span-lucide>
+                        </label>
+                    </label>
+                    <div class="text-red-500 text-sm mt-1" *ngIf="password?.errors?.['required'] && password?.touched">
+                      {{ 'ERROR.PASSWORD_REQUIRED' | translate }}
+                    </div>
+                    <div class="text-red-500 text-sm mt-1" *ngIf="(password?.errors?.['minlength'] || password?.errors?.['maxlength']) && password?.touched">
+                      {{ 'ERROR.CHARACTERS_MINIMAX' | translate }}
+                    </div>
+                </fieldset>
+                <div class="mt-4 flex items-center gap-3 md:mt-6">
+                    <input
+                        class="checkbox checkbox-sm checkbox-primary"
+                        aria-label="Checkbox example"
+                        id="agreement"
+                        type="checkbox" 
+                        formControlName="terms"/>
+                    <label for="agreement" class="text-sm">
+                        I agree with
+                        <span class="text-primary ms-1 cursor-pointer hover:underline">
+                            terms and conditions
+                        </span>
+                    </label>
+                </div>
+                <div class="text-red-500 text-sm mt-1" *ngIf="terms?.invalid && (terms?.dirty || terms?.touched)">
+                  {{ 'ERROR.ACCEPT_TERMS' | translate }}
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-wide mt-4 max-w-full gap-3 md:mt-6"
+                  [disabled]="wait()"
+                >
+                  <span-lucide [img]="UserPlusIcon" class="size-4"></span-lucide>
+                  {{ 'GLOBAL.REGISTER' | translate }}
+                </button>
+                <p class="text-base-content/80 mt-4 text-center text-sm md:mt-6">
+                    <a class="text-primary ms-1 hover:underline" href="/account/login">
+                        {{ 'REGISTER.ALREADY_ACCOUNT' | translate }}
+                    </a>
+                </p>
+              </form>
+
+                <!-- Success Message -->
+                <section *ngIf="isRegistered()" class="mt-10 text-center">
+                  <h1 class="text-3xl font-bold text-success flex items-center gap-2">
+                    <span-lucide [img]="ThumbsUpIcon" class="size-6"></span-lucide>
+                    {{ 'REGISTER.DONE' | translate }}
+                  </h1>
+                  <p class="mt-4 text-center text-sm md:mt-6">
+                      <a class="btn btn-primary" href="/account/login" role="button">
+                          {{ 'GLOBAL.SIGN_IN' | translate }}
+                      </a>
+                  </p>
+                  <p class="mt-4 text-lg">{{ 'REGISTER.SPAM' | translate }}</p>
+                  <p class="text-sm text-gray-500 mt-2">
+                    {{ 'ERROR.NOT_RECEIVED' | translate }} - {{ 'ERROR.CONTACT_SUPPORT' | translate }}
+                    <a href="mailto:info@turaracing.com" class="link link-primary">info&#64;turaracing.com</a>
+                  </p>
+                </section>
+
+                <!-- Invalid Link Message -->
+                <section *ngIf="linkInvalid()" class="mt-10 text-center">
+                  <h1 class="text-3xl font-bold">{{ 'GLOBAL.REGISTER' | translate }}</h1>
+                  <h2 class="text-2xl text-error mt-2 flex items-center gap-2">
+                    <span-lucide [img]="CircleXIcon" class="size-6"></span-lucide>
+                    Oops...
+                  </h2>
+                  <p class="mt-4">{{ 'ERROR.LINK_INVALID' | translate }} - {{ 'ERROR.CONTACT_SUPPORT' | translate }}
+                    <a href="mailto:info@turaracing.com" class="link link-primary">info&#64;turaracing.com</a>
+                  </p>
+                </section>
+            </div>
+            <!-- end register form -->
+
+
+        </div>
+    </div>
+</div>
+

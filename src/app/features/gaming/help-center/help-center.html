@@ -1,0 +1,111 @@
+<section class="max-w-3xl mx-auto p-4 md:p-6">
+  <div class="mb-6">
+    <h1 class="text-3xl md:text-4xl font-extrabold">Help Center</h1>
+    <p class="mt-2 opacity-80">
+      Ask a question about Tura Racing. Our AI will suggest an answer. If it doesn’t help,
+      you can contact support or join our Discord.
+    </p>
+  </div>
+
+<form [formGroup]="form" (ngSubmit)="ask($event)" class="space-y-4">
+  <div class="flex justify-between items-end">
+    <label for="question" class="font-semibold">Your question</label>
+    <span class="text-sm opacity-70">{{ charsLeft() }} characters left</span>
+  </div>
+
+  <textarea
+    id="question"
+    class="textarea textarea-bordered w-full h-40 leading-relaxed"
+    [class.textarea-error]="form.controls.q.invalid && form.controls.q.touched"
+    formControlName="q"
+    placeholder="e.g., How do I join a premium event with team scoring?"
+    (keydown)="onKeydown($event)"
+  ></textarea>
+
+  <!-- Boutons -->
+  <div class="flex items-center gap-2">
+    <button
+      type="submit"
+      class="btn"
+      [class.btn-primary]="form.valid && !loading()"
+      [disabled]="loading() || form.invalid"
+    >
+      @if (loading()) {
+        <span class="loading loading-spinner me-2"></span>
+      }
+      Ask AI
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-ghost"
+      (click)="clear()"
+      [disabled]="loading()"
+    >
+      Clear
+    </button>
+  </div>
+</form>
+
+
+
+<!-- Popular topics -->
+<div class="mt-6">
+  <h3 class="font-semibold">Popular topics</h3>
+  <div class="mt-2 flex flex-wrap gap-2">
+    <button class="btn btn-sm btn-outline"
+      (click)="form.controls.q.setValue('How do multi-slot results get merged for GC?'); form.controls.q.markAsTouched()">
+      Multi-slot GC
+    </button>
+    <button class="btn btn-sm btn-outline"
+      (click)="form.controls.q.setValue('How is prize pool distributed across categories and stages?'); form.controls.q.markAsTouched()">
+      Prize Pool
+    </button>
+    <button class="btn btn-sm btn-outline"
+      (click)="form.controls.q.setValue('What verification rules apply for heart rate and dual-recording?'); form.controls.q.markAsTouched()">
+      Verification
+    </button>
+    <button class="btn btn-sm btn-outline"
+      (click)="form.controls.q.setValue('How do I register my team and invite riders?'); form.controls.q.markAsTouched()">
+      Teams & Invites
+    </button>
+  </div>
+</div>
+
+
+  <!-- AI Answer -->
+  <div class="mt-6">
+    @if (error()) {
+      <div role="alert" class="alert alert-soft alert-error">
+        <span> {{ error() }} </span>
+      </div>
+    }
+
+    @if (aiAnswer()) {
+    <div class="card bg-base-100 shadow-md border-l-4 border-primary mt-4">
+        <div class="card-body">
+            <h2 class="card-title text-primary">Suggested Answer</h2>
+            <p class="prose max-w-none">{{ aiAnswer() }}</p>
+        </div>
+    </div>
+    } @else if (!loading()) {
+      <!-- Fallback / Empty State -->
+      <div class="rounded-box border border-dashed border-base-300 p-4 md:p-6">
+        <h2 class="text-xl font-bold mb-2">Didn’t get what you need?</h2>
+        <p class="opacity-80">
+          Reach out to us:
+        </p>
+        <ul class="mt-2 space-y-1">
+          <li>
+            <a class="link" [href]="'mailto:' + supportEmail">Email Support</a>
+            <span class="opacity-70">&nbsp;— we respond as fast as we can.</span>
+          </li>
+          <li>
+            <a class="link" [href]="discordInvite" target="_blank" rel="noopener">Join our Discord</a>
+            <span class="opacity-70">&nbsp;for community help and live updates.</span>
+          </li>
+        </ul>
+      </div>
+    }
+  </div>
+</section>

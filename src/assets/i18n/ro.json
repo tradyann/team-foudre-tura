@@ -1,0 +1,145 @@
+{
+    "ERROR": {
+        "ACCEPT_TERMS": "Trebuie să accepți Termenii și Condițiile",
+        "CHARACTERS_MINIMAX": "Minim 6 și maxim 20 de caractere",
+        "CONTACT_SUPPORT": "Te rugăm să contactezi suportul nostru",
+        "EMAIL_INVALID": "Introdu o adresă de email validă",
+        "EMAIL_REQUIRED": "Emailul este obligatoriu",
+        "EMAIL_TAKEN": "Acest email este deja folosit",
+        "INVALID_LINK": "Acest link nu mai este valid, te rugăm să soliciți unul nou",
+        "LINK_INVALID": "Acest link nu mai este valid",
+        "LINK_UNAVAILABLE": "Link indisponibil",
+        "NOT_RECEIVED": "Nu ai primit emailul?",
+        "PASSWORD_INCORRECT": "Parola este incorectă",
+        "PASSWORD_REQUIRED": "Parola este obligatorie",
+        "UNKNOW_ERROR": "Eroare necunoscută"
+    },
+    "FINANCIAL": {
+        "ADD_ADDRESS": "Adaugă o adresă nouă",
+        "ADD_MEMO": "te rugăm să adaugi MEMO la final",
+        "CHANGE_ADDRESS": "Schimbarea este permisă doar dacă nu există o retragere în curs",
+        "NETWORK_FEES": "taxe de rețea",
+        "TRANSACTION_HISTORY": "Istoric tranzacții",
+        "WITHDRAWAL_DETAILS": "Specifică suma și moneda pentru solicitarea de retragere",
+        "WITHD_ADDRESS": "Adresă de retragere"
+    },
+    "FIXED": {
+        "LOGIN": "Autentificare",
+        "SIGN_UP": "Înregistrare"
+    },
+    "GLOBAL": {
+        "ACCOUNT": "Cont",
+        "ACTIVATE": "Activează",
+        "ACTIVATED": "activat",
+        "CANCEL": "Anulează",
+        "CONFIRM": "Confirmă",
+        "CONFIRM_REQUEST": "Confirmați cererea?",
+        "DEPOSIT": "Depunere",
+        "DISABLE": "Dezactivează",
+        "DISABLED": "dezactivat",
+        "EMAIL_SENT": "Email trimis!",
+        "HELP_CENTER": "Centru de ajutor",
+        "LOGOUT": "Deconectare",
+        "LOST": "pierdut",
+        "NO_RECORDS": "Nu s-au găsit înregistrări",
+        "PLEASE_WAIT": "Te rugăm să aștepți",
+        "REGISTER": "Înregistrare",
+        "SEARCH": "Caută",
+        "SIGN_IN": "Autentificare",
+        "WITHDRAWAL": "Retragere",
+        "MORE_EVENTS": "mai multe evenimente",
+        "SEE_MORE": "Vezi mai mult",
+        "MORE_DETAILS": "Mai multe detalii",
+        "TODAY": "Astăzi",
+        "TOMORROW": "Mâine",
+        "OTHER_DATES": "Alte date",
+        "SUBMIT": "Trimite",
+        "SEND": "Trimite"
+    },
+    "LANGUAGE": {
+        "CHOOSE": "ALEGE LIMBA TA"
+    },
+    "LISTING": {
+        "NO_BETS": "Nu există pariuri de afișat"
+    },
+    "LOGIN": {
+        "FAILED_LOGIN": "Prea multe încercări eșuate. Contul a fost blocat. Te rugăm să îți resetezi parola.",
+        "FORGOT_EMAIL": "Ai uitat adresa de email?",
+        "INVALID_2FA": "Autentificare în doi pași invalidă",
+        "INVALID_CREDENTIALS": "Date de autentificare invalide",
+        "NO_ACCOUNT": "Nu ai un cont?",
+        "REGISTERED_EMAIL": "Emailul tău înregistrat",
+        "REMEMBER_ME": "Ține-mă minte",
+        "TWO_FACTOR": "Cod de 4 cifre pentru autentificare în 2 pași (dacă este activat)"
+    },
+    "PASSWORD": {
+        "FORGOT": "Ai uitat parola",
+        "MATCH_NO": "Parola și confirmarea nu se potrivesc",
+        "PASSWORD_CONFIRM": "Confirmă noua parolă",
+        "PASSWORD_CURRENT": "Parola curentă",
+        "PASSWORD_DESC": "Folosește formularul de mai jos pentru a-ți modifica parola. Parola nouă trebuie să aibă cel puțin 6 caractere",
+        "PASSWORD_HEADER": "Modifică parola",
+        "PASSWORD_NEW": "Parolă nouă",
+        "RESET": "Resetează parola"
+    },
+    "PAYMENT": {
+        "BACK_METHODS": "Înapoi la metodele de depunere",
+        "BEFORE_PAY": "Înainte de a depune, te rugăm să indici suma",
+        "CONVERTED": "Toate depunerile sunt convertite automat în stablecoin USD.",
+        "COPY_ADDRESS": "Copiază adresa",
+        "RECOMMENDED": "Exchange-uri crypto recomandate:",
+        "SEND_ADDRESS": "Pentru a depune, trimite tranzacția la adresa de mai jos"
+    },
+    "REGISTER": {
+        "ACTIVATE_ACCOUNT": "Activează-ți contul",
+        "AGREE_AGE": "Declar că am peste 18 ani",
+        "AGREE_TC": "Sunt de acord cu",
+        "ALREADY_ACCOUNT": "Ai deja un cont?",
+        "DONE": "Înregistrare completă!",
+        "SPAM": "Dacă nu vezi emailul în câteva minute, verifică folderul Spam sau Junk.",
+        "TICK_BOX_AGE": "Te rugăm să bifezi că ai peste 18 ani"
+    },
+    "RIGHTMENU": {
+        "BASKETBALL": "Intră în acțiune cu NBA, EuroLeague și campionatele internaționale",
+        "EXPLORE_SPORTS": "Descoperă cele mai mari competiții sportive ale anului",
+        "FOOTBALL": "Pariază pe cele mai mari evenimente precum Cupa Mondială, Champions League și ligile naționale",
+        "ICEHOCKEY": "Pariază pe NHL, Jocurile Olimpice și Campionatele Mondiale pentru emoții maxime",
+        "OTHERSPORTS": "Explorează competiții interesante la cricket, ciclism, sporturi cu motor, golf și altele",
+        "RUGBY": "Pariază pe Cupa Mondială de Rugby, Six Nations și Super Rugby",
+        "TENNIS": "Pariază pe turneele de Grand Slam precum Wimbledon, Australian Open, Roland Garros și US Open"
+    },
+    "SUCCESS": {
+        "ACCOUNT_VALIDATED": "Cont validat, te rugăm să te autentifici din nou"
+    },
+    "USER": {
+        "ACCOUNT_DETAILS": "Detalii cont",
+        "CHANGE_PASSWORD": "Schimbă parola",
+        "EMAIL_USAGE": "Contactează mereu suportul folosind emailul tău înregistrat",
+        "ISSUE_DETAILS": "În caz de problemă, oferă cât mai multe detalii posibil – referința pariului, mesajul de eroare, capturi de ecran etc.",
+        "MAX_PROFIT_EVENT": "Profit maxim permis per eveniment",
+        "MAX_PROFIT_MARKET": "Profit maxim permis per piață",
+        "OPERATIONAL": "Toate sistemele funcționează",
+        "PLATFORM_STATUS": "Stare platformă",
+        "USER_ACCOUNT": "Cont utilizator",
+        "TIME_ZONE": "Fus orar",
+        "CHATBOT_QUESTION": "Pune întrebarea ta asistentului AI",
+        "CHATBOT_PLACEHOLDER": "Scrie întrebarea ta aici",
+        "CHATBOT_ANSWER": "Răspunsul asistentului",
+        "CHATBOT_NOTE": "Asistentul AI nu a oferit un răspuns suficient?"
+    },
+    "VERIFICATION": {
+        "TWO_FACTOR_AUTH": "Autentificare cu doi factori (2FA)",
+        "TWO_FACTOR_DESC": "Autentificarea cu doi factori este un strat suplimentar de securitate care asigură că doar tu ai acces la cont"
+    },
+    "FOOTER": {
+        "DESC": "Novaxbet este o platformă de pariuri de nouă generație unde poți paria sau face lay ca un profesionist. Bucură-te de control total asupra pariurilor tale prin tranzacționare peer-to-peer, cote transparente și reguli corecte. Creat pentru pariori inteligenți și joc corect.",
+        "LINKS": "Linkuri",
+        "TERMS": "Termeni & Condiții",
+        "LANGUAGES": "Limbi",
+        "AFFILIATES": "Afiliați"
+    },
+    "PARTNER": {
+        "BECOME_AFFILIATES": "Devino partener de performanță cu Programul de Afiliere Novaxbet. Fie că ești webmaster, influencer sau expert în pariuri, câștigă venituri recurente prin recomandarea de jucători pe platforma noastră. Alătură-te unui ecosistem creat pentru profitabilitate și transparență.",
+        "YOUR_REVENUES": "Veniturile tale"
+    }
+}

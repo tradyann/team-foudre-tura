@@ -1,0 +1,74 @@
+<div class="p-4">
+    @if (loading()) {
+        <!-- Skeleton loading -->
+        <div class="flex gap-4">
+            <div class="skeleton h-24 w-24 rounded"></div>
+            <div class="flex-1 space-y-3">
+                <div class="skeleton h-6 w-1/3"></div>
+                <div class="skeleton h-4 w-1/2"></div>
+                <div class="skeleton h-4 w-2/3"></div>
+            </div>
+        </div>
+    } @else if (error()) {
+        <div role="alert" class="alert alert-soft alert-error mt-2">
+            <span>{{ error() }}</span>
+        </div>
+    } @else {
+
+        <h2 class="text-xl font-bold mb-3">Roadbook</h2>
+
+        <div class="overflow-x-auto">
+            <table class="table table-zebra w-full border border-base-300">
+                <thead>
+                    <tr class="bg-base-200 text-xs uppercase">
+                        <th>LAP</th>
+                        <th>SEGMENT</th>
+                        <th>JERSEY</th>
+                        <th>POINTS</th>
+                        <th>TIME BONUS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (r of roadbook(); track r.lap) {
+                        <tr>
+                            
+                            <td>
+                                @if (r.lap === 0) {
+                                    <span>Finish line</span>
+                                } @else {
+                                    {{r.lap}}
+                                }
+                            </td>
+                            <td>{{r.segmentName}}</td>
+                            <td>
+                                @if (r.lap > 0) {
+                                    {{r.jerseyName}}
+                                }
+                            </td>
+                            <td>
+                                @for (p of r.points; track p.place) {
+                                    <span class="badge badge-soft me-1 mb-1">{{ p.pts }}pts</span>
+                                }
+                            </td>
+                            <td>
+                                @for (t of r.timeBonuses; track t.place) {
+                                    <span class="badge badge-soft me-1 mb-1">{{ t.seconds }}sec</span>
+                                }
+                            </td>
+
+                        </tr>
+                    }
+                </tbody> 
+
+            </table>
+        </div>
+
+
+        <p class="my-3 opacity-60 italic text-xs">
+            The lap value does not represent the overall lap of the race. <br>
+            Instead, it indicates the number of times a rider has passed through that specific segment. <br>
+            For example, if a segment appears twice in a two-lap race, the first passage will be lap 1 and the second passage will be lap 2.
+        </p>
+
+    }
+</div>

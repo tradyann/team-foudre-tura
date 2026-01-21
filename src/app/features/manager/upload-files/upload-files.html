@@ -1,0 +1,78 @@
+<div class="max-w-5xl mx-auto p-4">
+  <h2 class="text-xl font-bold mb-3">Uploaded files</h2>
+
+  @if (loading()) { <div class="mb-3"><span class="loading loading-dots"></span></div> }
+
+  @if (error()) {
+    <div role="alert" class="alert alert-error mb-3">
+      <span class="font-bold">Error</span>
+      <span class="text-xs break-all">{{ error() }}</span>
+    </div>
+  }
+
+  @if (items().length) {
+    <div class="max-h-80 overflow-y-auto overflow-x-auto border rounded-box">
+      <table class="table table-zebra">
+        <thead>
+          <tr>
+            <th class="w-28">userId</th>
+            <th class="w-28">When</th>
+            <th class="w-24">Kind</th>
+            <th>Path</th>
+            <th class="w-48 text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (it of items(); track it.uploadId) {
+            <tr>
+              <td>{{ it.idClient }}</td>
+              <td class="whitespace-nowrap">{{ it.uploadDate | date:'MMM d HH:mm' }}</td>
+              <td class="uppercase">{{ kindLabel(it.uploadType) }}</td>
+              <td class="truncate max-w-[520px]">{{ it.objectUrl }}</td>
+              <td class="text-right">
+                @if (it.uploadType === 2 || it.uploadType === 3) {
+                  <button class="btn btn-xs btn-primary mr-2" (click)="preview(it)">Preview</button>
+                }
+                @if (it.uploadType === 1 || it.uploadType === 4) {
+                  <button class="btn btn-xs" (click)="download(it)">Download</button>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  } @else {
+    <p class="opacity-70">No files yet.</p>
+  }
+
+  <!-- Inline viewer -->
+  @if (previewUrl()) {
+    <div class="mt-4 p-3 rounded-box bg-base-200">
+      <div class="flex items-center justify-between">
+        <div class="font-medium">Preview</div>
+        <div class="text-xs opacity-70">
+          valid until {{ previewExpires() | date:'short' }}
+        </div>
+      </div>
+
+      @if (previewKind() === 2) {
+        <!-- VIDEO -->
+        <video
+            #player
+            class="w-full rounded-box border border-base-300 mt-2"
+            controls preload="metadata"
+            [src]="previewUrl()"
+            (error)="onVideoError($event, player)">
+        </video>
+      } @else if (previewKind() === 3) {
+        <!-- IMAGE -->
+        <img class="w-full rounded-box border border-base-300 mt-2" [src]="previewUrl()" alt="image preview">
+      }
+
+      <div class="mt-2 text-right">
+        <button class="btn btn-sm" (click)="clearPreview()">Close</button>
+      </div>
+    </div>
+  }
+</div>

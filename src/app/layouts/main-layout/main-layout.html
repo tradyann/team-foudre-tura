@@ -1,0 +1,83 @@
+
+<div class="drawer lg:drawer-open min-h-screen bg-base-200">
+    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+
+	<!-- content -->
+	<main class="drawer-content flex flex-col min-h-screen">
+        <div class="grid grid-cols-12 grid-rows-[min-content] gap-y-12 p-4 lg:gap-x-12 lg:p-10 flex-grow">
+        
+            <!-- ✅ app-header doit avoir col-span-12 à l’intérieur -->
+            <app-header class="col-span-12"></app-header>
+
+			<!-- ✅ wrapper col-span-12 autour du router-outlet -->
+			<div class="col-span-12">
+				<router-outlet></router-outlet>
+			</div>
+
+		</div>
+
+        <!-- ⬇ FOOTER end of main -->
+        <app-footer></app-footer>
+	</main>
+	<!-- /content -->
+	<aside class="drawer-side z-10">
+		<label for="my-drawer" class="drawer-overlay"></label>
+		<!-- sidebar menu -->
+		<nav class="bg-base-100 flex min-h-screen w-72 flex-col gap-2 overflow-y-auto px-6 py-10">
+			<div class="mx-4 flex items-center gap-2 font-black">
+				<div class="mask mask-hexagon font-train bg-primary text-white p-3">T</div><span class="font-train text-3xl">TURA</span>
+			</div>
+			<ul class="menu w-full" (click)="closeDrawer()">
+				<li>
+					<a class="active" [routerLink]="['/']">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+						Dashboard
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="['/game/ranking']">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trophy-icon lucide-trophy"><path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978"/><path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978"/><path d="M18 9h1.5a1 1 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"/><path d="M6 9H4.5a1 1 0 0 1 0-5H6"/></svg>
+						Ranking
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="['/game/teams']">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+						Teams
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="['/game/calendar']">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days-icon lucide-calendar-days"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+						Calendar
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="['/game/riders']">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bike-icon lucide-bike"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>
+						Riders
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="['/game/rules']">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scale-icon lucide-scale"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+						Rules
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="['/game/help-center']">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-headset-icon lucide-headset"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/></svg>
+						Help Center
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="['/overview']">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info-icon lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+						Platform Overview
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<!-- /sidebar menu -->
+	</aside>
+</div>

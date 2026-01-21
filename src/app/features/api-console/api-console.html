@@ -1,0 +1,89 @@
+<section class="p-4 lg:p-6 space-y-6">
+
+    <!-- Token (jamais affiché) -->
+    <div class="card bg-base-100 shadow-sm">
+        <div class="card-body gap-3">
+        <h2 class="card-title">Bearer token</h2>
+        <div class="flex items-center gap-2">
+            <button class="btn btn-outline btn-sm" (click)="copyBearer()">Copy Bearer</button>
+            @if (copyState() === 'ok') { <span class="text-success text-sm">Copié ✓</span> }
+            @if (copyState() === 'err') { <span class="text-error text-sm">Échec</span> }
+        </div>
+        </div>
+    </div>
+
+    <!-- Requête -->
+    <div class="card bg-base-100 shadow-sm">
+        <div class="card-body gap-4">
+        <h2 class="card-title">API request</h2>
+
+        <!-- Méthode + URL + Send sur la même ligne (desktop) -->
+        <div class="grid grid-cols-12 gap-2 items-end">
+            <div class="col-span-12 md:col-span-2">
+            <select class="select select-bordered w-full"
+                    [ngModel]="method()"
+                    (ngModelChange)="method.set($event)">
+                @for (m of methods; track m) { <option [ngValue]="m">{{ m }}</option> }
+            </select>
+            </div>
+            <div class="col-span-12 md:col-span-8">
+            <input class="input input-bordered w-full"
+                    placeholder="/api/zwift/segments-results?segmentId=..."
+                    [ngModel]="urlInput()"
+                    (ngModelChange)="urlInput.set($event)"
+                    (keydown.enter)="send()" />
+            </div>
+            <div class="col-span-12 md:col-span-2">
+            <button class="btn btn-primary w-full md:w-auto"
+                    [class.loading]="busy()"
+                    (click)="send()">Send</button>
+            </div>
+        </div>
+
+            @if (['POST','PUT','PATCH','DELETE'].includes(method())) {
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <div class="font-medium">Body (JSON)</div>
+                        <div class="join">
+                            <button class="btn btn-xs join-item" (click)="prettifyBody()">Prettify</button>
+                            <button class="btn btn-xs join-item" (click)="minifyBody()">Minify</button>
+                        </div>
+                    </div>
+                    <textarea class="textarea textarea-bordered font-mono w-full min-h-[160px]"
+                            [ngModel]="body()"
+                            (ngModelChange)="body.set($event); bodyError.set(null)"></textarea>
+                    @if (bodyError()) {
+                        <div class="text-error text-sm">{{ bodyError() }}</div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Response -->
+    <div class="card bg-base-100 shadow-sm">
+        <div class="card-body">
+        <h2 class="card-title">Response</h2>
+
+        <div class="flex flex-wrap items-center gap-3">
+            <div class="badge badge-outline text-base"
+                [ngClass]="{
+                'badge-success': (respStatus() ?? -1) >= 200 && (respStatus() ?? -1) < 300,
+                'badge-warning': (respStatus() ?? -1) >= 300 && (respStatus() ?? -1) < 400,
+                'badge-error'  : (respStatus() ?? -1) >= 400
+                }">
+            {{ respStatus() ?? '—' }} {{ respStatusText() }}
+            </div>
+        </div>
+
+        <div class="mt-3">
+            @if (respPrettyJSON().length) {
+            <pre class="p-3 bg-base-200 rounded text-sm overflow-auto">{{ respPrettyJSON() }}</pre>
+            } @else {
+            <pre class="p-3 bg-base-200 rounded text-sm overflow-auto whitespace-pre-wrap">{{ respText() }}</pre>
+            }
+        </div>
+        </div>
+    </div>
+
+</section>

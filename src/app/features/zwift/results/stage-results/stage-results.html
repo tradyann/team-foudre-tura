@@ -1,0 +1,140 @@
+<div role="tablist" class="tabs tabs-border">
+    <a role="tab" class="tab" (click)="goToPage('/zw/competition-results')">GENERAL RANKING</a>
+    <a role="tab" class="tab tab-active" (click)="goToPage('/zw/stage-results')">STAGE RANKING</a>
+</div>
+
+<div role="tablist" class="tabs tabs-border">
+    <a role="tab" class="tab tab-active" (click)="goToPage('/zw/stage-results')">TIME Classification</a>
+    <a role="tab" class="tab" (click)="goToPageJersey('/zw/stage-points')">JERSEY Classification</a>
+</div>
+
+
+<div class="p-4">
+    @if (loading()) {
+        <!-- Skeleton loading -->
+        <div class="flex gap-4">
+            <div class="skeleton h-24 w-24 rounded"></div>
+            <div class="flex-1 space-y-3">
+                <div class="skeleton h-6 w-1/3"></div>
+                <div class="skeleton h-4 w-1/2"></div>
+                <div class="skeleton h-4 w-2/3"></div>
+            </div>
+        </div>
+    } @else if (error()) {
+        <div class="text-red-600">{{ error() }}</div>
+    } @else {
+        <h2 class="text-xl hover:underline hover:text-primary font-bold cursor-pointer" (click)="goToPage('/game/competition')">
+            {{ stageInfos()?.competitionName }}
+        </h2>
+        <h3>{{ stageInfos()?.routeName }}</h3>
+
+        <!-- NAVIGATION STAGES (même UX que CompetitionResults) -->
+        <div class="flex gap-2 items-center mb-3">
+            <button
+                class="btn btn-ghost btn-sm"
+                [disabled]="stageNumber() === 1"
+                (click)="goPrev()"
+                aria-label="Previous stage"
+                title="Previous stage"
+            >
+                &lt;
+            </button>
+
+            <span class="px-2 text-sm">
+                Stage {{ stageInfos()?.stageNumber }} / {{ stageInfos()?.lastStageNumber || '?' }}
+            </span>
+
+            <button
+                class="btn btn-ghost btn-sm"
+                [disabled]="stageNumber() >= stageInfos()?.lastStageNumber"
+                (click)="goNext()"
+                aria-label="Next stage"
+                title="Next stage"
+            >
+                &gt;
+            </button>
+        </div>
+
+        <!-- Boutons Catégories -->
+        <div class="flex gap-2 mb-4">
+            @for (cat of ['A','B','C','D','E']; track cat) {
+                <button
+                class="btn btn-sm"
+                    [ngClass]="{ 'btn-primary': cat === category(), 'btn-ghost': cat !== category() }"
+                    (click)="goToCategory(cat)"
+                >
+                {{ cat }}
+                </button>
+            }
+        </div>
+
+        @if (results(); as data) {
+        <div class="overflow-auto">
+            <table class="table w-full table-zebra border border-base-300">
+            <thead>
+                <tr class="bg-base-200 text-sm">
+                    <th>#</th>
+                    <th>Rider</th>
+                    <th class="text-right">Gap</th>
+                    <th class="text-right">Bonus</th>
+                    <th class="text-right">cRatio</th>
+                    <th class="text-right">cGap</th>
+                    <th>
+                        <button class="link link-hover" (click)="toggleSlotSort()">
+                            Slot
+                            @if (sortBySlot()) {
+                                <span class="ms-1 text-xs opacity-70">↕️</span>
+                            } @else {
+                                <span class="ms-1 text-xs opacity-70">✖</span>
+                            }
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (data?.results?.length) {
+                @for (rider of displayedResults(); track rider.rowNumber) {
+                    <tr [ngClass]="{'opacity-40' : rider.isMissed}">
+                        <td>@if (!rider.isMissed) { <span>{{ rider.rowNumber }}</span> }</td>
+                        <td>
+                            @if (rider.flag) {
+                            <img
+                                class="inline h-4 w-5 me-2"
+                                [src]="'assets/flags/4x3/' + rider.flag + '.svg'"
+                                [attr.alt]="rider.flag"
+                            />
+                            }
+                            <span [routerLink]="['/game/rider-details', rider.zwiftId]"
+                                class="hover:underline hover:text-primary cursor-pointer"
+                                [innerHTML]="rider.racerName"
+                                >
+                            </span>
+                        </td>
+                        <td class="text-right">
+                            @if(rider.rowNumber === 1 && rider.wasTimeNeutral) {
+                                <span-lucide [img]="TimerOffIcon" [size]="16" class="inline-block align-middle cursor-help" title="Time-Neutral"></span-lucide>
+                            } @else {
+                                <span class="tooltip" [attr.data-tip]="rider.eGap | duration:true">
+                                    {{ rider.eGap | duration }}
+                                </span>
+                            }
+                        </td>
+                        <td class="text-right">{{ rider.bonusTime | number: '1.0-1' }}s</td>
+                        <td class="text-right">@if (!rider.isMissed) { <span>{{ rider.reductionFactor | percent}}</span> }</td>
+                        <td class="text-right font-semibold">
+                            <span class="tooltip" [attr.data-tip]="rider.cGapNet | duration:true">
+                                {{ rider.cGapNet | duration }}
+                            </span>
+                        </td>
+                        <td>@if (!rider.isMissed) { <span>{{ rider.slotNumber }}</span> }</td>
+                    </tr>
+                }
+                }
+            </tbody>
+            </table>
+        </div>
+        } @else {
+        <div class="text-gray-500 mt-4">No results available.</div>
+        }
+    }
+</div>
