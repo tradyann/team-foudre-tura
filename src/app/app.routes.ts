@@ -11,7 +11,7 @@ export const routes: Routes = [
         //canActivate: [AuthDevGuard],
         component: MainLayout,
         children: [
-            {   path: '', component: Home, data: { title: 'Dashboard' } },
+            {   path: '', component: Home },
             // {   path: 'welcome', component: Welcome, data: { title: 'Welcome' } },
             // {   path: 'overview', component: Welcome, data: { title: 'Overview' } },
             // {   path: 'api-console', canActivate: [AuthGuard], component: ApiConsole, data: { title: 'API Console' } },

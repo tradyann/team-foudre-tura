@@ -1,215 +1,169 @@
-<section class="p-4 lg:p-6 space-y-8">
+<section class="p-4 lg:p-8 max-w-7xl mx-auto space-y-16">
 
-    @if (upcomingLoading() || competitionLoading()) {
-        <!-- Skeleton loading -->
-        <div class="flex gap-4">
-            <div class="skeleton h-24 w-24 rounded"></div>
-            <div class="flex-1 space-y-3">
-                <div class="skeleton h-6 w-1/3"></div>
-                <div class="skeleton h-4 w-1/2"></div>
-                <div class="skeleton h-4 w-2/3"></div>
+  @if (upcomingLoading() || competitionLoading()) {
+    <div class="space-y-8">
+      <div class="skeleton h-[400px] w-full rounded-3xl"></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div class="skeleton h-48 w-full rounded-2xl"></div>
+        <div class="skeleton h-48 w-full rounded-2xl"></div>
+        <div class="skeleton h-48 w-full rounded-2xl"></div>
+      </div>
+    </div>
+  } @else if (error()) {
+    <div role="alert" class="alert alert-error shadow-lg rounded-xl">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           class="stroke-current shrink-0 h-6 w-6"
+           fill="none"
+           viewBox="0 0 24 24">
+        <path stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <span class="font-medium">
+        {{ error() || ('HOME.ERROR.GENERIC' | translate) }}
+      </span>
+    </div>
+  } @else {
+
+    <!-- ====================================================== -->
+    <!-- UPCOMING / HERO EVENT -->
+    <!-- ====================================================== -->
+    @if (upcoming().length > 0; as hasUpcoming) {
+      @let c = upcoming()[0];
+
+      <div class="space-y-4">
+        <h2 class="text-3xl font-black tracking-tight text-base-content uppercase italic px-1">
+          <span class="text-primary">ZWIFT</span>
+          {{ 'HOME.HERO.TITLE' | translate }}
+        </h2>
+
+        <div class="relative w-full aspect-[16/9] lg:aspect-[21/9] rounded-3xl shadow-2xl overflow-hidden group border border-base-content/5">
+          <img src="/images/worlds/France009.jpg"
+               [alt]="c.competitionName"
+               class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+
+          <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-10 flex flex-col justify-end">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="badge badge-primary font-bold border-none shadow-lg shadow-primary/30">
+                {{ c.typeCompetition }}
+              </span>
             </div>
-        </div>
-    } @else if (error()) {
-        <div role="alert" class="alert alert-soft alert-error mt-2">
-            <span>{{ error() }}</span>
-        </div>
-    } @else {
 
-        <!-- UPCOMING: Long carousel with overlaid texts (no #slide) -->
-        <div>
-            <div class="flex items-center justify-between mb-3">
-                <h2 class="text-xl font-semibold">Upcoming Competitions</h2>
-                <a class="link link-primary text-sm" [routerLink]="['/game/calendar']">See full calendar</a>
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+              <div class="space-y-2">
+                <h3 class="text-4xl lg:text-6xl font-black text-white leading-none drop-shadow-xl uppercase italic">
+                  {{ c.competitionName }}
+                </h3>
+
+                <div class="flex items-center gap-2 text-white/90 font-medium text-xl">
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                       class="h-6 w-6 text-primary"
+                       viewBox="0 0 20 20"
+                       fill="currentColor">
+                    <path fill-rule="evenodd"
+                          d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                          clip-rule="evenodd" />
+                  </svg>
+                  {{ c.fromDate | date: 'EEEE, d MMMM' }}
+                </div>
+              </div>
+
+              <a class="btn btn-primary btn-lg border-none shadow-xl shadow-primary/20 hover:scale-105 transition-transform"
+                 [routerLink]="['/game/competition', c.competitionId]">
+                {{ 'HOME.HERO.STAGES_DETAILS' | translate }}
+              </a>
             </div>
-
-            <!-- Viewport -->
-            <div class="relative w-full rounded-box shadow-sm border overflow-hidden">
-                <!-- Track -->
-                <div class="flex transition-transform duration-500 ease-out"
-                    [style.transform]="'translateX(-' + (activeIndex()*100) + '%)'">
-
-                    <!-- Slides -->
-                    @for (c of upcoming(); track c.competitionId; let i = $index) {
-                        <div class="relative w-full shrink-0">
-                            <!-- background image -->
-                            <img [src]="c.banner" [alt]="c.competitionName"
-                                class="w-full h-[320px] lg:h-[420px] object-cover">
-
-                            <!-- 1) neutral scrim + 2) adaptive blend -->
-                            <div class="absolute inset-0 bg-black/30"></div>
-                            <div class="absolute inset-0 bg-base-content/10 mix-blend-multiply"></div>
-
-                            <!-- 3) bottom overlay with text -->
-                            <div class="absolute bottom-0 left-0 right-0 p-4 lg:p-6
-                                        bg-gradient-to-t from-base-300/90 via-base-300/60 to-transparent">
-                                <div class="flex flex-wrap items-center gap-2 mb-2">
-                                    <span class="badge bg-base-100/80 border-base-200">{{ c.typeCompetition }}</span>
-                                    <span class="badge bg-base-100/80 border-base-200">{{ c.eventClassName }}</span>
-                                </div>
-
-                                <div class="flex items-end justify-between gap-4">
-                                    <div class="min-w-0 drop-shadow-[0_2px_2px_rgba(0,0,0,0.6)]">
-                                        <h3 class="text-2xl lg:text-3xl font-bold leading-tight truncate">{{ c.competitionName }}</h3>
-                                        <p class="text-sm opacity-90 line-clamp-2">
-                                            {{ c.fromDate | date: 'EEE, MMM d' }} 
-                                            @if (c.toDate > c.fromDate) {
-                                                <span></span>- {{ c.toDate | date: 'EEE, MMM d' }}
-                                            }
-                                        </p>
-
-                                        <!-- <div class="mt-2 grid grid-cols-3 gap-2 text-xs">
-                                            <div class="stat bg-base-100/80 rounded-box border border-base-200">
-                                                <div class="stat-title">Slot 1</div>
-                                                <div class="stat-value text-sm">
-                                                {{ c.startDates.EU | date:'MMM d, HH:mm' }}
-                                                </div>
-                                            </div>
-                                            <div class="stat bg-base-100/80 rounded-box border border-base-200">
-                                                <div class="stat-title">Slot 2</div>
-                                                <div class="stat-value text-sm">
-                                                {{ c.startDates.NA | date:'MMM d, HH:mm' }}
-                                                </div>
-                                            </div>
-                                            <div class="stat bg-base-100/80 rounded-box border border-base-200">
-                                                <div class="stat-title">Slot 3</div>
-                                                <div class="stat-value text-sm">
-                                                {{ c.startDates.ASIA | date:'MMM d, HH:mm' }}
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                    </div>
-
-                                <div class="shrink-0">
-                                    <a class="btn btn-primary btn-sm" [routerLink]="['/game/competition', c.competitionId]">Details & Signup</a>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    }
-                    </div>
-
-                    <!-- Controls -->
-                    <div class="absolute inset-y-0 left-2 flex items-center">
-                        <button class="btn btn-circle btn-sm" (click)="prev()">❮</button>
-                    </div>
-                    <div class="absolute inset-y-0 right-2 flex items-center">
-                        <button class="btn btn-circle btn-sm" (click)="next()">❯</button>
-                    </div>
-                </div>
-
-                <!-- Dots -->
-                <div class="flex justify-center gap-2 mt-3">
-                    @for (_ of upcoming(); let i = $index; track i) {
-                    <button type="button"
-                            class="btn btn-xs btn-circle"
-                            [ngClass]="{ 'btn-primary': activeIndex() === i }"
-                            (click)="goTo(i)">{{ i + 1 }}</button>
-                    }
-                </div>
+          </div>
         </div>
-
-        <!-- CURRENT COMP: Jersey holders per category -->
-        @if(competition()?.[0]) {
-            <div>
-                <h2 class="text-xl font-semibold mb-3">Current Competition — Jersey Holders</h2>
-                <div class="card bg-base-100 border shadow-sm">
-                <div class="card-body">
-                    <div class="flex items-center justify-between">
-                    <div>
-                        <div class="text-lg font-bold">{{ competition()?.[0]?.competitionName }}</div>
-                        <div class="text-sm opacity-70">{{ competition()?.[0]?.fromDate | date: 'MMM dd' }} - {{ competition()?.[0]?.toDate | date: 'MMM dd' }}</div>
-                    </div>
-                    <a class="btn btn-ghost btn-sm" [routerLink]="['/game/competition', competition()?.[0]?.competitionId]">View details</a>
-                    </div>
-
-                    @if (competition()?.[0]){
-                    <!-- Loop sur les catégories -->
-                    <div class="space-y-4 mt-4">
-                        @for (cat of competition()?.[0]?.categories; track cat.catId) {
-                        <div class="grid grid-cols-1 sm:grid-cols-[60px_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] gap-2 px-2 py-4">
-
-                            <!-- Col Catégorie -->
-                            <div class="flex items-center justify-center bg-base-200">
-                                <span class="text-2xl font-extrabold"
-                                    [ngClass]="{
-                                        'text-pink-900': cat.category === 'E',
-                                        'text-red-600': cat.category === 'A',
-                                        'text-green-500': cat.category === 'B',
-                                        'text-cyan-500': cat.category === 'C',
-                                        'text-yellow-400': cat.category === 'D'
-                                    }"
-                                >{{ cat.category }}
-                                </span>
-                            </div>
-
-                            <!-- GC -->
-                            <div class="p-4 rounded-box bg-base-200">
-                                <div class="flex items-center justify-between">
-                                    <div class="font-semibold opacity-60">GC Leader</div>
-                                    <app-jersey variant="{{competition()?.[0]?.gcVariant}}" [size]="32" fill="{{competition()?.[0]?.gcFillColor}}" stroke="#000" [strokeWidth]="1.4"></app-jersey>
-                                </div>
-                                <div class="mt-2 flex flex-col gap-1">
-                                    @for (l of cat.leaders; track l.zwiftId) {
-                                        @if (l.jerseyId === 1) { <!-- GC -->
-                                        <div class="truncate font-medium hover:text-primary hover:underline cursor-pointer" [innerHTML]=l.racerName
-                                            [routerLink]="['/game/rider-details', l.idClient]"></div>
-                                        }
-                                    }
-                                </div>
-                            </div>
-
-                            <!-- Climber (KOM) -->
-                            <div class="p-4 rounded-box bg-base-200">
-                                <div class="flex items-center justify-between">
-                                    <div class="font-semibold opacity-60">Climber</div>
-                                    @if(competition()?.[0]?.climberVariant === 'polka') {
-                                        <app-jersey variant="polka" [size]="32" fill="{{competition()?.[0]?.climberFillColor}}" stroke="#000" [strokeWidth]="1.4" 
-                                            dotsColor="{{competition()?.[0]?.climberSecondColor}}" [dotsR]="1.4" [dotsGap]="4">
-                                        </app-jersey>
-                                    } @else {
-                                        <app-jersey variant="full" [size]="32" fill="{{competition()?.[0]?.climberFillColor}}" stroke="#000" [strokeWidth]="1.4"></app-jersey>
-                                    }
-                                </div>
-                                <div class="mt-2 flex flex-col gap-3">
-                                    @for (l of cat.leaders; track l.zwiftId) {
-                                        @if (l.jerseyId === 3) {
-                                        <div class="truncate font-medium hover:text-primary hover:underline cursor-pointer" [innerHTML]=l.racerName
-                                            [routerLink]="['/game/rider-details', l.idClient]"></div>
-                                        }
-                                    }
-                                </div>
-                            </div>
-
-                            <!-- Sprinter -->
-                            <div class="p-4 rounded-box bg-base-200">
-                                <div class="flex items-center justify-between">
-                                    <div class="font-semibold opacity-60">Sprinter</div>
-                                    @if(competition()?.[0]?.sprinterVariant === 'polka') {
-                                        <app-jersey variant="polka" [size]="32" fill="{{competition()?.[0]?.sprinterFillColor}}" stroke="#000" [strokeWidth]="1.4" 
-                                            dotsColor="{{competition()?.[0]?.sprinterSecondColor}}" [dotsR]="1.4" [dotsGap]="4">
-                                        </app-jersey>
-                                    } @else {
-                                        <app-jersey variant="full" [size]="32" fill="{{competition()?.[0]?.sprinterFillColor}}" stroke="#000" [strokeWidth]="1.4"></app-jersey>
-                                    }
-                                </div>
-                                <div class="mt-2 flex flex-col gap-3">
-                                    @for (l of cat.leaders; track l.zwiftId) {
-                                        @if (l.jerseyId === 2) {
-                                        <div class="truncate font-medium hover:text-primary hover:underline cursor-pointer" [innerHTML]=l.racerName
-                                            [routerLink]="['/game/rider-details', l.idClient]"></div>
-                                        }
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    }
-                    </div>
-                    }
-
-                </div>
-                </div>
-            </div>
-        }
+      </div>
     }
+
+    <!-- ====================================================== -->
+    <!-- CURRENT LEADERS -->
+    <!-- ====================================================== -->
+    @if (competition()?.[0]; as currentComp) {
+      <div class="space-y-6">
+
+        <div class="flex items-end justify-between px-1 border-b border-base-content/10 pb-4">
+          <h2 class="text-3xl font-black tracking-tight uppercase italic flex items-center gap-3">
+            <span class="text-primary">
+              {{ 'HOME.CURRENT.TITLE' | translate }}
+            </span>
+          </h2>
+
+          <a class="btn btn-ghost btn-sm"
+             [routerLink]="['/game/competition', currentComp.competitionId]">
+            {{ 'HOME.CURRENT.FULL_STANDINGS' | translate }} →
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+          @for (cat of currentComp.categories; track cat.catId) {
+            <div class="card bg-base-100 shadow-lg border border-base-200 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
+
+              <div class="h-2 w-full"
+                   [ngClass]="{
+                     'bg-pink-600': cat.category === 'E',
+                     'bg-red-600': cat.category === 'A',
+                     'bg-green-600': cat.category === 'B',
+                     'bg-cyan-500': cat.category === 'C',
+                     'bg-yellow-400': cat.category === 'D'
+                   }">
+              </div>
+
+              <div class="card-body p-6 flex flex-col items-center">
+
+                <div class="w-full flex justify-between items-start mb-2">
+                  <div class="flex items-center gap-3">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-xl font-black text-2xl shadow-inner bg-base-200">
+                      {{ cat.category }}
+                    </div>
+                    <div class="flex flex-col">
+                      <span class="text-xs font-bold uppercase opacity-50 tracking-wider">
+                        {{ 'HOME.CATEGORY.LABEL' | translate }}
+                      </span>
+                      <span class="font-bold text-sm">
+                        {{ 'HOME.CATEGORY.GC' | translate }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="relative drop-shadow-xl transform group-hover:scale-110 transition-transform duration-500 ease-out my-4">
+                  <app-jersey
+                    variant="uci"
+                    [size]="110"
+                    fill="white"
+                    stroke="#000"
+                    [strokeWidth]="0.5">
+                  </app-jersey>
+                </div>
+
+                <div class="w-full flex flex-col items-center space-y-2 mt-2">
+                  @for (l of cat.leaders; track l.zwiftId) {
+                    @if (l.jerseyId === 1) {
+                      <a [routerLink]="['/game/rider-details', l.idClient]"
+                         class="link link-hover text-xl lg:text-2xl font-black truncate max-w-full text-center block">
+                        {{ l.racerName }}
+                      </a>
+                    }
+                  }
+                </div>
+
+                <div class="mt-auto pt-6 w-full">
+                  <a class="btn btn-sm btn-ghost w-full group-hover:bg-base-200"
+                     [routerLink]="['/game/competition', currentComp.competitionId]">
+                    {{ 'HOME.BUTTONS.VIEW_FULL_STANDINGS' | translate }}
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  }
 </section>

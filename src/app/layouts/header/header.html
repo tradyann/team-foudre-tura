@@ -2,19 +2,8 @@
     <label for="my-drawer" class="btn btn-square btn-ghost drawer-button lg:hidden">
         <svg data-src="https://unpkg.com/heroicons/20/solid/bars-3.svg" class="h-5 w-5"></svg>
     </label>
-    <div class="grow">
-        <h1 class="lg:text-2xl lg:font-light">{{ title() }}</h1>
-    </div>
-    <div>
-        <input
-            type="search"
-            placeholder="Search"
-            class="input input-sm rounded-full max-sm:w-24" 
-            autocomplete="off"
-            maxlength="50"
-            [(ngModel)]="searchString"
-            (ngModelChange)="onSearchChange($event)"
-        />
+    <div class="grow font-logo text-3xl">
+        FOUDRE
     </div>
     <button class="swap swap-rotate" data-toggle-theme="dark" data-act-class="swap-active" (click)="toggleTheme()">
         <svg
@@ -38,7 +27,7 @@
         <summary class="btn btn-circle btn-ghost" title="Language" (click)="onOpen(langdd)">
             <div class="avatar">
                 <div class="w-9 rounded-full ring ring-base-300 overflow-hidden">
-                    <img [src]="'assets/flags/1x1/' + lang() + '.svg'" alt="{{ lang() }}" />
+                    <img [src]="'assets/flags/1x1/' + getFlag(lang()) + '.svg'" [alt]="lang()" />
                 </div>
             </div>
         </summary>
@@ -48,26 +37,9 @@
             <li><a (click)="changeLang(langdd, 'de')"><img src="assets/flags/1x1/de.svg" class="w-5 h-5 rounded-full" /> Deutsch</a></li>
             <li><a (click)="changeLang(langdd, 'es')"><img src="assets/flags/1x1/es.svg" class="w-5 h-5 rounded-full" /> Español</a></li>
             <li><a (click)="changeLang(langdd, 'it')"><img src="assets/flags/1x1/it.svg" class="w-5 h-5 rounded-full" /> Italiano</a></li>
-            <li><a (click)="changeLang(langdd, 'pt')"><img src="assets/flags/1x1/pt.svg" class="w-5 h-5 rounded-full" /> Português</a></li>
-            <li><a (click)="changeLang(langdd, 'br')"><img src="assets/flags/1x1/br.svg" class="w-5 h-5 rounded-full" /> Português</a></li>
+            <li><a (click)="changeLang(langdd, 'pt-pt')"><img src="assets/flags/1x1/pt.svg" class="w-5 h-5 rounded-full" /> Português</a></li>
+            <li><a (click)="changeLang(langdd, 'pt-br')"><img src="assets/flags/1x1/br.svg" class="w-5 h-5 rounded-full" /> Brasileiro</a></li>
         </ul>
     </details>
 
-    <!-- dropdown profile -->
-    <details #ddropdown class="dropdown dropdown-end z-10">
-        <summary class="btn btn-circle btn-outline" (click)="onOpen(ddropdown)">
-            <div class="avatar">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            </div>
-        </summary>
-        <ul class="menu dropdown-content bg-base-200 rounded-box shadow p-2 w-56 mt-2">
-            <li><a (click)="goToPage(ddropdown, '/user')">Profile</a></li>
-            <li><a (click)="goToPage(ddropdown, '/user/ledger-history')">Wallet ($)</a></li>
-            <li><a (click)="goToPage(ddropdown, '/user/team')">Team</a></li>
-            <li><a (click)="goToPage(ddropdown, '/user/file-upload')">Upload File</a></li>
-            <li><a (click)="goToPage(ddropdown, '/manager')">Manager</a></li>
-            <li><a (click)="onLogout()">Logout</a></li>
-        </ul>
-    </details>
-    <!-- /dropdown profile -->
 </header>

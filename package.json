@@ -29,6 +29,7 @@
     "@fingerprintjs/fingerprintjs": "^4.6.2",
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource/inter": "^5.2.8",
+    "@fontsource/kanit": "^5.2.8",
     "@fontsource/train-one": "^5.2.8",
     "@ngx-translate/core": "^16.0.4",
     "@ngx-translate/http-loader": "^16.0.1",

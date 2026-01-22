@@ -5,84 +5,35 @@
   themes: false;
 }
 
+
 @plugin "daisyui/theme" {
   name: "light";
   default: false;
   prefersdark: false;
   color-scheme: "light";
-  /* Base */
-  --color-base-100: #ffffff;
   --color-base-100: oklch(100% 0 0);
-
-  --color-base-200: #f8f8f8;
   --color-base-200: oklch(98% 0 0);
-
-  --color-base-300: #eeeeee;
   --color-base-300: oklch(95% 0 0);
-
-  --color-base-content: #18181b;
   --color-base-content: oklch(21% 0.006 285.885);
-
-  /* Primary */
-  --color-primary: #f34700;
-  --color-primary: oklch(64% 0.222 41.116);
-
-  --color-primary-content: #f7f9fa;
-  --color-primary-content: oklch(98% 0.003 247.858);
-
-  /* Secondary */
-  --color-secondary: #fa9700;
-  --color-secondary: oklch(76% 0.188 70.08);
-
-  --color-secondary-content: #edf1fe;
-  --color-secondary-content: oklch(14% 0.005 285.823);
-
-  /* Accent */
-  --color-accent: #00776f;
-  --color-accent: oklch(51% 0.096 186.391);
-
-  --color-accent-content: #f7f9fa;
-  --color-accent-content: oklch(98% 0.003 247.858);
-
-  /* Neutral */
-  --color-neutral: #09090b;
+  --color-primary: oklch(70% 0.213 47.604);
+  --color-primary-content: oklch(96% 0.018 272.314);
+  --color-secondary: oklch(65% 0.241 354.308);
+  --color-secondary-content: oklch(94% 0.028 342.258);
+  --color-accent: oklch(77% 0.152 181.912);
+  --color-accent-content: oklch(38% 0.063 188.416);
   --color-neutral: oklch(14% 0.005 285.823);
-
-  --color-neutral-content: #e4e4e7;
   --color-neutral-content: oklch(92% 0.004 286.32);
-
-  /* Info */
-  --color-info: #00bafe;
   --color-info: oklch(74% 0.16 232.661);
-
-  --color-info-content: #042e49;
   --color-info-content: oklch(29% 0.066 243.157);
-
-  /* Success */
-  --color-success: #00d390;
   --color-success: oklch(76% 0.177 163.223);
-
-  --color-success-content: #004c39;
   --color-success-content: oklch(37% 0.077 168.94);
-
-  /* Warning */
-  --color-warning: #fcb700;
   --color-warning: oklch(82% 0.189 84.429);
-
-  --color-warning-content: #793205;
   --color-warning-content: oklch(41% 0.112 45.904);
-
-  /* Error */
-  --color-error: #ff627d;
   --color-error: oklch(71% 0.194 13.428);
-
-  --color-error-content: #4d0218;
   --color-error-content: oklch(27% 0.105 12.094);
-
-  /* Radii & misc */
-  --radius-selector: 0.5rem;
-  --radius-field: 2rem;
-  --radius-box: 0.5rem;
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
@@ -94,80 +45,30 @@
   name: "dark";
   default: false;
   prefersdark: false;
-  color-scheme: "light";
-  /* Base */
-  --color-base-100: #1d232a;
+  color-scheme: "dark";
   --color-base-100: oklch(25.33% 0.016 252.42);
-
-  --color-base-200: #191e24;
   --color-base-200: oklch(23.26% 0.014 253.1);
-
-  --color-base-300: #15191e;
   --color-base-300: oklch(21.15% 0.012 254.09);
-
-  --color-base-content: #ecf9ff;
   --color-base-content: oklch(97.807% 0.029 256.847);
-
-  /* Primary */
-  --color-primary: #f34700;
-  --color-primary: oklch(64% 0.222 41.116);
-
-  --color-primary-content: #edf1fe;
+  --color-primary: oklch(70% 0.213 47.604);
   --color-primary-content: oklch(96% 0.018 272.314);
-
-  /* Secondary */
-  --color-secondary: #fa9700;
-  --color-secondary: oklch(76% 0.188 70.08);
-
-  --color-secondary-content: #edf1fe;
-  --color-secondary-content: oklch(14% 0.005 285.823);
-
-  /* Accent */
-  --color-accent: #00d3bb;
+  --color-secondary: oklch(65% 0.241 354.308);
+  --color-secondary-content: oklch(94% 0.028 342.258);
   --color-accent: oklch(77% 0.152 181.912);
-
-  --color-accent-content: #084d49;
   --color-accent-content: oklch(38% 0.063 188.416);
-
-  /* Neutral */
-  --color-neutral: #09090b;
   --color-neutral: oklch(14% 0.005 285.823);
-
-  --color-neutral-content: #e4e4e7;
   --color-neutral-content: oklch(92% 0.004 286.32);
-
-  /* Info */
-  --color-info: #00bafe;
   --color-info: oklch(74% 0.16 232.661);
-
-  --color-info-content: #042e49;
   --color-info-content: oklch(29% 0.066 243.157);
-
-  /* Success */
-  --color-success: #00d390;
   --color-success: oklch(76% 0.177 163.223);
-
-  --color-success-content: #004c39;
   --color-success-content: oklch(37% 0.077 168.94);
-
-  /* Warning */
-  --color-warning: #fcb700;
   --color-warning: oklch(82% 0.189 84.429);
-
-  --color-warning-content: #793205;
   --color-warning-content: oklch(41% 0.112 45.904);
-
-  /* Error */
-  --color-error: #ff627d;
   --color-error: oklch(71% 0.194 13.428);
-
-  --color-error-content: #4d0218;
   --color-error-content: oklch(27% 0.105 12.094);
-
-  /* Radii & misc */
-  --radius-selector: 0.5rem;
-  --radius-field: 2rem;
-  --radius-box: 0.5rem;
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
@@ -177,13 +78,12 @@
 
 /* Inter variable (1 seul fichier) */
 @import '@fontsource-variable/inter';
-@import '@fontsource/train-one';
-
+@import '@fontsource/kanit/700.css';
 
 :root {
   --font-title: 'Inter Variable', sans-serif;
   --font-body: 'Inter Variable', sans-serif;
-  --font-logo: 'Train One', cursive;
+  --font-logo: 'kanit', cursive;
 }
 
 html, body {
@@ -203,7 +103,6 @@ html, body {
 h1 {
   font-family: 'Inter Variable', sans-serif;
   font-weight: 800;
-  text-transform: uppercase;
   word-break: break-word;     /* ⭐ ajoute ceci */
   overflow-wrap: break-word;  /* (optionnel) renforce le comportement */
 }
@@ -226,7 +125,7 @@ h4, h5, h6 {
   font-weight: 600;
 }
 
-.font-train {
+.font-logo {
   font-family: var(--font-logo);
 }
 

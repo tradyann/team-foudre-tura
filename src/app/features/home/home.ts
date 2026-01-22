@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { ZwiftService } from '../zwift/zwift.service';
 import { LucideAngularModule, ShirtIcon} from 'lucide-angular';
 import { Jersey } from '../../shared/jersey/jersey';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface UpcomingCompetition {
   competitionId: number;
@@ -60,7 +61,7 @@ interface CompetitionDetails {
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, RouterLink, LucideAngularModule, Jersey],
+  imports: [CommonModule, RouterLink, LucideAngularModule, Jersey, TranslateModule],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

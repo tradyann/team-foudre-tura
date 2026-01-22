@@ -1,0 +1,42 @@
+{
+    "HEADER": {
+        "NAV": {
+        "DASHBOARD": "Dashboard",
+        "RULES": "Rules"
+        }
+    },
+  "HOME": {
+    "HERO": {
+      "TITLE": "Zwift Virtual Cycling Events",
+      "STAGES_DETAILS": "Stages details",
+      "BADGE_COMPETITION_TYPE": "Competition"
+    },
+
+    "UPCOMING": {
+      "NEXT_EVENT": "Upcoming Event"
+    },
+
+    "CURRENT": {
+      "TITLE": "Current Leaders",
+      "FULL_STANDINGS": "Full Standings"
+    },
+
+    "CATEGORY": {
+      "LABEL": "Category",
+      "GC": "General Classification"
+    },
+
+    "BUTTONS": {
+      "VIEW_FULL_STANDINGS": "View Full Standings"
+    },
+
+    "ERROR": {
+      "GENERIC": "An error occurred while loading data"
+    },
+
+    "LOADING": {
+      "EVENTS": "Loading events...",
+      "STANDINGS": "Loading standings..."
+    }
+  }
+}

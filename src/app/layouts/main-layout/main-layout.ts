@@ -1,14 +1,15 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, HostListener, inject, Inject, PLATFORM_ID } from '@angular/core';
 import { Header } from '../header/header';
 import '@weblogin/trendchart-elements';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Footer } from '../footer/footer';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-main-layout',
-  imports: [CommonModule, RouterModule, Header, Footer],
+  imports: [CommonModule, TranslateModule, RouterModule, Header, Footer],
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]  // 👈 obligatoire pour <tc-line> etc.

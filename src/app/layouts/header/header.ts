@@ -1,9 +1,10 @@
-import { Component, DestroyRef, effect, inject, signal } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Component, effect, inject, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../../features/user/user.service';
-import { debounceTime, distinctUntilChanged, filter, Subject, Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Lang, LanguageService } from '../../services/language.service';
+import { LangLinkService } from '../../services/lang-link.service';
 
 @Component({
   selector: 'app-header',
@@ -12,18 +13,30 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './header.css'
 })
 export class Header {
+
+  langService = inject(LanguageService);
+  langLink = inject(LangLinkService);
+  
+  readonly lang = this.langService.lang;
+
   readonly theme = signal<'light' | 'dark'>('light');
-  searchString: string = '';
-  private searchSubject = new Subject<string>();
-  private searchSub: Subscription;
+
   router = inject(Router);
-  private route = inject(ActivatedRoute);
-  private destroyRef = inject(DestroyRef);
 
   isOpen = signal(false);
 
   // Signal du titre affiché
   title = signal('Dashboard');
+
+  getFlag(lang: string): string {
+    // issue with different names for flags
+    switch (lang) {
+      case 'pt-pt': return 'pt';
+      case 'pt-br': return 'br';
+      case 'sv': return 'se';
+      default: return lang;
+    }
+  }
 
   constructor(private userService: UserService) {
     if (typeof window !== 'undefined') {
@@ -38,24 +51,6 @@ export class Header {
         document.documentElement.setAttribute('data-theme', val);
       });
     }
-
-    // Subscribe to the search observable
-    this.searchSub = this.searchSubject.pipe(
-      debounceTime(1000),                    // Wait 1 sec after typing stops
-      distinctUntilChanged(),                // Ignore same value
-      filter(value => value.trim().length >= 3) // Min 3 characters
-    ).subscribe((searchTerm: string) => {
-      this.reqSearch(searchTerm);
-    });
-  }
-
-  ngOnInit() {
-    this.setTitleFromCurrentRoute();
-
-    const sub = this.router.events.subscribe(() => {
-      this.setTitleFromCurrentRoute();
-    });
-    this.destroyRef.onDestroy(() => sub.unsubscribe());
   }
 
   toggleTheme(): void {
@@ -65,27 +60,6 @@ export class Header {
   onLogout(): void {
     this.userService.logout();
   }
-  
-  onSearchChange(value: string): void {
-    this.searchSubject.next(value);
-  }
-
-  reqSearch(value: string): void {
-    this.router.navigate(['/search-result', value]);
-  }
-
-  private setTitleFromCurrentRoute() {
-    let r = this.route;
-    while (r.firstChild) r = r.firstChild;
-
-    const dataTitle = r.snapshot.data?.['title'];
-    this.title.set(dataTitle || null); // si absent -> null
-  }
-
-  // signal pour la langue
-  lang = signal<'en' | 'fr' | 'de' | 'es' | 'it' | 'pt'| 'br'>(
-    (localStorage.getItem('lang') as any) || 'en'
-  );
 
   /** Ferme tous les dropdowns sauf celui passé */
   private closeOther(current: HTMLDetailsElement) {
@@ -101,12 +75,9 @@ export class Header {
     this.router.navigate([url]);
   }
 
-  changeLang(detailsEl: HTMLDetailsElement, l: 'en' | 'fr' | 'de' | 'es' | 'it' | 'pt'| 'br') {
-    this.closeOther(detailsEl); // ferme les autres aussi
-    this.lang.set(l);
-    localStorage.setItem('lang', l);
-    // this.translate.use(l); // si tu utilises ngx-translate
-    detailsEl.removeAttribute('open'); // ferme le dropdown cliqué
+  async changeLang(dropdown: HTMLDetailsElement, lang: Lang) {
+    this.langLink.changeLang(lang);
+    dropdown.removeAttribute('open');
   }
 
   /** Appelé dans (click) des <summary> */

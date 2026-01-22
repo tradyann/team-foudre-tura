@@ -1,0 +1,42 @@
+{
+  "HEADER": {
+    "NAV": {
+      "DASHBOARD": "Dashboard",
+      "RULES": "Regeln"
+    }
+  },
+  "HOME": {
+    "HERO": {
+      "TITLE": "Virtuelle Radsport-Events auf Zwift",
+      "STAGES_DETAILS": "Etappendetails",
+      "BADGE_COMPETITION_TYPE": "Wettbewerb"
+    },
+
+    "UPCOMING": {
+      "NEXT_EVENT": "Kommendes Event"
+    },
+
+    "CURRENT": {
+      "TITLE": "Aktuelle Führende",
+      "FULL_STANDINGS": "Vollständige Rangliste"
+    },
+
+    "CATEGORY": {
+      "LABEL": "Kategorie",
+      "GC": "Gesamtwertung"
+    },
+
+    "BUTTONS": {
+      "VIEW_FULL_STANDINGS": "Gesamte Rangliste anzeigen"
+    },
+
+    "ERROR": {
+      "GENERIC": "Beim Laden der Daten ist ein Fehler aufgetreten"
+    },
+
+    "LOADING": {
+      "EVENTS": "Events werden geladen...",
+      "STANDINGS": "Ranglisten werden geladen..."
+    }
+  }
+}

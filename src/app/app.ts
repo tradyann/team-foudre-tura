@@ -9,6 +9,6 @@ import { Toast } from './shared/toast/toast';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('Tura');
+  protected readonly title = signal('Foudre');
 
 }
