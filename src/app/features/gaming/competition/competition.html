@@ -60,13 +60,13 @@
                                     <td>{{ t.raceTypeName }} </td>
                                     <td>
                                         @for (d of  t.divisionStructure; track d.id) {
-                                            <span class="badge badge-ghost me-1"
+                                            <span class="badge badge-ghost text-white me-1"
                                                 [ngClass]="{
-                                                    'bg-red-600 text-white': d.cat === 'A' && competition()?.competCategory === 'A',
-                                                    'bg-green-500 text-white': d.cat === 'B' && competition()?.competCategory === 'B',
-                                                    'bg-cyan-500 text-white': d.cat === 'C' && competition()?.competCategory === 'C',
-                                                    'bg-yellow-400 text-white': d.cat === 'D' && competition()?.competCategory === 'D',
-                                                    'bg-pink-900 text-white': d.cat === 'E' && competition()?.competCategory === 'E',
+                                                    'bg-red-600': d.cat === 'A',
+                                                    'bg-green-500': d.cat === 'B',
+                                                    'bg-cyan-500': d.cat === 'C',
+                                                    'bg-yellow-400': d.cat === 'D',
+                                                    'bg-pink-900': d.cat === 'E',
                                                     }"
                                                 >
                                                 {{ d.cat }}
