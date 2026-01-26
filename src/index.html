@@ -6,39 +6,70 @@
   <base href="/" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- 🔑 Apply theme immediately -->
+  <!-- 🔑 Apply theme BEFORE anything -->
   <script>
     (function () {
-      const t = localStorage.getItem('theme');
-      if (t) document.documentElement.setAttribute('data-theme', t);
+      const theme =
+        localStorage.getItem('theme') ??
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+      document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
 
-  <!-- 🧱 CRITICAL: hide Angular root before CSS + JS -->
+  <!-- 🎨 CRITICAL SPLASH STYLES (inline, theme-aware) -->
   <style>
+    :root[data-theme="light"] {
+      --splash-bg: #ffffff;
+      --splash-fg: #111827;
+    }
+
+    :root[data-theme="dark"] {
+      --splash-bg: #020617;
+      --splash-fg: #e5e7eb;
+    }
+
     app-root {
       visibility: hidden;
     }
+
+    .splash-screen {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--splash-bg);
+      color: var(--splash-fg);
+      z-index: 9999;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      transition: opacity 0.2s ease-out;
+    }
+
+    .splash-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
   </style>
 
-  <!-- 🎨 CSS (blocking, SPA-friendly) -->
+  <!-- 🎨 BLOCKING CSS -->
   <link rel="stylesheet" href="/styles.css">
-
 </head>
+
 <body>
 
-  <!-- Optional skeleton (visible instead of flash) -->
-  <div id="boot-skeleton">
-    <div style="height:100vh;background:#0f172a"></div>
+  <div class="splash-screen" id="splash">
+    ⚡
   </div>
 
   <app-root></app-root>
 
   <script>
-    // Reveal Angular only when everything is ready
     window.addEventListener('load', () => {
-      document.getElementById('boot-skeleton')?.remove();
-      document.querySelector('app-root').style.visibility = 'visible';
+      document.getElementById('splash')?.classList.add('hidden');
+      document.querySelector('app-root')?.style.setProperty('visibility', 'visible');
     });
   </script>
 
