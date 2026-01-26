@@ -2,45 +2,45 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
-  <title>Foudre - Tour</title>
-  <base href="/">
+  <title>Foudre – Tour</title>
+  <base href="/" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-  <!-- 🔑 Apply theme BEFORE CSS / Angular -->
+  <!-- 🔑 Apply theme immediately -->
   <script>
     (function () {
-      const lsTheme = localStorage.getItem('theme');
-      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      let theme = 'light';
-      if (lsTheme) {
-        theme = lsTheme;
-      } else if (systemDark) {
-        theme = 'dark';
-      }
-
-      document.documentElement.setAttribute('data-theme', theme);
+      const t = localStorage.getItem('theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
     })();
   </script>
 
-  <!-- 🔗 Preconnect to important origins -->
-  <link rel="preconnect" href="https://www.foudre.org" crossorigin>
+  <!-- 🧱 CRITICAL: hide Angular root before CSS + JS -->
+  <style>
+    app-root {
+      visibility: hidden;
+    }
+  </style>
 
-  <!-- 🎨 Preload global CSS (non-blocking, anti-FOUC) -->
-  <link
-    rel="preload"
-    href="/styles.css"
-    as="style"
-    onload="this.onload=null;this.rel='stylesheet'">
-
-  <!-- 🧯 Fallback if JS is disabled -->
-  <noscript>
-    <link rel="stylesheet" href="/styles.css">
-  </noscript>
+  <!-- 🎨 CSS (blocking, SPA-friendly) -->
+  <link rel="stylesheet" href="/styles.css">
 
 </head>
 <body>
+
+  <!-- Optional skeleton (visible instead of flash) -->
+  <div id="boot-skeleton">
+    <div style="height:100vh;background:#0f172a"></div>
+  </div>
+
   <app-root></app-root>
+
+  <script>
+    // Reveal Angular only when everything is ready
+    window.addEventListener('load', () => {
+      document.getElementById('boot-skeleton')?.remove();
+      document.querySelector('app-root').style.visibility = 'visible';
+    });
+  </script>
+
 </body>
 </html>
