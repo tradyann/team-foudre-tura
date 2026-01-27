@@ -96,6 +96,7 @@ export class Home {
         next: (data) => {
           this.upcoming.set(data);
           this.upcomingLoading.set(false);
+          console.log('competitions', data);
         },
         error: (err) => {
           this.error.set('Error loading results');
@@ -107,11 +108,12 @@ export class Home {
   }
   
   loadJerseys() {
-    this.zwiftService.getHomeJerseys(222).subscribe(
+    this.zwiftService.getHomeJerseys(0).subscribe(
       {
         next: (data) => {
           this.competition.set(data);
           this.competitionLoading.set(false);
+          console.log('jerseys', data);
         },
         error: (err) => {
           this.error.set('Error loading results');
@@ -129,6 +131,10 @@ export class Home {
   prev() { this.goTo(this.activeIndex() - 1); }
   next() { this.goTo(this.activeIndex() + 1); }
 
+
+  goToZwiftPovwer(zwiftId: number) {
+    window.open(`https://zwiftpower.com/profile.php?z=${zwiftId}`, '_blank');
+  }
 
   // upcoming = signal<UpcomingCompetition[]>([
   //   {

@@ -1,10 +1,22 @@
 <header class="flex items-center gap-2 lg:gap-4">
     <label for="my-drawer" class="btn btn-square btn-ghost drawer-button lg:hidden">
-        <svg data-src="https://unpkg.com/heroicons/20/solid/bars-3.svg" class="h-5 w-5"></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
     </label>
-    <div class="grow font-logo text-3xl">
-        FOUDRE
+
+    <div class="grow flex items-center gap-1.5 select-none">
+        <span class="font-black text-2xl tracking-tighter text-base-content uppercase">
+            Team
+        </span> 
+        
+        <div class="bg-primary text-primary-content pl-3 pr-2 py-1 rounded-md font-black text-2xl skew-x-[-12deg] shadow-lg flex items-center">
+            <span class="skew-x-[12deg]">FOUDRE</span>
+        </div>
+
+        <div class="text-3xl -ml-1.5 drop-shadow-sm">
+            ⚡
+        </div>
     </div>
+
     <button class="swap swap-rotate" data-toggle-theme="dark" data-act-class="swap-active" (click)="toggleTheme()">
         <svg
             class="swap-off h-6 w-6 fill-current"

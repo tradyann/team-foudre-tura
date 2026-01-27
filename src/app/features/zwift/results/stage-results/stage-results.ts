@@ -1,5 +1,5 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ZwiftService } from '../../zwift.service';
 import { CommonModule } from '@angular/common';
 import { DurationPipe } from '../../../../shared/pipes/duration.pipe';
@@ -8,7 +8,7 @@ import { LucideAngularModule, ListIcon, ListOrderedIcon, TimerOffIcon } from 'lu
 
 @Component({
   selector: 'app-stage-results',
-  imports: [CommonModule, DurationPipe, RouterLink, LucideAngularModule],
+  imports: [CommonModule, DurationPipe, LucideAngularModule],
   templateUrl: './stage-results.html',
   styleUrl: './stage-results.css'
 })
@@ -38,7 +38,7 @@ export class StageResults {
   });
 
   displayedResults = signal<any[]>([]);
-  sortBySlot = signal(false);
+  sortBySlot = signal(true);
   ListIcon = ListIcon;
   ListOrderedIcon = ListOrderedIcon;
   TimerOffIcon = TimerOffIcon;
@@ -155,5 +155,9 @@ export class StageResults {
       3, // sprint default 
       this.stageNumber(),
     ]);
+  }
+
+  goToZwiftPovwer(zwiftId: number) {
+    window.open(`https://zwiftpower.com/profile.php?z=${zwiftId}`, '_blank');
   }
 }

@@ -1,5 +1,5 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ZwiftService } from '../../zwift.service';
 import { CommonModule } from '@angular/common';
 import { DurationPipe } from '../../../../shared/pipes/duration.pipe';
@@ -7,7 +7,7 @@ import { LucideAngularModule, TimerOffIcon } from 'lucide-angular';
 
 @Component({
   selector: 'app-competition-results',
-  imports: [CommonModule, RouterLink, DurationPipe, LucideAngularModule],
+  imports: [CommonModule, DurationPipe, LucideAngularModule],
   templateUrl: './competition-results.html',
   styleUrl: './competition-results.css'
 })
@@ -121,6 +121,10 @@ export class CompetitionResults {
       3, // sprint default 
       this.stageNumber(),
     ]);
+  }
+
+  goToZwiftPovwer(zwiftId: number) {
+    window.open(`https://zwiftpower.com/profile.php?z=${zwiftId}`, '_blank');
   }
 
 }

@@ -3,10 +3,10 @@
     <a role="tab" class="tab" (click)="goToPage('/zw/stage-results')">STAGE RANKING</a>
 </div>
 
-<div role="tablist" class="tabs tabs-border">
+<!-- <div role="tablist" class="tabs tabs-border">
     <a role="tab" class="tab tab-active" (click)="goToPage('/zw/competition-results')">TIME Classification</a>
     <a role="tab" class="tab" (click)="goToPageJersey('/zw/competition-points')">JERSEY Classification</a>
-</div>
+</div> -->
 
 
 <div class="p-4">
@@ -72,11 +72,24 @@
             <div class="flex gap-2 mb-4">
                 @for (cat of ['A','B','C','D','E']; track cat) {
                     <button
-                        class="btn btn-sm"
-                        [ngClass]="{'btn-primary': cat === category(),'btn-ghost': cat !== category()}"
-                        (click)="goToCategory(cat)"
+                    class="btn btn-sm transition-all duration-150"
+                    [class.btn-ghost]="cat !== category()"
+
+                    [style.--btn-color]="cat === category()
+                        ? (cat === 'A' ? '#dc2626'
+                        : cat === 'B' ? '#22c55e'
+                        : cat === 'C' ? '#06b6d4'
+                        : cat === 'D' ? '#facc15'
+                        : '#831843')
+                        : null"
+
+                    [ngClass]="{
+                        'text-white': cat === category() && cat !== 'D',
+                        'text-black': cat === category() && cat === 'D'
+                    }"
+                    (click)="goToCategory(cat)"
                     >
-                        {{ cat }}
+                    {{ cat }}
                     </button>
                 }
             </div>
@@ -88,7 +101,7 @@
                         <tr class="bg-base-200 text-sm">
                             <th>#</th>
                             <th>Rider</th>
-                            <th class="text-right">cGap</th>
+                            <th class="text-right">Gap</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -121,7 +134,7 @@
                                             />
                                         }
                                         <span 
-                                        [routerLink]="['/game/rider-details', rider.zwiftId]"
+                                        (click)="goToZwiftPovwer(rider.zwiftId)"
                                         class="hover:underline hover:text-primary cursor-pointer" [innerHTML]="rider.racerName"></span>
                                     </td>
                                     <td class="text-right font-medium">

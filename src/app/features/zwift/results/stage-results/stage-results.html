@@ -3,10 +3,10 @@
     <a role="tab" class="tab tab-active" (click)="goToPage('/zw/stage-results')">STAGE RANKING</a>
 </div>
 
-<div role="tablist" class="tabs tabs-border">
+<!-- <div role="tablist" class="tabs tabs-border">
     <a role="tab" class="tab tab-active" (click)="goToPage('/zw/stage-results')">TIME Classification</a>
     <a role="tab" class="tab" (click)="goToPageJersey('/zw/stage-points')">JERSEY Classification</a>
-</div>
+</div> -->
 
 
 <div class="p-4">
@@ -59,9 +59,22 @@
         <div class="flex gap-2 mb-4">
             @for (cat of ['A','B','C','D','E']; track cat) {
                 <button
-                class="btn btn-sm"
-                    [ngClass]="{ 'btn-primary': cat === category(), 'btn-ghost': cat !== category() }"
-                    (click)="goToCategory(cat)"
+                class="btn btn-sm transition-all duration-150"
+                [class.btn-ghost]="cat !== category()"
+
+                [style.--btn-color]="cat === category()
+                    ? (cat === 'A' ? '#dc2626'
+                    : cat === 'B' ? '#22c55e'
+                    : cat === 'C' ? '#06b6d4'
+                    : cat === 'D' ? '#facc15'
+                    : '#831843')
+                    : null"
+
+                [ngClass]="{
+                    'text-white': cat === category() && cat !== 'D',
+                    'text-black': cat === category() && cat === 'D'
+                }"
+                (click)="goToCategory(cat)"
                 >
                 {{ cat }}
                 </button>
@@ -77,8 +90,7 @@
                     <th>Rider</th>
                     <th class="text-right">Gap</th>
                     <th class="text-right">Bonus</th>
-                    <th class="text-right">cRatio</th>
-                    <th class="text-right">cGap</th>
+                    <th class="text-right">GapNet</th>
                     <th>
                         <button class="link link-hover" (click)="toggleSlotSort()">
                             Slot
@@ -104,7 +116,8 @@
                                 [attr.alt]="rider.flag"
                             />
                             }
-                            <span [routerLink]="['/game/rider-details', rider.zwiftId]"
+                            <span 
+                                (click)="goToZwiftPovwer(rider.zwiftId)"
                                 class="hover:underline hover:text-primary cursor-pointer"
                                 [innerHTML]="rider.racerName"
                                 >
@@ -119,14 +132,20 @@
                                 </span>
                             }
                         </td>
-                        <td class="text-right">{{ rider.bonusTime | number: '1.0-1' }}s</td>
-                        <td class="text-right">@if (!rider.isMissed) { <span>{{ rider.reductionFactor | percent}}</span> }</td>
+                        <td class="text-right">
+                            @if(rider.bonusTime !== null && rider.bonusTime !== 0) {
+                                {{ rider.bonusTime | number: '1.0-1' }}s
+                            }
+                        </td>
+                        <!-- <td class="text-right">@if (!rider.isMissed) { <span>{{ rider.reductionFactor | percent}}</span> }</td> -->
                         <td class="text-right font-semibold">
                             <span class="tooltip" [attr.data-tip]="rider.cGapNet | duration:true">
                                 {{ rider.cGapNet | duration }}
                             </span>
                         </td>
-                        <td>@if (!rider.isMissed) { <span>{{ rider.slotNumber }}</span> }</td>
+                        <td>
+                            @if (!rider.isMissed) { <span>{{ rider.slotNumber }}</span> } @else { <span class="text-gray-400">Missed</span> }
+                        </td>
                     </tr>
                 }
                 }
