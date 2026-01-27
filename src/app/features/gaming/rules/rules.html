@@ -1,224 +1,44 @@
 <!-- Rules (DaisyUI + Tailwind) -->
 <section class="max-w-4xl mx-auto p-4 lg:p-6 space-y-6">
 
-  <!-- Header -->
-  <header class="text-center space-y-2">
-    <h1 class="text-3xl lg:text-4xl font-semibold"><span class="font-train text-3xl">TOUR</span> Official Rules</h1>
-    <p class="text-sm opacity-70">Fair, transparent, and competition-ready.</p>
-  </header>
+  <!-- Content -->
+      <!-- 📄 CONTENT prose adapted for rules -->
+      <section
+        class="
+          prose prose-base max-w-none
+          prose-neutral dark:prose-invert
 
-  <!-- Quick Nav -->
-  <nav class="card bg-base-100 shadow-sm border">
-    <div class="card-body p-4">
-      <h2 class="card-title text-base">Quick navigation</h2>
-      <div class="flex flex-wrap gap-2">
-        <a [routerLink]="[]" fragment="accounts" class="btn btn-xs btn-outline">1. Accounts & Fair Play</a>
-        <a [routerLink]="[]" fragment="platforms" class="btn btn-xs btn-outline">2. Platforms</a>
-        <a [routerLink]="[]" fragment="equipment" class="btn btn-xs btn-outline">3. Equipment & Data</a>
-        <a [routerLink]="[]" fragment="categories" class="btn btn-xs btn-outline">4. Categories</a>
-        <a [routerLink]="[]" fragment="participation" class="btn btn-xs btn-outline">5. Participation</a>
-        <a [routerLink]="[]" fragment="rankings" class="btn btn-xs btn-outline">6. Rankings</a>
-        <a [routerLink]="[]" fragment="teams" class="btn btn-xs btn-outline">7. Teams</a>
-        <a [routerLink]="[]" fragment="penalties" class="btn btn-xs btn-outline">8. Violations</a>
-        <a [routerLink]="[]" fragment="admin" class="btn btn-xs btn-outline">9. Administration</a>
-        <a [routerLink]="[]" fragment="glossary" class="btn btn-xs btn-outline">Glossary</a>
-      </div>
-    </div>
-  </nav>
+          prose-h1:border-b
+          prose-h1:border-base-content/20
+          prose-h1:pb-4
+          prose-h1:mt-12
 
-  <!-- 1. Accounts & Fair Play -->
-  <section id="accounts" class="card bg-base-100 shadow-sm border">
-    <div class="card-body">
-      <h2 class="card-title">1. Accounts &amp; Fair Play</h2>
+          prose-h2:border-b
+          prose-h2:border-base-content/10
+          prose-h2:pb-3
+          prose-h2:mt-10
+          prose-h2:pt-6
+          prose-h2:font-semibold
 
-      <h3 class="font-medium mt-2">1.1 TURA Account</h3>
-      <ul class="list-disc pl-5 space-y-1">
-        <li>All riders must create a TURA account linked to their <strong>Zwift ID</strong>.</li>
-        <li>Only registered riders are eligible for classification and virtual prize rewards (<strong>TURA$</strong>).</li>
-      </ul>
+          prose-h3:mt-8
+          prose-h3:font-semibold
 
-      <h3 class="font-medium mt-4">1.2 Fair Play</h3>
-      <ul class="list-disc pl-5 space-y-1">
-        <li><strong>HRM is mandatory</strong> for all riders.</li>
-        <li><strong>Direct-drive smart trainers only</strong> (wheel-on trainers are not allowed).</li>
-        <li>Power meters are detected; organizers may request verification.</li>
-        <li>Spot checks may include FIT files, power meter usage explanation, weight video, log files, etc.</li>
-      </ul>
-    </div>
-  </section>
+          prose-p:mt-4
+          prose-p:mb-2
+          prose-p:leading-relaxed
 
-  <!-- 2. Platforms -->
-  <section id="platforms" class="card bg-base-100 shadow-sm border">
-    <div class="card-body">
-      <h2 class="card-title">2. Platforms &amp; Accounts</h2>
-      <ul class="list-disc pl-5 space-y-1">
-        <li><strong>ZwiftPower registration is mandatory</strong>, with activities set to <em>public</em>.</li>
-        <li>Data visibility is required for classification and verification.</li>
-      </ul>
-    </div>
-  </section>
+          prose-ul:mt-4
+          prose-ul:pl-6
 
-  <!-- 3. Equipment & Data Integrity -->
-  <section id="equipment" class="card bg-base-100 shadow-sm border">
-    <div class="card-body">
-      <h2 class="card-title">3. Equipment &amp; Data Integrity</h2>
+          prose-table:mt-8
+          prose-table:border
+          prose-table:border-base-content/20
 
-      <h3 class="font-medium mt-2">3.1 Requirements</h3>
-      <ul class="list-disc pl-5 space-y-1">
-        <li>Heart rate monitor is mandatory.</li>
-        <li>Smart trainer is required.</li>
-        <li>Power meters are allowed only with <strong>FIT files</strong> and/or <strong>dual recording on ZwiftPower</strong>.</li>
-        <li><strong>ZPower is not permitted.</strong></li>
-      </ul>
+          prose-hr:hidden
+        "
+      >
+        <markdown [data]="contentMarkdown()"></markdown>
+      </section>
 
-      <h3 class="font-medium mt-4">3.2 Recommended</h3>
-      <ul class="list-disc pl-5 space-y-1">
-        <li>Dual recording (trainer + pedals) whenever possible.</li>
-        <li>Regular weight &amp; height verification (video proof may be requested within 24h, uploaded via the <strong>TURA</strong> website).</li>
-      </ul>
 
-      <h3 class="font-medium mt-4">3.3 Power Checks</h3>
-      <ul class="list-disc pl-5 space-y-1">
-        <li>FIT analysis includes <em>flatline detection</em> and <em>sticky watts</em> checks.</li>
-        <li>Major inconsistencies may result in disqualification or review of results.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 4. Categories -->
-  <section id="categories" class="card bg-base-100 shadow-sm border">
-    <div class="card-body">
-      <h2 class="card-title">4. Categories</h2>
-
-      <h3 class="font-medium mt-2">4.1 Assignment</h3>
-      <ul class="list-disc pl-5 space-y-1">
-        <li>Categories: 
-            <span class="badge bg-red-600 text-white">A</span> (Elite), 
-            <span class="badge bg-green-500 text-white">B</span>, 
-            <span class="badge bg-cyan-500 text-white">C</span>, 
-            <span class="badge bg-yellow-400 text-white">D</span>
-            <span class="badge bg-pink-900 text-white">E</span>.
-        </li>
-        <li>Placement is based on <strong>TURA scoring</strong> ("<strong>TRS</strong>") (90-day CP 1-min / 5-min / 20-min).</li>
-        <li>Thresholds are dynamic per event (auto-balanced by the <strong>TURA</strong> system).</li>
-        <li>Category is locked at competition start.</li>
-        <li>
-          If a rider’s score is <strong>&gt;5%</strong> higher than the best rider of their category
-          (excluding themselves) during a competition ⇒ automatic upgrade
-          (time-neutral time applied to previous stages).
-        </li>
-        <li>Riders may choose to race in a higher category without penalty thanks to the <strong>Category Factor</strong> reward system:
-          <div class="mt-2 grid grid-cols-2 sm:grid-cols-5 gap-2">
-            <span class="badge badge-outline justify-center">A = 100%</span>
-            <span class="badge badge-outline justify-center">B = 80%</span>
-            <span class="badge badge-outline justify-center">C = 60%</span>
-            <span class="badge badge-outline justify-center">D = 40%</span>
-            <span class="badge badge-outline justify-center">E = 20%</span>
-          </div>
-        </li>
-        <li>Expenses such as team creation or team shares also apply the <strong>Category Factor</strong> (e.g. 1 share costs 100 TURA$ for an A rider and 20 TURA$ for a E rider).</li>
-      </ul>
-
-      <h3 class="font-medium mt-4">4.2 Compliance &amp; Upgrades</h3>
-      <ul class="list-disc pl-5 space-y-1">
-        <li>Always select your assigned category or higher, and join the correct pen.</li>
-        <li>Wrong category ⇒ <strong>automatic recategorization</strong>.</li>
-        <li>Exceeding thresholds ⇒ <strong>automatic upgrade</strong>.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 5. Race Participation -->
-  <section id="participation" class="card bg-base-100 shadow-sm border">
-    <div class="card-body">
-      <h2 class="card-title">5. Race Participation (Multi-slot)</h2>
-      <ul class="list-disc pl-5 space-y-1">
-        <li>
-          Each race offers <strong>3–4 time slots</strong> with cross-slot rankings via
-          <strong>cGap</strong> (compressed time gaps using <em>cRatio</em>).
-        </li>
-        <li>Only the <strong>first completed slot</strong> per rider counts for official results.</li>
-        <li>All categories start in visible pens (unless event specifies delayed pens).</li>
-        <li>Slot schedules may differ between weekdays and weekends.</li>
-        <li>Some stages may offer different routes, with shorter routes for lower categories.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 6. Rankings -->
-  <section id="rankings" class="card bg-base-100 shadow-sm border">
-    <div class="card-body">
-      <h2 class="card-title">6. Rankings</h2>
-
-      <h3 class="font-medium mt-2">6.1 Stage Results</h3>
-      <ul class="list-disc pl-5 space-y-1">
-        <li>
-          Scratch races use <strong>cGap</strong> per category and per slot;
-          ITTs use <strong>cGap</strong> per category across all slots.
-        </li>
-        <li>Finish-line time bonuses may apply.</li>
-        <li>Jerseys: <strong>Climber</strong> &amp; <strong>Sprinter</strong> based on points.</li>
-        <li>For scratch races, points are awarded on <strong>FAL segments</strong> (First Across Line).</li>
-        <li>For ITT stages only, points are awarded on <strong>FTS segments</strong> (Fastest Through Segment).</li>
-        <li>Segment points are detailed in each race roadbook.</li>
-        <li>In case of disqualification, points are reassigned to the next eligible riders.</li>
-      </ul>
-
-      <h3 class="font-medium mt-4">6.2 Stage Races (GC)</h3>
-      <ul class="list-disc pl-5 space-y-1">
-        <li>Each stage awards prizes independently of GC prizes.</li>
-        <li>GC is based on cumulative corrected time gaps (<strong>cGap</strong>).</li>
-        <li>
-          Missed stage ⇒ assigned the <strong>time-neutral cap</strong>.
-        </li>
-        <li>
-          Riders with a <strong>cGap</strong> beyond the neutral-time threshold are
-          capped at the <strong>time-neutral limit</strong> for that stage.
-        </li>
-        <li>
-          For final GC prizes, a penalty is applied: the amount deducted per missed stage
-          equals the stage-win prize of the competition.
-        </li>
-      </ul>
-
-      <h3 class="font-medium mt-4">6.3 Neutral Time Limit</h3>
-      <ul class="list-disc pl-5 space-y-1">
-        <li>GC competitors are assigned a <strong>Neutral Time</strong> status if their cGap exceeds the defined threshold (e.g., +20 minutes from the GC leader).</li>
-        <li>Neutral-time riders are capped at this limit and do not affect stage cGap when winning a slot or stage.</li>
-        <li>This prevents non-GC riders from distorting GC gaps and makes it easier for lower-ranked riders to attempt breakaways.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Glossary -->
-  <section id="glossary" class="card bg-base-100 shadow-sm border">
-    <div class="card-body">
-      <h2 class="card-title">Glossary</h2>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div class="p-3 rounded-box bg-base-200/40">
-          <div class="font-semibold">cGap</div>
-          <div class="text-sm opacity-80">
-            Compressed time-gap system with <strong>cRatio</strong>:
-            slot-to-slot differences are reduced proportionally.
-            Winners of each slot stay at zero.
-          </div>
-        </div>
-        <div class="p-3 rounded-box bg-base-200/40">
-          <div class="font-semibold">TRS</div>
-          <div class="text-sm opacity-80">TURA Racing Score.</div>
-        </div>
-        <div class="p-3 rounded-box bg-base-200/40">
-          <div class="font-semibold">FAL</div>
-          <div class="text-sm opacity-80">First Across Line bonus.</div>
-        </div>
-        <div class="p-3 rounded-box bg-base-200/40">
-          <div class="font-semibold">FTS</div>
-          <div class="text-sm opacity-80">Fastest Through Segment bonus.</div>
-        </div>
-        <div class="p-3 rounded-box bg-base-200/40">
-          <div class="font-semibold">TURA$</div>
-          <div class="text-sm opacity-80">TURA virtual prize currency.</div>
-        </div>
-      </div>
-    </div>
   </section>

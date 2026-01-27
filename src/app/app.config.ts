@@ -3,9 +3,9 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay, withHttpTransferCacheOptions } from '@angular/platform-browser';
-import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { translationProviders } from './translation.config';
-import { myInterceptor } from './core/interceptors/token.interceptor';
+import { provideMarkdown } from 'ngx-markdown';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,10 +18,8 @@ export const appConfig: ApplicationConfig = {
         includePostRequests: true,
       })
     ),
-    provideHttpClient(
-      withFetch(),
-      withInterceptors([myInterceptor])
-    ),
+    provideHttpClient(withFetch()),
+    provideMarkdown(),
     ...translationProviders
   ]
 };

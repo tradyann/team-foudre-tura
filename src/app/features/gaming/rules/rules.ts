@@ -1,22 +1,43 @@
-import { Component, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Component, inject, effect, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { MarkdownComponent } from 'ngx-markdown';
+import { RulesService } from '../../../services/rules.service';
 
 @Component({
   selector: 'app-rules',
-  imports: [RouterLink],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    MarkdownComponent
+  ],
   templateUrl: './rules.html',
   styleUrl: './rules.css'
 })
 export class Rules {
-  private route = inject(ActivatedRoute);
-  ngOnInit() {
-    this.route.fragment.subscribe(f => {
-      if (f) {
-        const el = document.getElementById(f);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
+
+  private rulesService = inject(RulesService);
+  private translate = inject(TranslateService);
+
+  // ✅ signal pour le contenu markdown
+  contentMarkdown = signal<string>('');
+
+  // ✅ signal pour la langue courante
+  currentLang = signal(this.translate.currentLang || 'en');
+
+  constructor() {
+
+    // 🔁 sync ngx-translate → signal
+    this.translate.onLangChange.subscribe(e => {
+      this.currentLang.set(e.lang);
+    });
+
+    // ⚡ effect = reload auto
+    effect(() => {
+      const lang = this.currentLang();
+      this.rulesService.loadWithFallback(lang).subscribe(md => {
+        this.contentMarkdown.set(md);
+      });
     });
   }
 }
