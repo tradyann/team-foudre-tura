@@ -3,7 +3,7 @@ import { Component, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { GamingService } from '../gaming.service';
 import { DurationPipe } from '../../../shared/pipes/duration.pipe';
-import { LucideAngularModule, TrophyIcon } from 'lucide-angular';
+import { LucideAngularModule, TrophyIcon, LinkIcon, CalendarIcon } from 'lucide-angular';
 
 export interface Competition {
   idClient: number;
@@ -73,6 +73,8 @@ export class Competition {
   error = signal<string | null>(null);
 
   TrophyIcon = TrophyIcon;
+  LinkIcon = LinkIcon;
+  CalendarIcon = CalendarIcon;
 
   constructor() {
      // SUBSCRIBE TO ROUTE PARAMETER CHANGES

@@ -1,17 +1,10 @@
-<div role="tablist" class="tabs tabs-border">
-    <a role="tab" class="tab" (click)="goToPage('/zw/competition-results')">GENERAL RANKING</a>
-    <a role="tab" class="tab tab-active" (click)="goToPage('/zw/stage-results')">STAGE RANKING</a>
+<div role="tablist" class="tabs tabs-border bg-base-100 sticky top-0 z-20">
+    <a role="tab" class="tab px-8 opacity-60 hover:opacity-100 uppercase font-bold" (click)="goToPage('/zw/competition-results')">GENERAL RANKING</a>
+    <a role="tab" class="tab tab-active px-8 uppercase font-bold text-primary" (click)="goToPage('/zw/stage-results')">STAGE RANKING</a>
 </div>
 
-<!-- <div role="tablist" class="tabs tabs-border">
-    <a role="tab" class="tab tab-active" (click)="goToPage('/zw/stage-results')">TIME Classification</a>
-    <a role="tab" class="tab" (click)="goToPageJersey('/zw/stage-points')">JERSEY Classification</a>
-</div> -->
-
-
-<div class="p-4">
+<div class="p-4 w-full">
     @if (loading()) {
-        <!-- Skeleton loading -->
         <div class="flex gap-4">
             <div class="skeleton h-24 w-24 rounded"></div>
             <div class="flex-1 space-y-3">
@@ -21,139 +14,123 @@
             </div>
         </div>
     } @else if (error()) {
-        <div class="text-red-600">{{ error() }}</div>
+        <div class="text-red-600 font-bold underline">{{ error() }}</div>
     } @else {
-        <h2 class="text-xl hover:underline hover:text-primary font-bold cursor-pointer" (click)="goToPage('/game/competition')">
-            {{ stageInfos()?.competitionName }}
-        </h2>
-        <h3>{{ stageInfos()?.routeName }}</h3>
 
-        <!-- NAVIGATION STAGES (même UX que CompetitionResults) -->
-        <div class="flex gap-2 items-center mb-3">
-            <button
-                class="btn btn-ghost btn-sm"
-                [disabled]="stageNumber() === 1"
-                (click)="goPrev()"
-                aria-label="Previous stage"
-                title="Previous stage"
-            >
-                &lt;
-            </button>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+            <div>
+                <h2 class="text-xl hover:underline hover:text-primary font-bold cursor-pointer uppercase tracking-tight" (click)="goToPage('/game/competition')">
+                    {{ stageInfos()?.competitionName }}
+                </h2>
+                <h3 class="text-sm opacity-60 font-medium italic mt-0.5">{{ stageInfos()?.routeName }}</h3>
+                
+                <div class="flex items-center gap-4 mt-3">
+                    <div class="join border border-base-300 shadow-sm bg-base-200 rounded-lg overflow-hidden">
+                        <button class="join-item btn btn-ghost btn-xs px-3" 
+                                [disabled]="stageNumber() === 1"
+                                (click)="goPrev()"> < </button>
+                        
+                        <div class="join-item px-4 flex items-center bg-base-100 text-[11px] font-bold uppercase tracking-widest text-base-content/80">
+                            Stage {{ stageInfos()?.stageNumber }} / {{ stageInfos()?.lastStageNumber || '?' }}
+                        </div>
 
-            <span class="px-2 text-sm">
-                Stage {{ stageInfos()?.stageNumber }} / {{ stageInfos()?.lastStageNumber || '?' }}
-            </span>
+                        <button class="join-item btn btn-ghost btn-xs px-3"
+                                [disabled]="stageNumber() >= stageInfos()?.lastStageNumber"
+                                (click)="goNext()"> > </button>
+                    </div>
+                </div>
+            </div>
 
-            <button
-                class="btn btn-ghost btn-sm"
-                [disabled]="stageNumber() >= stageInfos()?.lastStageNumber"
-                (click)="goNext()"
-                aria-label="Next stage"
-                title="Next stage"
-            >
-                &gt;
-            </button>
-        </div>
-
-        <!-- Boutons Catégories -->
-        <div class="flex gap-2 mb-4">
-            @for (cat of ['A','B','C','D','E']; track cat) {
-                <button
-                class="btn btn-sm transition-all duration-150"
-                [class.btn-ghost]="cat !== category()"
-
-                [style.--btn-color]="cat === category()
-                    ? (cat === 'A' ? '#dc2626'
-                    : cat === 'B' ? '#22c55e'
-                    : cat === 'C' ? '#06b6d4'
-                    : cat === 'D' ? '#facc15'
-                    : '#831843')
-                    : null"
-
-                [ngClass]="{
-                    'text-white': cat === category() && cat !== 'D',
-                    'text-black': cat === category() && cat === 'D'
-                }"
-                (click)="goToCategory(cat)"
-                >
-                {{ cat }}
-                </button>
-            }
+            <div class="flex flex-wrap gap-1 p-1 bg-base-200 rounded-xl border border-base-300">
+                @for (cat of ['A','B','C','D','E']; track cat) {
+                    <button
+                        class="btn btn-sm border-none min-w-[45px] font-black transition-all"
+                        [style.background-color]="cat === category() 
+                            ? (cat === 'A' ? '#dc2626' : cat === 'B' ? '#22c55e' : cat === 'C' ? '#06b6d4' : cat === 'D' ? '#facc15' : '#831843') 
+                            : 'transparent'"
+                        [style.color]="cat === category() ? (cat === 'D' ? 'black' : 'white') : 'inherit'"
+                        (click)="goToCategory(cat)">
+                        {{ cat }}
+                    </button>
+                }
+            </div>
         </div>
 
         @if (results(); as data) {
-        <div class="overflow-auto">
-            <table class="table w-full table-zebra border border-base-300">
-            <thead>
-                <tr class="bg-base-200 text-sm">
-                    <th>#</th>
-                    <th>Rider</th>
-                    <th class="text-right">Gap</th>
-                    <th class="text-right">Bonus</th>
-                    <th class="text-right">GapNet</th>
-                    <th>
-                        <button class="link link-hover" (click)="toggleSlotSort()">
-                            Slot
-                            @if (sortBySlot()) {
-                                <span class="ms-1 text-xs opacity-70">↕️</span>
-                            } @else {
-                                <span class="ms-1 text-xs opacity-70">✖</span>
-                            }
-                        </button>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (data?.results?.length) {
-                @for (rider of displayedResults(); track rider.rowNumber) {
-                    <tr [ngClass]="{'opacity-40' : rider.isMissed}">
-                        <td>@if (!rider.isMissed) { <span>{{ rider.rowNumber }}</span> }</td>
-                        <td>
-                            @if (rider.flag) {
-                            <img
-                                class="inline h-4 w-5 me-2"
-                                [src]="'assets/flags/4x3/' + rider.flag + '.svg'"
-                                [attr.alt]="rider.flag"
-                            />
-                            }
-                            <span 
-                                (click)="goToZwiftPovwer(rider.zwiftId)"
-                                class="hover:underline hover:text-primary cursor-pointer"
-                                [innerHTML]="rider.racerName"
-                                >
-                            </span>
-                        </td>
-                        <td class="text-right">
-                            @if(rider.rowNumber === 1 && rider.wasTimeNeutral) {
-                                <span-lucide [img]="TimerOffIcon" [size]="16" class="inline-block align-middle cursor-help" title="Time-Neutral"></span-lucide>
-                            } @else {
-                                <span class="tooltip" [attr.data-tip]="rider.eGap | duration:true">
-                                    {{ rider.eGap | duration }}
-                                </span>
-                            }
-                        </td>
-                        <td class="text-right">
-                            @if(rider.bonusTime !== null && rider.bonusTime !== 0) {
-                                {{ rider.bonusTime | number: '1.0-1' }}s
-                            }
-                        </td>
-                        <!-- <td class="text-right">@if (!rider.isMissed) { <span>{{ rider.reductionFactor | percent}}</span> }</td> -->
-                        <td class="text-right font-semibold">
-                            <span class="tooltip" [attr.data-tip]="rider.cGapNet | duration:true">
-                                {{ rider.cGapNet | duration }}
-                            </span>
-                        </td>
-                        <td>
-                            @if (!rider.isMissed) { <span>{{ rider.slotNumber }}</span> } @else { <span class="text-gray-400">Missed</span> }
-                        </td>
+            <div class="overflow-auto rounded-lg border border-base-300 shadow-sm">
+                <table class="table w-full table-zebra">
+                <thead>
+                    <tr class="bg-base-200 text-sm">
+                        <th>#</th>
+                        <th>Rider</th>
+                        <th class="text-right">Gap</th>
+                        <th class="text-right">Bonus</th>
+                        <th class="text-right font-bold">GapNet</th>
+                        <th class="text-right w-16">
+                            <button class="btn btn-outline btn-xs sm:btn-sm" (click)="toggleSlotSort()" title="Filter Present/Missed">
+                                @if (sortBySlot()) {
+                                    <span>✓</span>
+                                } @else {
+                                    <span>✖</span>
+                                }
+                            </button>
+                        </th>
                     </tr>
-                }
-                }
-            </tbody>
-            </table>
-        </div>
+                </thead>
+                <tbody>
+                    @if (data?.results?.length) {
+                    @for (rider of displayedResults(); track rider.rowNumber) {
+                        <tr [ngClass]="{'opacity-40 grayscale' : rider.isMissed}" class="hover:bg-base-200/50 transition-colors">
+                            <td class="font-bold">@if (!rider.isMissed) { <span>{{ rider.rowNumber }}</span> }</td>
+                            <td>
+                                <div class="flex items-center">
+                                    @if (rider.flag) {
+                                    <img
+                                        class="inline h-4 w-5 me-2 rounded-sm shadow-sm"
+                                        [src]="'assets/flags/4x3/' + rider.flag + '.svg'"
+                                        [attr.alt]="rider.flag"
+                                    />
+                                    }
+                                    <span 
+                                        (click)="goToZwiftPovwer(rider.zwiftId)"
+                                        class="hover:underline hover:text-primary cursor-pointer font-medium"
+                                        [innerHTML]="rider.racerName"
+                                        >
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="text-right font-mono">
+                                @if(rider.rowNumber === 1 && rider.wasTimeNeutral) {
+                                    <span-lucide [img]="TimerOffIcon" [size]="16" class="inline-block align-middle text-warning" title="Time-Neutral"></span-lucide>
+                                } @else {
+                                    <span class="tooltip" [attr.data-tip]="rider.eGap | duration:true">
+                                        {{ rider.eGap | duration }}
+                                    </span>
+                                }
+                            </td>
+                            <td class="text-right font-medium">
+                                @if(rider.bonusTime !== null && rider.bonusTime !== 0) {
+                                    -{{ rider.bonusTime | number: '1.0-1' }}s
+                                }
+                            </td>
+                            <td class="text-right font-black">
+                                <span class="tooltip" [attr.data-tip]="rider.cGapNet | duration:true">
+                                    {{ rider.cGapNet | duration }}
+                                </span>
+                            </td>
+                            <td class="text-center font-bold opacity-60">
+                                @if (!rider.isMissed) { <span>{{ rider.slotNumber }}</span> } @else { <span class="text-error text-xs uppercase">Missed</span> }
+                            </td>
+                        </tr>
+                    }
+                    }
+                </tbody>
+                </table>
+            </div>
         } @else {
-        <div class="text-gray-500 mt-4">No results available.</div>
+            <div class="text-gray-500 mt-4 italic bg-base-200 p-8 rounded-lg text-center border-2 border-dashed border-base-300">
+                No results available for this stage.
+            </div>
         }
     }
 </div>

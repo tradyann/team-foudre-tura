@@ -1,148 +1,113 @@
-<div role="tablist" class="tabs tabs-border">
-    <a role="tab" class="tab tab-active" (click)="goToPage('/zw/competition-results')">GENERAL RANKING</a>
-    <a role="tab" class="tab" (click)="goToPage('/zw/stage-results')">STAGE RANKING</a>
+<div role="tablist" class="tabs tabs-border bg-base-100 sticky top-0 z-20">
+    <a role="tab" class="tab tab-active font-bold px-8 uppercase" (click)="goToPage('/zw/competition-results')">GENERAL RANKING</a>
+    <a role="tab" class="tab px-8 opacity-60 hover:opacity-100 uppercase font-bold" (click)="goToPage('/zw/stage-results')">STAGE RANKING</a>
 </div>
 
-<!-- <div role="tablist" class="tabs tabs-border">
-    <a role="tab" class="tab tab-active" (click)="goToPage('/zw/competition-results')">TIME Classification</a>
-    <a role="tab" class="tab" (click)="goToPageJersey('/zw/competition-points')">JERSEY Classification</a>
-</div> -->
-
-
-<div class="p-4">
+<div class="p-4 w-full text-base-content">
     @if (loading()) {
-        <!-- Skeleton loading -->
         <div class="flex gap-4">
             <div class="skeleton h-24 w-24 rounded"></div>
             <div class="flex-1 space-y-3">
                 <div class="skeleton h-6 w-1/3"></div>
                 <div class="skeleton h-4 w-1/2"></div>
-                <div class="skeleton h-4 w-2/3"></div>
             </div>
         </div>
     } @else if (error()) {
-        <div class="text-red-600">{{ error() }}</div>
+        <div class="text-red-600 font-bold underline">{{ error() }}</div>
     } @else {
 
-        <h2 class="text-xl hover:underline hover:text-primary font-bold cursor-pointer" (click)="goToPage('/game/competition')">
-            {{ competitionInfos()?.competitionName }}
-        </h2>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+            <div>
+                <h2 class="text-xl hover:underline hover:text-primary font-bold cursor-pointer uppercase tracking-tight italic" (click)="goToPage('/game/competition')">
+                    {{ competitionInfos()?.competitionName }}
+                </h2>
+                
+                @if (results(); as data) {
+                    <div class="flex items-center gap-4 mt-3">
+                        <div class="join border border-base-300 shadow-sm bg-base-200 rounded-lg overflow-hidden font-bold">
+                            <button class="join-item btn btn-ghost btn-xs px-3" 
+                                    [disabled]="stageNumber() <= 1"
+                                    (click)="goToStage(stageNumber() - 1)"> < </button>
+                            
+                            <div class="join-item px-4 flex items-center bg-base-100 text-[11px] uppercase tracking-widest">
+                                Stage {{ stageNumber() }} / {{ data.lastStageNumber }}
+                            </div>
+
+                            <button class="join-item btn btn-ghost btn-xs px-3"
+                                    [disabled]="stageNumber() >= data.lastStageNumber"
+                                    (click)="goToStage(stageNumber() + 1)"> > </button>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="flex flex-wrap gap-1 p-1 bg-base-200 rounded-xl border border-base-300 shadow-inner">
+                @for (cat of ['A','B','C','D','E']; track cat) {
+                    <button
+                        class="btn btn-sm border-none min-w-[45px] font-black transition-all"
+                        [style.background-color]="cat === category() 
+                            ? (cat === 'A' ? '#dc2626' : cat === 'B' ? '#22c55e' : cat === 'C' ? '#06b6d4' : cat === 'D' ? '#facc15' : '#831843') 
+                            : 'transparent'"
+                        [style.color]="cat === category() ? (cat === 'D' ? 'black' : 'white') : 'inherit'"
+                        (click)="goToCategory(cat)">
+                        {{ cat }}
+                    </button>
+                }
+            </div>
+        </div>
 
         @if (results(); as data) {
 
             @if (stageNumber() > 0 && stageNumber() < data.lastStageNumber) {
-                <p class="text-sm opacity-60 mb-2">
-                    Rankings after stage {{ stageNumber() }}
+                <p class="text-[10px] opacity-60 mb-3 font-black uppercase tracking-[0.15em] italic border-l-4 border-primary pl-3">
+                    General Classification after stage {{ stageNumber() }}
                 </p>
             }
 
-            <!-- Navigation Stages -->
-            <div class="flex gap-2 items-center mb-3">
-                @if (stageNumber() === 0 && data.lastStageNumber > 0){
-                    <button
-                            class="btn btn-ghost btn-sm"
-                            (click)="goToStage(1)"
-                        >
-                            > Rankings after stages
-                    </button>
-                }
-                @if (stageNumber() >= 1){
-                    <button
-                        class="btn btn-ghost btn-sm"
-                        [disabled]="stageNumber() == 1"
-                        (click)="goToStage(stageNumber() - 1)"
-                    >
-                        <
-                    </button>
-                    <span class="px-2 text-sm">
-                        Stage {{ stageNumber() }} / {{ data.lastStageNumber }}
-                    </span>
-
-                    <button
-                        class="btn btn-ghost btn-sm"
-                        [disabled]="stageNumber() >= data.lastStageNumber"
-                        (click)="goToStage(stageNumber() + 1)"
-                    >
-                        >
-                    </button>
-                }
-            </div>
-
-            <!-- Boutons Catégories -->
-            <div class="flex gap-2 mb-4">
-                @for (cat of ['A','B','C','D','E']; track cat) {
-                    <button
-                    class="btn btn-sm transition-all duration-150"
-                    [class.btn-ghost]="cat !== category()"
-
-                    [style.--btn-color]="cat === category()
-                        ? (cat === 'A' ? '#dc2626'
-                        : cat === 'B' ? '#22c55e'
-                        : cat === 'C' ? '#06b6d4'
-                        : cat === 'D' ? '#facc15'
-                        : '#831843')
-                        : null"
-
-                    [ngClass]="{
-                        'text-white': cat === category() && cat !== 'D',
-                        'text-black': cat === category() && cat === 'D'
-                    }"
-                    (click)="goToCategory(cat)"
-                    >
-                    {{ cat }}
-                    </button>
-                }
-            </div>
-
-
-            <div class="overflow-auto">
-                <table class="table w-full table-zebra border border-base-300">
+            <div class="overflow-auto rounded-xl border border-base-300 shadow-sm">
+                <table class="table w-full table-zebra">
                     <thead>
-                        <tr class="bg-base-200 text-sm">
-                            <th>#</th>
+                        <tr class="bg-base-200 text-xs uppercase tracking-widest opacity-60 font-bold">
+                            <th class="w-16">#</th>
                             <th>Rider</th>
-                            <th class="text-right">Gap</th>
+                            <th class="text-right">Gap (Total)</th>
                         </tr>
                     </thead>
                     <tbody>
                         @if (data?.results?.length) {
                             @for (rider of data.results; track rider.gcRank; let i = $index) {
                                 
-                                <!-- Ligne de séparation GC -->
                                 @if (rider.isTimeDisabled && !data.results[i - 1]?.isTimeDisabled) {
                                     <tr>
-                                        <td colspan="7" class="text-xs text-center text-gray-500 bg-base-200">
-                                            <span-lucide [img]="TimerOffIcon" [size]="16" class="inline-block cursor-help" title="Time-Neutral"></span-lucide>
+                                        <td colspan="3" class="text-[10px] text-center font-bold text-base-content/50 bg-base-200/50 p-2 uppercase tracking-tighter italic border-y border-base-300">
                                             Time-neutral threshold 
                                             @if (competitionInfos()?.showTimeThreshold) {
-                                                <span class="pe-1">{{ competitionInfos()?.timeNeutralLimit | duration }}</span>
+                                                <span class="px-1 text-primary font-black">{{ competitionInfos()?.timeNeutralLimit | duration }}</span>
                                             }
-                                            <span>– Riders below do not count toward the next cGap base</span>
+                                            <span class="opacity-70">— Neutral zone for GC base</span>
                                         </td>
                                     </tr>
                                 }
 
-                                <!-- Ligne du coureur -->
-                                <tr [ngClass]="{ 'opacity-50 italic': rider.isTimeDisabled }">
-                                    <td>{{ rider.gcRank }}</td>
+                                <tr [ngClass]="{ 'opacity-40 grayscale italic': rider.isTimeDisabled }" class="hover:bg-base-200/40 transition-colors">
+                                    <td class="font-black italic text-lg text-base-content/20">{{ rider.gcRank }}</td>
                                     <td>
-                                        @if (rider.flag) {
-                                            <img
-                                                class="inline h-4 w-5 me-2"
-                                                [src]="'assets/flags/4x3/' + rider.flag + '.svg'"
-                                                [attr.alt]="rider.flag"
-                                            />
-                                        }
-                                        <span 
-                                        (click)="goToZwiftPovwer(rider.zwiftId)"
-                                        class="hover:underline hover:text-primary cursor-pointer" [innerHTML]="rider.racerName"></span>
+                                        <div class="flex items-center gap-2">
+                                            @if (rider.flag) {
+                                                <img class="h-3.5 w-5 rounded-sm shadow-sm" [src]="'assets/flags/4x3/' + rider.flag + '.svg'" />
+                                            }
+                                            <span 
+                                                (click)="goToZwiftPovwer(rider.zwiftId)"
+                                                class="hover:underline hover:text-primary cursor-pointer font-bold" 
+                                                [innerHTML]="rider.racerName">
+                                            </span>
+                                        </div>
                                     </td>
-                                    <td class="text-right font-medium">
-                                        <span class="tooltip" [attr.data-tip]="rider.cGapGC | duration:true">
+                                    <td class="text-right">
+                                        <div class="tooltip tooltip-left font-black text-sm text-base-content" [attr.data-tip]="rider.cGapGC | duration:true">
                                             {{ rider.cGapGC | duration }}
-                                        </span>                                    
+                                        </div>
                                     </td>
-                                    <td>{{ rider.slotNumber }}</td>
                                 </tr>
                             }
                         }
@@ -150,7 +115,9 @@
                 </table>
             </div>
         } @else {
-            <div class="text-gray-500 mt-4">No results available.</div>
+            <div class="text-gray-500 mt-4 italic p-8 text-center border-2 border-dashed border-base-300 rounded-xl uppercase font-bold text-xs opacity-50 tracking-widest">
+                No results available for this ranking.
+            </div>
         }
     }
 </div>

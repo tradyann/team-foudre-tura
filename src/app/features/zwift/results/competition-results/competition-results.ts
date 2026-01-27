@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ZwiftService } from '../../zwift.service';
 import { CommonModule } from '@angular/common';
 import { DurationPipe } from '../../../../shared/pipes/duration.pipe';
-import { LucideAngularModule, TimerOffIcon } from 'lucide-angular';
+import { LucideAngularModule, TimerOffIcon, AlertCircleIcon, InboxIcon } from 'lucide-angular';
 
 @Component({
   selector: 'app-competition-results',
@@ -37,6 +37,8 @@ export class CompetitionResults {
   });
 
   TimerOffIcon = TimerOffIcon;
+  AlertCircleIcon = AlertCircleIcon;
+  InboxIcon = InboxIcon;
 
   constructor() {
      // SUBSCRIBE TO ROUTE PARAMETER CHANGES
