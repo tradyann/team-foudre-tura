@@ -19,12 +19,14 @@ export class LanguageService {
   private document = inject(DOCUMENT);
   private platformId = inject(PLATFORM_ID);
 
-  // 🔥 langue persistée
-  private readonly _lang = signal<Lang>(
-    (typeof window !== 'undefined'
-      ? (localStorage.getItem('lang') as Lang)
-      : null) || 'en'
-  );
+  // // 🔥 langue persistée
+  // // private readonly _lang = signal<Lang>(
+  // //   (typeof window !== 'undefined'
+  // //     ? (localStorage.getItem('lang') as Lang)
+  // //     : null) || 'fr'
+  // // );
+
+  private readonly _lang = signal<Lang>('fr');
 
   // 🔥 exposée en lecture seule
   readonly lang = this._lang.asReadonly();
