@@ -56,6 +56,7 @@
                         <th>Stage</th>
                         <th>Date</th>
                         <th>Format & Cat.</th>
+                        <th>Type</th>
                         <th>Route</th>
                         <th class="text-right">Action</th>
                     </tr>
@@ -78,8 +79,9 @@
                                             }">{{ d.cat }}</span>
                                     }
                                 </div>
-                                <div class="text-[11px] font-bold opacity-70 uppercase">{{ t.roadbook.raceFormatName }}</div>
+                                <div class="text-[11px] font-bold opacity-70 uppercase">{{ t.roadbook.raceFormatName }} </div>
                             </td>
+                            <td>{{ t.raceTypeName }} </td>
                             <td>
                                 <div class="font-bold text-base-content">{{ t.roadbook.routeName }}</div>
                                 <div class="text-[10px] opacity-60 flex gap-2 font-bold uppercase">
