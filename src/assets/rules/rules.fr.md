@@ -69,6 +69,9 @@ Les paramètres de course sont les suivants :
 Les home trainers doivent être conformes à la **liste définie en Annexe A**.  
 À défaut, une **double capture de puissance** est obligatoire.
 
+Une **photo de vérification du home trainer** doit être transmise avant le début du championnat  
+(protocole détaillé en **Annexe C**).
+
 Un **capteur de puissance externe** peut être utilisé comme source primaire **à condition de fournir le fichier FIT original généré par le compteur**.  
 Les fichiers issus de **plateformes tierces sont refusés**.
 
@@ -249,3 +252,14 @@ La vidéo doit être :
 - Les vidéos sont **confidentielles** et supprimées à la fin de la compétition.
 - Ce contrôle fait partie intégrante de l’esprit de la Coupe :  
   **compétition propre, claire et assumée**.
+
+
+
+## Annexe C – Contrôle du Home Trainer (obligatoire)
+
+### 1. Principe
+
+Afin de garantir l’équité et la transparence, **tous les participants** doivent fournir une **photo de Home Trainer** avant le début de la compétition.
+
+Il suffit de prendre en photo le Home trainer utilisé pendant la competition avec un document identifiant le participant visible sur la photo : ( carte d'identité/de séjour, permis de conduire, carte de transport, etc.) 
+
