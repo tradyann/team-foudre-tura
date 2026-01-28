@@ -8,7 +8,7 @@
 **Comité des Jeux de la Francophonie**
 
 ### Période du championnat
-Du **17 février au 17 mars**,  
+Du **17 février au 17 mars 2026**,  
 tous les mardis à **19h15, heure de Paris (CET – GMT+1)**.
 
 ---
@@ -22,7 +22,7 @@ La compétition est organisée par le **Comité des Jeux de la Francophonie**.
 ## 2. Format de l’épreuve
 
 Le championnat se compose de **courses hebdomadaires** organisées tous les mardis à **19h15, heure de Paris (CET – GMT+1)**,  
-du **17 février au 17 mars**.
+du **17 février au 17 mars 2026**.
 
 Le championnat comprend **cinq étapes**.
 

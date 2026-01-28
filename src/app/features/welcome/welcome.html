@@ -1,126 +1,160 @@
-<div class="max-w-5xl mx-auto p-4 space-y-12">
+<section class="p-4 lg:p-6 space-y-12">
 
-  <!-- Header -->
-  <header class="text-center space-y-3">
-    <h1 class="text-4xl font-semibold tracking-tight">
-      Jeux de la <span class="text-primary">Francophonie</span>
-    </h1>
+  <!-- ====================================================== -->
+  <!-- HERO / DIORAMA -->
+  <!-- ====================================================== -->
+  <section class="relative overflow-hidden rounded-3xl">
 
-    <p class="text-base-content/70 max-w-xl mx-auto">
-      Championnat de cyclisme virtuel sur Zwift<br />
-      du <strong>17 février au 17 mars</strong>
-    </p>
-  </header>
+    <!-- Background layers -->
+    <div class="absolute inset-0 bg-base-200/80"></div>
+    <div class="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-primary/10 blur-3xl"></div>
+    <div class="absolute -right-16 bottom-0 h-72 w-72 rounded-full bg-secondary/10 blur-3xl"></div>
 
-  <!-- Actions -->
-  <div class="flex justify-center gap-4">
-    <a routerLink="/game/competition/235"
-       class="btn btn-primary px-8">
-      S’inscrire à l’étape
-    </a>
+    <!-- Content -->
+    <div class="relative mx-auto max-w-7xl px-4 py-10 lg:px-8 lg:py-16">
+      <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
 
-    <a routerLink="/game/rules"
-       class="btn btn-outline px-8">
-      Consulter le règlement
-    </a>
-  </div>
+        <!-- Diorama image -->
+        <div class="w-full max-w-sm sm:max-w-md mx-auto">
+          <div class="relative">
+            <div class="absolute -inset-3 rounded-3xl bg-base-100/40 ring-1 ring-base-300/50"></div>
+            <img
+              src="/images/welcome-tura.png"
+              alt="Virtual cycling diorama for TURA"
+              class="relative w-full h-auto drop-shadow-2xl"
+              width="640"
+              height="640"
+              loading="eager"
+            />
+          </div>
+        </div>
 
-  <!-- Key infos -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-  <div
-    class="
-      relative p-5 space-y-1
-      bg-base-100
-      border border-base-300
-      shadow-sm hover:shadow-md
-      transition-shadow
-    "
-  >
-    <span class="absolute inset-x-0 top-0 h-1 bg-primary/70"></span>
-    <div class="text-sm opacity-60">Horaire</div>
-    <div class="font-semibold">Tous les mardis</div>
-    <div class="text-primary font-medium">
-      19h15 (heure de Paris – CET)
+        <!-- Copy -->
+        <div class="text-center lg:text-left space-y-4">
+
+          <h1
+            class="
+              text-3xl sm:text-4xl lg:text-5xl xl:text-6xl
+              font-black tracking-tight uppercase italic
+            "
+          >
+            Jeux de la <span class="text-primary">Francophonie</span>
+          </h1>
+
+          <p class="text-base-content/80 max-w-xl mx-auto lg:mx-0 text-sm sm:text-base leading-relaxed">
+            Championnat de cyclisme virtuel sur Zwift — du
+            <strong>17 février au 17 mars 2026</strong>.
+            Courses multi-slots, classements GC, maillots Grimpeur &amp; Sprinteur,
+            et une équité sportive stricte.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start pt-2">
+            <a
+              routerLink="/game/competition/235"
+              class="
+                btn btn-primary
+                btn-sm sm:btn-md
+                px-6 sm:px-8
+                w-full sm:w-auto
+              "
+            >
+              Voir les étapes
+            </a>
+
+            <a
+              routerLink="/game/rules"
+              class="
+                btn btn-outline
+                btn-sm sm:btn-md
+                px-6 sm:px-8
+                w-full sm:w-auto
+              "
+            >
+              Consulter le règlement
+            </a>
+          </div>
+
+          <div>
+            <a
+              routerLink="/game/rules"
+              class="link link-hover text-sm opacity-70"
+            >
+              Comment ça fonctionne ?
+            </a>
+          </div>
+
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div
-    class="
-      relative p-5 space-y-1
-      bg-base-100
-      border border-base-300
-      shadow-sm hover:shadow-md
-      transition-shadow
-    "
-  >
-    <span class="absolute inset-x-0 top-0 h-1 bg-primary/70"></span>
-    <div class="text-sm opacity-60">Format</div>
-    <div class="font-semibold">5 étapes</div>
-    <div class="text-primary font-medium">
-      Classement au temps cumulé
+  <!-- ====================================================== -->
+  <!-- KEY INFOS -->
+  <!-- ====================================================== -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+
+    <div class="relative p-5 space-y-1 bg-base-100 border border-base-300 rounded-2xl shadow-md hover:shadow-lg transition">
+      <span class="absolute inset-x-0 top-0 h-1 bg-primary/70"></span>
+      <div class="text-sm opacity-60">Horaire</div>
+      <div class="font-semibold">Tous les mardis</div>
+      <div class="text-primary font-medium">19h15 (CET)</div>
     </div>
-  </div>
 
-  <div
-    class="
-      relative p-5 space-y-1
-      bg-base-100
-      border border-base-300
-      shadow-sm hover:shadow-md
-      transition-shadow
-    "
-  >
-    <span class="absolute inset-x-0 top-0 h-1 bg-primary/70"></span>
-    <div class="text-sm opacity-60">Équité sportive</div>
-    <div class="font-semibold">Contrôles actifs</div>
-    <div class="text-primary font-medium">
-      Vidéo & double capture
+    <div class="relative p-5 space-y-1 bg-base-100 border border-base-300 rounded-2xl shadow-md hover:shadow-lg transition">
+      <span class="absolute inset-x-0 top-0 h-1 bg-primary/70"></span>
+      <div class="text-sm opacity-60">Format</div>
+      <div class="font-semibold">5 étapes</div>
+      <div class="text-primary font-medium">Classement au temps cumulé</div>
     </div>
-  </div>
-</div>
 
-  <!-- Content -->
-  <section class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+    <div class="relative p-5 space-y-1 bg-base-100 border border-base-300 rounded-2xl shadow-md hover:shadow-lg transition">
+      <span class="absolute inset-x-0 top-0 h-1 bg-primary/70"></span>
+      <div class="text-sm opacity-60">Équité sportive</div>
+      <div class="font-semibold">Contrôles actifs</div>
+      <div class="text-primary font-medium">Vidéo & double capture</div>
+    </div>
+
+  </div>
+
+  <!-- ====================================================== -->
+  <!-- CONTENT -->
+  <!-- ====================================================== -->
+  <section class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
 
     <!-- Equipment -->
     <div class="space-y-4">
-      <h2 class="text-2xl font-semibold">
+      <h2 class="text-2xl md:text-3xl font-black uppercase italic tracking-tight">
         Équipements & contrôles
       </h2>
 
       <ul class="list-disc pl-5 space-y-2 text-sm">
         <li>Compte <strong>ZwiftPower</strong> public obligatoire</li>
         <li>Cardiofréquencemètre requis</li>
-        <li>Home trainer conforme (voir Annexe A)</li>
-        <li>
-          Vidéo de contrôle du poids requise
-          <span class="opacity-60">(Annexe B)</span>
-        </li>
+        <li>Home trainer conforme</li>
+        <li>Vidéo de contrôle du poids requise</li>
       </ul>
 
-      <a routerLink="/game/rules"
-         class="text-primary text-sm hover:underline">
+      <a routerLink="/game/rules" class="text-primary text-sm hover:underline">
         Voir le détail dans le règlement
       </a>
     </div>
 
     <!-- Calendar -->
     <div class="space-y-4">
-      <h2 class="text-2xl font-semibold">
+      <h2 class="text-2xl md:text-3xl font-black uppercase italic tracking-tight">
         Calendrier des étapes
       </h2>
 
-      <ul class="border border-base-300 divide-y">
+      <ul class="border border-base-300 divide-y rounded-xl overflow-hidden">
         <li class="p-3">01. Contre-la-montre individuel</li>
         <li class="p-3">02. Uni-Puerto (After Party)</li>
         <li class="p-3">03. Critérium multi-tours</li>
         <li class="p-3">04. Parcours vallonné</li>
-        <li class="p-3 font-semibold">
-          05. Étape finale
-        </li>
+        <li class="p-3 font-semibold">05. Étape finale</li>
       </ul>
     </div>
 
   </section>
 
-</div>
+</section>
