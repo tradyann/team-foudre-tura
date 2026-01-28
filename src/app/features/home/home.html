@@ -130,9 +130,9 @@
 
                 <div class="relative drop-shadow-xl transform group-hover:scale-110 transition-transform duration-500 ease-out my-4">
                   <app-jersey
-                    variant="uci"
+                    variant="{{competition()?.[0]?.gcVariant}}"
                     [size]="110"
-                    fill="white"
+                    fill="{{competition()?.[0]?.gcFillColor}}"
                     stroke="#000"
                     [strokeWidth]="0.5">
                   </app-jersey>

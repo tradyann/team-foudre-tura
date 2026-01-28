@@ -108,7 +108,7 @@ export class Home {
   }
   
   loadJerseys() {
-    this.zwiftService.getHomeJerseys(0).subscribe(
+    this.zwiftService.getHomeJerseys(222).subscribe(
       {
         next: (data) => {
           this.competition.set(data);

@@ -153,9 +153,9 @@ Il est recommandé de **calibrer tous les home trainers intelligents et capteurs
 ### Équipements approuvés
 
 **Wahoo**
-- V5
-- V6
-- Move
+- Kickr V5
+- Kickr V6
+- Kickr Move
 - Kickr Bike V1 et V2
 - Kickr Shift
 - Kickr Core
