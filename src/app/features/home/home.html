@@ -79,25 +79,28 @@
     <!-- ====================================================== -->
     <!-- CURRENT LEADERS -->
     <!-- ====================================================== -->
-    @if (competition()?.[0]; as currentComp) {
+    @if (categories().length > 0) {
+      
       <div class="space-y-6">
 
         <div class="flex items-end justify-between px-1 border-b border-base-content/10 pb-4">
-          <h2 class="text-3xl font-black tracking-tight uppercase italic flex items-center gap-3">
+          <h2 class="text-3xl font-black tracking-tight uppercase italic">
             <span class="text-primary">
               {{ 'HOME.CURRENT.TITLE' | translate }}
             </span>
           </h2>
 
-          <a class="btn btn-ghost btn-sm"
-             [routerLink]="['/game/competition', currentComp.competitionId]">
+          <a
+            class="btn btn-ghost btn-sm"
+            [routerLink]="['/game/competition', competition()?.[0]?.competitionId]"
+          >
             {{ 'HOME.CURRENT.FULL_STANDINGS' | translate }} →
           </a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-          @for (cat of currentComp.categories; track cat.catId) {
+           @for (cat of categories(); track cat.catId) {
             <div class="card bg-base-100 shadow-lg border border-base-200 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
 
               <div class="h-2 w-full"
@@ -152,7 +155,7 @@
 
                 <div class="mt-auto pt-6 w-full">
                   <a class="btn btn-sm btn-ghost w-full group-hover:bg-base-200"
-                     [routerLink]="['/game/competition', currentComp.competitionId]">
+                     [routerLink]="['/game/competition', competition()?.[0]?.competitionId]">
                     {{ 'HOME.BUTTONS.VIEW_FULL_STANDINGS' | translate }}
                   </a>
                 </div>

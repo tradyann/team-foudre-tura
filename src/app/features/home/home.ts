@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ZwiftService } from '../zwift/zwift.service';
 import { LucideAngularModule, ShirtIcon} from 'lucide-angular';
@@ -78,6 +78,11 @@ export class Home {
   error = signal<string | null>(null);
 
   ShirtIcon = ShirtIcon;
+
+  categories = computed(() => {
+    const comp = this.competition()?.[0];
+    return comp?.categories ?? [];
+  });
 
   ngOnInit() {
     const seen = localStorage.getItem('hasSeenWelcome');
