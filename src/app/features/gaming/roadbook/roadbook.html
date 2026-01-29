@@ -21,10 +21,10 @@
             <table class="table table-zebra w-full border border-base-300">
                 <thead>
                     <tr class="bg-base-200 text-xs uppercase">
-                        <th>LAP</th>
+                        <th>PASSAGE</th>
                         <th>SEGMENT</th>
-                        <!-- <th>JERSEY</th>
-                        <th>POINTS</th> -->
+                        <th>TYPE</th>
+                        <!-- <th>POINTS</th> -->
                         <th>TIME BONUS</th>
                     </tr>
                 </thead>
@@ -40,12 +40,27 @@
                                 }
                             </td>
                             <td>{{r.segmentName}}</td>
-                            <!-- <td>
+                            <td>
                                 @if (r.lap > 0) {
-                                    {{r.jerseyName}}
+                                    @if(r.jerseyName === 'Best Sprinter') {
+                                        <app-jersey
+                                            variant="full"
+                                            [size]="24"
+                                            fill="#16A34A"
+                                            stroke="#000"
+                                            [strokeWidth]="0.5">
+                                        </app-jersey>
+                                    } @else if(r.jerseyName === 'Best Climber') {
+                                        <app-jersey variant="polka" [size]="24" fill="white" stroke="#000" [strokeWidth]="1.4" 
+                                            dotsColor="red" [dotsR]="1.4" [dotsGap]="4">
+                                        </app-jersey>
+                                    } @else if(r.jerseyName === 'Best Young Rider') {
+                                        <span class="badge badge-accent badge-sm">Young Rider</span>
+
+                                    }                                   
                                 }
                             </td>
-                            <td>
+                            <!-- <td>
                                 @for (p of r.points; track p.place) {
                                     <span class="badge badge-soft me-1 mb-1">{{ p.pts }}pts</span>
                                 }
@@ -64,11 +79,11 @@
         </div>
 
 
-        <p class="my-3 opacity-60 italic text-xs">
+        <!-- <p class="my-3 opacity-60 italic text-xs">
             The lap value does not represent the overall lap of the race. <br>
             Instead, it indicates the number of times a rider has passed through that specific segment. <br>
             For example, if a segment appears twice in a two-lap race, the first passage will be lap 1 and the second passage will be lap 2.
-        </p>
+        </p> -->
 
     }
 </div>

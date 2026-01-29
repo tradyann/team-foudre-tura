@@ -1,6 +1,7 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { GamingService } from '../gaming.service';
+import { Jersey } from '../../../shared/jersey/jersey';
 
 export interface RoadbookItem {
   lap: number;
@@ -22,7 +23,7 @@ export interface SegmentTime {
 
 @Component({
   selector: 'app-roadbook',
-  imports: [],
+  imports: [Jersey],
   templateUrl: './roadbook.html',
   styleUrl: './roadbook.css'
 })
