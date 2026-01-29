@@ -9,7 +9,7 @@
 
 ### Période du championnat
 Du **17 février au 17 mars 2026**,  
-tous les mardis à **19h15, heure de Paris (CET – GMT+1)**.
+tous les mardis à **19h00, heure de Paris (CET – GMT+1)**.
 
 ---
 
@@ -21,7 +21,7 @@ La compétition est organisée par le **Comité des Jeux de la Francophonie**.
 
 ## 2. Format de l’épreuve
 
-Le championnat se compose de **courses hebdomadaires** organisées tous les mardis à **19h15, heure de Paris (CET – GMT+1)**,  
+Le championnat se compose de **courses hebdomadaires** organisées tous les mardis à **19h00, heure de Paris (CET – GMT+1)**,  
 du **17 février au 17 mars 2026**.
 
 Le championnat comprend **cinq étapes**.
@@ -113,6 +113,7 @@ Les courses du championnat seront **diffusées et commentées en direct** sur la
 
 La diffusion sera réalisée sur la **chaîne Twitch officielle de l’organisation** :  
 👉 *Lien à compléter*
+
 
 En participant au championnat, les coureurs acceptent que :
 - leur **pseudonyme Zwift**,
