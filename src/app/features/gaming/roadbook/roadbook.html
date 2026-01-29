@@ -23,8 +23,8 @@
                     <tr class="bg-base-200 text-xs uppercase">
                         <th>LAP</th>
                         <th>SEGMENT</th>
-                        <th>JERSEY</th>
-                        <th>POINTS</th>
+                        <!-- <th>JERSEY</th>
+                        <th>POINTS</th> -->
                         <th>TIME BONUS</th>
                     </tr>
                 </thead>
@@ -40,7 +40,7 @@
                                 }
                             </td>
                             <td>{{r.segmentName}}</td>
-                            <td>
+                            <!-- <td>
                                 @if (r.lap > 0) {
                                     {{r.jerseyName}}
                                 }
@@ -49,7 +49,7 @@
                                 @for (p of r.points; track p.place) {
                                     <span class="badge badge-soft me-1 mb-1">{{ p.pts }}pts</span>
                                 }
-                            </td>
+                            </td> -->
                             <td>
                                 @for (t of r.timeBonuses; track t.place) {
                                     <span class="badge badge-soft me-1 mb-1">{{ t.seconds }}sec</span>
