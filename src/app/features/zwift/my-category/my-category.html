@@ -4,10 +4,16 @@
 
     <div class="bg-base-100 rounded-2xl shadow-xl p-8 lg:p-12">
 
+      @if (!isOpen()) {
+        <div class="rounded-xl border border-info/30 bg-info/5 p-4 text-info">
+          L'ouverture des enregistrements aura lieu vers le mercredi 4 février
+        </div>
+      }
+
       <!-- ================================================= -->
       <!-- CAS 1 : PAS D'IDENTIFICATION -->
       <!-- ================================================= -->
-      @if (!zwiftId()) {
+      @else if (!zwiftId()) {
 
         <div class="text-center space-y-6">
           <h2 class="text-2xl font-bold">
@@ -52,12 +58,6 @@
           {{ error() }}
         </div>
 
-      }
-
-      @else if (!isOpen()) {
-        <div class="rounded-xl border border-info/30 bg-info/5 p-4 text-info">
-          L'ouverture des enregistrements aura lieu vers le mercredi 4 février
-        </div>
       }
 
       <!-- ================================================= -->
