@@ -8,8 +8,8 @@
 **Comité des Jeux de la Francophonie**
 
 ### Période du championnat
-Du **17 février au 17 mars 2026**,  
-tous les mardis à **19h00, heure de Paris (CET – GMT+1)**.
+Du **17 février au 17 mars 2026**,  
+tous les mardis à **19h15, heure de Paris (CET – GMT+1)**.
 
 ---
 
@@ -21,7 +21,7 @@ La compétition est organisée par le **Comité des Jeux de la Francophonie**.
 
 ## 2. Format de l’épreuve
 
-Le championnat se compose de **courses hebdomadaires** organisées tous les mardis à **19h00, heure de Paris (CET – GMT+1)**,  
+Le championnat se compose de **courses hebdomadaires** organisées tous les mardis à **19h15, heure de Paris (CET – GMT+1)**,  
 du **17 février au 17 mars 2026**.
 
 Le championnat comprend **cinq étapes**.
@@ -39,11 +39,11 @@ Les éléments suivants sont **obligatoires** pour participer :
 
 ## 4. Catégories et classements
 
-Les catégories sont définies selon le **score vELO de ZwiftRacing.app**.
+Les catégories sont définies selon le **score vELO de [zwiftracing.app](https://www.zwiftracing.app/reference/categories)**.
 
 Le **classement général** est établi :
 - par **temps cumulé**,
-- par **catégorie**.
+- par **catégorie vElo**.
 
 L’organisation se réserve le droit de **reclasser tout coureur** si nécessaire.
 
@@ -52,6 +52,14 @@ L’organisation se réserve le droit de **reclasser tout coureur** si nécessai
 ## 5. Sas de départ
 
 Les sas de départ peuvent regrouper **une ou plusieurs catégories**, en fonction du nombre d’inscriptions.
+
+Les **sas de départ** sont attribués lors de l’inscription, en fonction de la catégorie du participant.
+Cette information est consultable sur le site officiel de la compétition (rubrique « Ma catégorie »).
+
+**Exemple :
+Catégorie attribuée 3 → Sas de départ B**
+
+Tout participant prenant le départ depuis un sas ne correspondant pas à sa catégorie se verra appliquer **une pénalité de 30 secondes** sur le temps de l’étape concernée.
 
 ---
 
@@ -66,16 +74,16 @@ Les paramètres de course sont les suivants :
 
 ## 7. Vérifications et contrôles
 
-Les home trainers doivent être conformes à la **liste définie en Annexe A**.  
+Les home trainers doivent être conformes à la **liste définie en Annexe A**.  
 À défaut, une **double capture de puissance** est obligatoire.
 
-Une **photo de vérification du home trainer** doit être transmise avant le début du championnat  
+Une **photo de vérification du home trainer** doit être transmise avant le début du championnat  
 (protocole détaillé en **Annexe C**).
 
-Un **capteur de puissance externe** peut être utilisé comme source primaire **à condition de fournir le fichier FIT original généré par le compteur**.  
+Un **capteur de puissance externe** peut être utilisé comme source primaire **à condition de fournir le fichier FIT original généré par le compteur**.  
 Les fichiers issus de **plateformes tierces sont refusés**.
 
-Une **vidéo de vérification du poids** doit être transmise avant le début du championnat  
+Une **vidéo de vérification du poids** doit être transmise avant le début du championnat  
 (protocole détaillé en **Annexe B**).
 
 ### Double capture obligatoire
@@ -111,9 +119,8 @@ La liste des étapes est définie en **Annexe C** et dans le **Roadbook officiel
 
 Les courses du championnat seront **diffusées et commentées en direct** sur la plateforme **Twitch**.
 
-La diffusion sera réalisée sur la **chaîne Twitch officielle de l’organisation** :  
+La diffusion sera réalisée sur la **chaîne Twitch officielle de l’organisation** :  
 👉 *Lien à compléter*
-
 
 En participant au championnat, les coureurs acceptent que :
 - leur **pseudonyme Zwift**,
@@ -127,17 +134,17 @@ puissent apparaître lors de cette diffusion.
 
 La participation aux Jeux de la Francophonie implique l’acceptation par chaque participant que :
 
-- les **données nécessaires** à l’organisation, au classement et à l’arbitrage sportif  
-  (performances, fichiers d’activité, éléments de contrôle) puissent être collectées et traitées par l’organisateur ;
-- les **images, captures d’écran et vidéos** des courses puissent être utilisées et diffusées  
-  sur les supports officiels de la compétition  
-  (site internet, réseaux sociaux, Discord, plateformes de diffusion).
+- les **données nécessaires** à l’organisation, au classement et à l’arbitrage sportif  
+  (performances, fichiers d’activité, éléments de contrôle) puissent être collectées et traitées par l’organisateur ;
+- les **images, captures d’écran et vidéos** des courses puissent être utilisées et diffusées  
+  sur les supports officiels de la compétition  
+  (site internet, réseaux sociaux, Discord, plateformes de diffusion).
 
 Ces données et contenus sont utilisés **exclusivement dans le cadre de la compétition**.
 
 Les **données sensibles** (notamment les vidéos de contrôle) sont traitées de manière **confidentielle** et **supprimées à l’issue de la compétition**.
 
-La participation au championnat vaut **acceptation pleine et entière** du présent règlement  
+La participation au championnat vaut **acceptation pleine et entière** du présent règlement  
 et des décisions prises par l’organisation.
 
 ---
@@ -181,7 +188,7 @@ Il est recommandé de **calibrer tous les home trainers intelligents et capteurs
 
 ### Rappel
 
-Un capteur de puissance externe peut être utilisé comme source primaire **à condition de fournir le fichier FIT original généré par le compteur**.  
+Un capteur de puissance externe peut être utilisé comme source primaire **à condition de fournir le fichier FIT original généré par le compteur**.  
 Les fichiers issus de plateformes tierces sont refusés.
 
 ---
@@ -200,9 +207,9 @@ Afin de garantir l’équité et la transparence, **tous les participants** doiv
 
 - **Obligatoirement avant le début de la compétition**, pour tous les participants.
 - Des contrôles supplémentaires peuvent être demandés :
-  - pour les catégories les plus élevées,
-  - pour les podiums,
-  - ou en cas de doute sérieux.
+  - pour les catégories les plus élevées,
+  - pour les podiums,
+  - ou en cas de doute sérieux.
 
 ---
 
@@ -239,11 +246,11 @@ La vidéo doit être :
 ### 4. Envoi de la vidéo
 
 - Plateforme de transfert :
-  - upload de la vidéo en **non répertoriée sur YouTube**, puis transmission du lien aux organisateurs ;
-  - à défaut, transmission via **WeTransfer**.
+  - upload de la vidéo en **non répertoriée sur YouTube**, puis transmission du lien aux organisateurs ;
+  - à défaut, transmission via **WeTransfer**.
 - Le mode de transmission sera précisé aux participants.
-- **Titre de la vidéo :**  
-  *Contrôle poids – Jeux de la Francophonie – Nom / Prénom*
+- **Titre de la vidéo :**  
+  *Contrôle poids – Jeux de la Francophonie – Nom / Prénom*
 
 ---
 
@@ -251,9 +258,8 @@ La vidéo doit être :
 
 - Vidéo non conforme ou non transmise → **pas de départ**.
 - Les vidéos sont **confidentielles** et supprimées à la fin de la compétition.
-- Ce contrôle fait partie intégrante de l’esprit de la Coupe :  
-  **compétition propre, claire et assumée**.
-
+- Ce contrôle fait partie intégrante de l’esprit de la Coupe :  
+  **compétition propre, claire et assumée**.
 
 
 ## Annexe C – Contrôle du Home Trainer (obligatoire)
@@ -263,4 +269,5 @@ La vidéo doit être :
 Afin de garantir l’équité et la transparence, **tous les participants** doivent fournir une **photo de Home Trainer** avant le début de la compétition.
 
 Il suffit de prendre en photo le Home trainer utilisé pendant la competition avec un document identifiant le participant visible sur la photo : ( carte d'identité/de séjour, permis de conduire, carte de transport, etc.) 
+
 

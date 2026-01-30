@@ -22,5 +22,15 @@ export const ZWIFT_ROUTES: Routes = [
         path: 'competition-points/:competitionId/:category/:jerseyId/:stageNumber',
         loadComponent: () =>
         import('./results/competition-points/competition-points').then(m => m.CompetitionPoints)
+    },
+    {
+        path: 'identification',
+        loadComponent: () =>
+        import('./identification/identification').then(m => m.Identification)
+    },
+    {
+        path: 'my-category',
+        loadComponent: () =>
+        import('./my-category/my-category').then(m => m.MyCategory)
     }
 ];

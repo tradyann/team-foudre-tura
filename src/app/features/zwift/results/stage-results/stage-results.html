@@ -42,15 +42,15 @@
             </div>
 
             <div class="flex flex-wrap gap-1 p-1 bg-base-200 rounded-xl border border-base-300">
-                @for (cat of ['A','B','C','D','E']; track cat) {
+                @for (cat of ['A','B','C','D','E','F','G','H','I','J']; track cat; let i = $index) {
                     <button
-                        class="btn btn-sm border-none min-w-[45px] font-black transition-all"
+                        class="btn btn-outline btn-sm min-w-[45px] transition-all"
                         [style.background-color]="cat === category() 
-                            ? (cat === 'A' ? '#dc2626' : cat === 'B' ? '#22c55e' : cat === 'C' ? '#06b6d4' : cat === 'D' ? '#facc15' : '#831843') 
+                            ? '#3abdf7'
                             : 'transparent'"
-                        [style.color]="cat === category() ? (cat === 'D' ? 'black' : 'white') : 'inherit'"
-                        (click)="goToCategory(cat)">
-                        {{ cat }}
+                        (click)="goToCategory(cat)"
+                    >
+                        {{ i + 1 }}
                     </button>
                 }
             </div>

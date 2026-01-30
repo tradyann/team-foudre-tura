@@ -1,0 +1,158 @@
+<div class="min-h-screen bg-base-200 flex items-center justify-center">
+
+  <div class="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="bg-base-100 rounded-2xl shadow-xl p-8 lg:p-12">
+
+      <!-- ================================================= -->
+      <!-- CAS 1 : PAS D'IDENTIFICATION -->
+      <!-- ================================================= -->
+      @if (!zwiftId()) {
+
+        <div class="text-center space-y-6">
+          <h2 class="text-2xl font-bold">
+            Aucune identification trouvée
+          </h2>
+
+          <p class="text-base-content/70 leading-relaxed">
+            Vous devez d’abord compléter la procédure simple d’identification
+            afin de pouvoir participer à la compétition.
+          </p>
+
+          <button
+            class="btn btn-primary"
+            (click)="goToIdentification()"
+          >
+            Accéder au formulaire
+          </button>
+        </div>
+
+      }
+
+      <!-- ================================================= -->
+      <!-- CAS 2 : CHARGEMENT -->
+      <!-- ================================================= -->
+      @else if (loading()) {
+
+        <div class="flex flex-col items-center gap-4">
+          <span class="loading loading-spinner loading-lg"></span>
+          <p class="text-sm text-base-content/60">
+            Chargement de votre catégorie…
+          </p>
+        </div>
+
+      }
+
+      <!-- ================================================= -->
+      <!-- CAS 3 : ERREUR -->
+      <!-- ================================================= -->
+      @else if (error()) {
+
+        <div class="rounded-xl border border-error/30 bg-error/5 p-4 text-error">
+          {{ error() }}
+        </div>
+
+      }
+
+      <!-- ================================================= -->
+      <!-- CAS 4 : CATÉGORIE DISPONIBLE -->
+      <!-- ================================================= -->
+      @else if (category() && pen()) {
+
+        <div class="space-y-10">
+
+          <!-- Header catégorie -->
+        <div class="text-center space-y-2">
+            <div class="text-xs uppercase tracking-widest text-base-content/60">
+                Catégorie attribuée
+            </div>
+
+            <div class="text-7xl font-black leading-none">
+                {{ category() }}
+            </div>
+
+            <div class="text-2xl font-semibold text-base-content/70">
+                @switch (category()) {
+                @case (1) { Diamond }
+                @case (2) { Ruby }
+                @case (3) { Emerald }
+                @case (4) { Sapphire }
+                @case (5) { Amethyst }
+                @case (6) { Platinum }
+                @case (7) { Gold }
+                @case (8) { Silver }
+                @case (9) { Bronze }
+                @case (10) { Copper }
+                }
+            </div>
+        </div>
+
+
+
+          <!-- PEN requis -->
+          <div class="flex items-center gap-3">
+            <span class="text-sm font-semibold tracking-wide">
+              PEN / SAS de départ requis :
+            </span>
+
+            <span
+              class="px-3 py-1 rounded text-sm font-bold text-white shadow-sm"
+              [ngClass]="{
+                'bg-red-600': pen() === 'A',
+                'bg-green-500': pen() === 'B',
+                'bg-cyan-500': pen() === 'C',
+                'bg-yellow-400': pen() === 'D'
+              }"
+            >
+              {{ pen() }}
+            </span>
+          </div>
+
+          <!-- Bloc règlement (sobre) -->
+          <div class="rounded-xl border border-base-content/10 bg-base-200/40 p-5 text-sm leading-relaxed">
+            <strong>Règle de participation</strong>
+            <p class="mt-2 text-base-content/70">
+              Vous devez impérativement rejoindre le <strong>PEN correspondant à votre catégorie</strong>
+              lors de l’inscription à la course.
+            </p>
+            <p class="mt-1 text-base-content/70">
+              Une participation dans un mauvais PEN peut entraîner une
+              <strong>reclassification automatique</strong> ou une invalidation des résultats.
+            </p>
+          </div>
+
+          <!-- Rappel catégories -->
+          <div class="text-sm text-base-content/70 leading-relaxed space-y-1">
+            <p><strong>Cat. 1</strong> – Diamond : 2200+</p>
+            <p><strong>Cat. 2</strong> – Ruby : 1900 – 2199</p>
+            <p><strong>Cat. 3</strong> – Emerald : 1650 – 1899</p>
+            <p><strong>Cat. 4</strong> – Sapphire : 1450 – 1649</p>
+            <p><strong>Cat. 5</strong> – Amethyst : 1300 – 1449</p>
+            <p><strong>Cat. 6</strong> – Platinum : 1150 – 1299</p>
+            <p><strong>Cat. 7</strong> – Gold : 1000 – 1149</p>
+            <p><strong>Cat. 8</strong> – Silver : 850 – 999</p>
+            <p><strong>Cat. 9</strong> – Bronze : 650 – 849</p>
+            <p><strong>Cat. 10</strong> – Copper : 0 – 649</p>
+
+            <div class="text-xs opacity-70 pt-4">
+              Voir le site
+              <a
+                href="https://www.zwiftracing.app"
+                target="_blank"
+                class="link link-primary"
+              >
+                zwiftracing.app
+              </a>
+              pour plus d’informations sur votre vElo score.
+            </div>
+          </div>
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+</div>

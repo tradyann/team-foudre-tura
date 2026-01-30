@@ -1,0 +1,131 @@
+<div class="max-w-4xl mx-auto p-8">
+
+  <!-- Main panel -->
+  <div class="col-span-12 lg:col-span-10 xl:col-span-8 2xl:col-span-6 bg-base-100">
+    <div class="flex flex-col justify-center h-full p-8 lg:p-16">
+
+      <!-- Title -->
+      <h1 class="text-center text-2xl font-bold">
+        Identification – Procédure simple
+      </h1>
+
+      <p class="mt-4 text-center text-sm text-base-content/70 leading-relaxed">
+        Cette procédure permet de vous <strong>déclarer comme participant</strong> à la compétition.<br>
+        Aucun compte n’est créé.
+      </p>
+
+      <p class="mt-2 text-center text-sm text-base-content/70 leading-relaxed">
+        Votre <strong>Zwift ID</strong> et une <strong>vidéo de vérification</strong> sont requis.
+      </p>
+
+      <!-- Form -->
+      <form
+        class="mt-8 space-y-6"
+        [formGroup]="userForm"
+        (ngSubmit)="onSubmitForm()"
+      >
+
+        <!-- Zwift ID -->
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend">
+            Zwift ID
+          </legend>
+
+          <label class="input input-bordered w-full flex items-center gap-2">
+            <span-lucide
+              [img]="LinkIcon"
+              class="text-base-content/60 size-5">
+            </span-lucide>
+
+            <input
+              type="number"
+              inputmode="numeric"
+              placeholder="Ex : 1234567"
+              class="grow"
+              formControlName="zwiftId"
+            />
+          </label>
+
+          <p
+            class="mt-1 text-sm text-error"
+            *ngIf="zwiftId?.errors?.['required'] && zwiftId?.touched"
+          >
+            Le Zwift ID est obligatoire.
+          </p>
+
+          <p
+            class="mt-1 text-sm text-error"
+            *ngIf="zwiftId?.errors?.['min'] && zwiftId?.touched"
+          >
+            Zwift ID invalide.
+          </p>
+        </fieldset>
+
+        <!-- Video URL -->
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend">
+            Lien de la vidéo de vérification.
+          </legend>
+
+          <label class="input input-bordered w-full flex items-center gap-2">
+            <span-lucide
+              [img]="MailIcon"
+              class="text-base-content/60 size-5">
+            </span-lucide>
+
+            <input
+              type="url"
+              placeholder="Lien YouTube / Drive / autre"
+              class="grow"
+              formControlName="urlVideo"
+            />
+          </label>
+
+          <p
+            class="mt-1 text-sm text-error"
+            *ngIf="urlVideo?.errors?.['required'] && urlVideo?.touched"
+          >
+            La vidéo est obligatoire pour valider l’inscription.
+            <br> 
+            Si impossibilité ou questions, contactez par email contact@teamfoudre.org ou rejoignez notre Discord.
+          </p>
+        </fieldset>
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          class="btn btn-primary w-full"
+          [class.loading]="waiting()"
+          [disabled]="waiting()"
+        >
+          Valider mon inscription
+        </button>
+
+      </form>
+
+      <!-- Logout / reset -->
+      <div class="mt-10 border-t border-base-content/10 pt-6 text-center">
+        <p class="text-xs text-base-content/60 leading-relaxed">
+          Cette identification est stockée localement sur cet appareil.<br>
+          Si vous vous déconnectez, vous devrez à nouveau remplir ce formulaire
+          pour vous enregistrer à la compétition.
+        </p>
+
+        <button
+          type="button"
+          class="btn btn-ghost btn-sm mt-4"
+          (click)="logout()"
+        >
+          Se déconnecter
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Right panel (optional / décoratif) -->
+  <div class="hidden lg:block lg:col-span-7 xl:col-span-8 2xl:col-span-9 bg-base-200">
+    <!-- Visuel / infos compétition si tu veux -->
+  </div>
+
+</div>

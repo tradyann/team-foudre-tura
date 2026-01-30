@@ -68,8 +68,9 @@
                             <td class="font-medium whitespace-nowrap">{{ t.stageDate | date: 'EEE, MMM d' }}</td>
                             <td>
                                 <div class="flex flex-wrap gap-1 mb-1">
-                                    @for (d of t.divisionStructure; track d.id) {
-                                        <span class="px-1 rounded text-[10px] font-bold text-white shadow-sm"
+                                    <!-- @for (d of t.divisionStructure; track d.id) {
+                                        @if(d.cat !== 'E') {
+                                            <span class="px-1 rounded text-[10px] font-bold text-white shadow-sm"
                                             [ngClass]="{
                                                 'bg-red-600': d.cat === 'A',
                                                 'bg-green-500': d.cat === 'B',
@@ -77,7 +78,8 @@
                                                 'bg-yellow-400': d.cat === 'D',
                                                 'bg-pink-900': d.cat === 'E'
                                             }">{{ d.cat }}</span>
-                                    }
+                                        }
+                                    } -->
                                 </div>
                                 <div class="text-[11px] font-bold opacity-70 uppercase">{{ t.roadbook.raceFormatName }} </div>
                             </td>

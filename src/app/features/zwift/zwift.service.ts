@@ -57,4 +57,13 @@ export class ZwiftService {
     return this.http.get(this.baseUrl + 'api/public/compet', {});
   }
 
+  linkZwiftIdSimple(zwiftId: number, urlVideo: string): Observable<any> {
+    const payload = { ZwiftId: zwiftId, notes: urlVideo };
+    return this.http.post(`${this.baseUrl}api/public/link-zwift-simple`, payload);
+  }
+
+  getCategoryData(zwiftId: number): Observable<{ zwiftId: number; vEloScore: number }> {
+    const params = new HttpParams().set('zwiftId', zwiftId);
+    return this.http.get<{ zwiftId: number; vEloScore: number }>(this.baseUrl + 'api/zwift/category-data', { params });
+  }
 }
