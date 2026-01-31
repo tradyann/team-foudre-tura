@@ -79,9 +79,91 @@ export class Home {
 
   ShirtIcon = ShirtIcon;
 
+//   CompetitionDetailsMocked: CompetitionDetails[] = [
+//   {
+//     competitionId: 236,
+//     competitionName: "La Cyclo MedioFondo Foudre - Age & Women categories⚡️!",
+//     fromDate: "2026-01-01T00:00:00",
+//     toDate: "2026-02-02T00:00:00",
+//     typeCompetition: "Tour",
+
+//     colorId: 1,
+
+//     gcVariant: "full",
+//     climberVariant: "polka",
+//     sprinterVariant: "full",
+
+//     gcFillColor: "#3abdf7",
+//     gcSecondColor: "#000000",
+
+//     climberFillColor: "white",
+//     climberSecondColor: "red",
+
+//     sprinterFillColor: "#16A34A",
+//     sprinterSecondColor: "#0F5132",
+
+//     categories: [
+//       {
+//         catId: 6,
+//         category: "F",
+//         jerseyGC: "GC",
+//         colorGC: "#FACC15",
+//         isPolka: false,
+//         leaders: [
+//           {
+//             jerseyId: 1,
+//             jerseyKey: "GC",
+//             zwiftId: 121766,
+//             idClient: 0,
+//             racerName: "Neil Gardiner",
+//             category: "F",
+//             value: -5,
+//             valueKind: "sumGapNet"
+//           },
+//           {
+//             jerseyId: 3,
+//             jerseyKey: "KOM",
+//             zwiftId: 5398458,
+//             idClient: 0,
+//             racerName: "Filou Canyon",
+//             category: "F",
+//             value: 0,
+//             valueKind: "sumTotalPoints"
+//           }
+//         ]
+//       },
+
+//       {
+//         catId: 1,
+//         category: "A",
+//         jerseyGC: "GC",
+//         colorGC: "#FACC15",
+//         isPolka: false,
+//         leaders: [
+//           {
+//             jerseyId: 1,
+//             jerseyKey: "GC",
+//             zwiftId: 1839454,
+//             idClient: 0,
+//             racerName: "Matteo CrosaLenz",
+//             category: "A",
+//             value: -10,
+//             valueKind: "sumGapNet"
+//           }
+//         ]
+//       }
+//     ]
+//   }
+// ];
+
+
   categories = computed(() => {
     const comp = this.competition()?.[0];
     return comp?.categories ?? [];
+  });
+
+  categoriesSorted = computed(() => {
+    return [...this.categories()].sort((a, b) => a.catId - b.catId);
   });
 
   ngOnInit() {
@@ -101,7 +183,7 @@ export class Home {
         next: (data) => {
           this.upcoming.set(data);
           this.upcomingLoading.set(false);
-          console.log('competitions', data);
+          //console.log('competitions', data);
         },
         error: (err) => {
           this.error.set('Error loading results');
@@ -113,10 +195,13 @@ export class Home {
   }
   
   loadJerseys() {
-    this.zwiftService.getHomeJerseys(222).subscribe(
+    this.zwiftService.getHomeJerseys(235).subscribe(
       {
         next: (data) => {
+          // mock here!!!
+          //this.competition.set(this.CompetitionDetailsMocked);
           this.competition.set(data);
+          
           this.competitionLoading.set(false);
           console.log('jerseys', data);
         },
