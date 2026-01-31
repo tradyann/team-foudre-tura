@@ -1,5 +1,5 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { ZwiftService } from '../../zwift.service';
 import { CommonModule } from '@angular/common';
 import { DurationPipe } from '../../../../shared/pipes/duration.pipe';
@@ -7,7 +7,7 @@ import { LucideAngularModule, TimerOffIcon, AlertCircleIcon, InboxIcon } from 'l
 
 @Component({
   selector: 'app-competition-results',
-  imports: [CommonModule, DurationPipe, LucideAngularModule],
+  imports: [CommonModule, RouterLink, DurationPipe, LucideAngularModule],
   templateUrl: './competition-results.html',
   styleUrl: './competition-results.css'
 })
