@@ -4,6 +4,21 @@
   <div class="col-span-12 lg:col-span-10 xl:col-span-8 2xl:col-span-6 bg-base-100">
     <div class="flex flex-col justify-center h-full p-8 lg:p-16">
 
+      @if(alreadyLinked()) {
+        <div class="alert alert-success mb-5">
+          <p>
+            Vous avez connecté votre ID Zwift : <strong>{{ alreadyLinked() }}</strong>.
+          </p>
+        </div>
+
+        <div class="card bg-base-200 card-border card-sm overflow-hidden shadow-lg mb-5">
+          <div class="card-body gap-4">
+            Votre catégorie apparaitra moins de 15 minutes après votre inscription dans la page :
+            <a class="text-primary font-medium" [routerLink]="['/zw/my-category']">"Ma catégorie"</a>
+          </div>
+        </div>
+      }
+
       <!-- Title -->
       <h1 class="text-center text-2xl font-bold">
         Identification – Procédure simple

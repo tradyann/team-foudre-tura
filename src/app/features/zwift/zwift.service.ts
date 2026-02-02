@@ -62,8 +62,24 @@ export class ZwiftService {
     return this.http.post(`${this.baseUrl}api/public/link-zwift-simple`, payload);
   }
 
-  getCategoryData(zwiftId: number): Observable<{ zwiftId: number; vEloScore: number }> {
+  getCategoryData(competitionId: number, zwiftId: number): Observable<{ tCat: string }> {
     const params = new HttpParams().set('zwiftId', zwiftId);
-    return this.http.get<{ zwiftId: number; vEloScore: number }>(this.baseUrl + 'api/zwift/category-data', { params });
+    return this.http.get<{ tCat: string }>(`${this.baseUrl}api/velo/category/${competitionId}/${zwiftId}`, { params });
+  }
+
+  competitionRegistration(competitionId: number, zwiftId: number): Observable<{ competitionId: number, zwiftId: number; registered: boolean }> {
+    return this.http.post<{ competitionId: number, zwiftId: number; registered: boolean }>(this.baseUrl 
+      + `api/zwift/competition-registrant/${competitionId}/${zwiftId}`, null);
+  }
+
+  addControlFile(payload: {
+    zwiftId: number;
+    urlFile: string;
+    controlType?: 'VIDEO' | 'FIT' | 'LOG';
+  }): Observable<{ zwiftId: number; added: boolean }> {
+    return this.http.post<{ zwiftId: number; added: boolean }>(
+      `${this.baseUrl}api/zwift/control-file`,
+      payload
+    );
   }
 }

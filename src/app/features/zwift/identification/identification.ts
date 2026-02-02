@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { environment } from '../../../../environments/environment';
 import { LucideAngularModule, MailIcon, KeyRoundIcon, UserPlusIcon, LinkIcon } from 'lucide-angular';
@@ -11,7 +11,7 @@ import { ZwiftService } from '../zwift.service';
 
 @Component({
   selector: 'app-identification',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, TranslateModule, LucideAngularModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, TranslateModule, LucideAngularModule, RouterLink],
   templateUrl: './identification.html',
   styleUrl: './identification.css'
 })
@@ -23,6 +23,8 @@ export class Identification {
 
   waiting = signal(false);
   linked = signal(false);
+  alreadyLinked = signal<number | null>(null);
+
 
   MailIcon = MailIcon;
   KeyRoundIcon = KeyRoundIcon;
@@ -35,6 +37,11 @@ export class Identification {
   ) {}
 
   ngOnInit(): void {
+    const storedZwiftId = localStorage.getItem('zwiftIdLinked');
+    if (storedZwiftId) {
+      this.alreadyLinked.set(+storedZwiftId);
+      this.linked.set(true);
+    }
     this.initForm();
   }
 
@@ -61,16 +68,27 @@ export class Identification {
       const urlVideo = this.urlVideo?.value;
       const ZwiftId = +this.zwiftId?.value;
 
-      this.zwiftService.linkZwiftIdSimple(ZwiftId, urlVideo).subscribe({
+      const payload: {
+        zwiftId: number;
+        urlFile: string;
+        controlType: 'VIDEO' | 'FIT' | 'LOG';
+      } = {
+        zwiftId: ZwiftId,
+        urlFile: urlVideo,
+        controlType: 'VIDEO'
+      };
+
+      this.zwiftService.addControlFile(payload).subscribe({
         next: (res: any) => {
-          if (res > 0) {
+          if (res.added) {
             this.linked.set(true);
+            this.alreadyLinked.set(ZwiftId);
             this.toast.show('Account linked.', 'success');
 
             // we must create a local storage item to store the zwiftId linked
             localStorage.setItem('zwiftIdLinked', ZwiftId.toString());
     
-            this.router.navigate(["/"]);
+          //  this.router.navigate(["/"]);
           // } else if (res === -1) {
           //   this.toast.show('We cannot find your email. Please register.', 'error');
           // } else if (res === -2) {
@@ -93,6 +111,6 @@ export class Identification {
 
   logout(): void {
     localStorage.removeItem('zwiftIdLinked');
-    this.router.navigate(['/zwift/identification']);
+    this.router.navigate(['/']);
   }
 }

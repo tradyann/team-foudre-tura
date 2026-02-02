@@ -161,7 +161,7 @@ Tout l’équipement doit :
 
 Il est recommandé de **calibrer tous les home trainers intelligents et capteurs de puissance** avant la compétition.
 
-### Équipements approuvés
+### Équipements approuvés en Cat 1-2
 
 **Wahoo**
 - Kickr V5
@@ -186,10 +186,15 @@ Il est recommandé de **calibrer tous les home trainers intelligents et capteurs
 **Jet Black**
 - Victory
 
+### Cat 3 à 10 :
+
+Home Trainers connectés avec capteur de puissance
+
 ### Rappel
 
 Un capteur de puissance externe peut être utilisé comme source primaire **à condition de fournir le fichier FIT original généré par le compteur**.  
 Les fichiers issus de plateformes tierces sont refusés.
+
 
 ---
 
