@@ -9,7 +9,7 @@
 
 ### Période du championnat
 Du **17 février au 17 mars 2026**,  
-tous les mardis à **19h15, heure de Paris (CET – GMT+1)**.
+tous les mardis à **19h00, heure de Paris (CET – GMT+1)**.
 
 ---
 
@@ -21,8 +21,7 @@ La compétition est organisée par le **Comité des Jeux de la Francophonie**.
 
 ## 2. Format de l’épreuve
 
-Le championnat se compose de **courses hebdomadaires** organisées tous les mardis à **19h00, heure de Paris (CET – GMT+1)**,  
-du **17 février au 17 mars 2026**.
+Le championnat se compose de **courses hebdomadaires** organisées tous les mardis à **19h00, heure de Paris (CET – GMT+1)**, du **17 février au 17 mars 2026**.
 
 Le championnat comprend **cinq étapes**.
 
@@ -77,14 +76,12 @@ Les paramètres de course sont les suivants :
 Les home trainers doivent être conformes à la **liste définie en Annexe A**.  
 À défaut, une **double capture de puissance** est obligatoire.
 
-Une **photo de vérification du home trainer** doit être transmise avant le début du championnat  
-(protocole détaillé en **Annexe C**).
+Une **photo de vérification du home trainer** doit être transmise avant le début du championnat (protocole détaillé en **Annexe C**).
 
 Un **capteur de puissance externe** peut être utilisé comme source primaire **à condition de fournir le fichier FIT original généré par le compteur**.
 Les fichiers issus de **plateformes tierces sont refusés**.
 
-Une **vidéo de vérification du poids** doit être transmise avant le début du championnat  
-(protocole détaillé en **Annexe B**).
+Une **vidéo de vérification du poids** doit être transmise avant le début du championnat (protocole détaillé en **Annexe B**).
 
 ### Double capture obligatoire
 
@@ -119,8 +116,7 @@ La liste des étapes est définie en **Annexe C** et dans le **Roadbook officiel
 
 Les courses du championnat seront **diffusées et commentées en direct** sur la plateforme **Twitch**.
 
-La diffusion sera réalisée sur la **chaîne Twitch officielle de l’organisation** :  
-👉 *Lien à compléter*
+La diffusion sera réalisée sur la **chaîne Twitch officielle de l’organisation** : 👉 *Lien à compléter*
 
 En participant au championnat, les coureurs acceptent que :
 - leur **pseudonyme Zwift**,
@@ -141,8 +137,7 @@ Ces données et contenus sont utilisés **exclusivement dans le cadre de la comp
 
 Les **données sensibles** (notamment les vidéos de contrôle) sont traitées de manière **confidentielle** et **supprimées à l’issue de la compétition**.
 
-La participation au championnat vaut **acceptation pleine et entière** du présent règlement  
-et des décisions prises par l’organisation.
+La participation au championnat vaut **acceptation pleine et entière** du présent règlement et des décisions prises par l’organisation.
 
 ---
 
@@ -259,8 +254,7 @@ La vidéo doit être :
 
 - Vidéo non conforme ou non transmise → **pas de départ**.
 - Les vidéos sont **confidentielles** et supprimées à la fin de la compétition.
-- Ce contrôle fait partie intégrante de l’esprit de la Coupe :  
-  **compétition propre, claire et assumée**.
+- Ce contrôle fait partie intégrante de l’esprit de la Coupe : **compétition propre, claire et assumée**.
 
 
 ## Annexe C – Contrôle du Home Trainer (obligatoire)
