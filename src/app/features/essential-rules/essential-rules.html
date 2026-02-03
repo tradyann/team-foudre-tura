@@ -1,0 +1,18 @@
+<img
+  src="/images/regles_essentielles_jeux_francophonie.png"
+  class="cursor-zoom-in max-w-full"
+  (click)="isOpen = true"
+/>
+
+@if (isOpen) {
+  <div
+    class="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+    (click)="isOpen = false"
+  >
+    <img
+      src="/images/regles_essentielles_jeux_francophonie.png"
+      class="max-w-[95vw] max-h-[95vh] object-contain"
+      (click)="$event.stopPropagation()"
+    />
+  </div>
+}

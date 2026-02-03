@@ -8,7 +8,7 @@
 **Comité des Jeux de la Francophonie**
 
 ### Période du championnat
-Du **17 février au 17 mars 2026**,  
+Du **17 février au 17 mars 2026**,  
 tous les mardis à **19h00, heure de Paris (CET – GMT+1)**.
 
 ---
@@ -38,13 +38,23 @@ Les éléments suivants sont **obligatoires** pour participer :
 
 ## 4. Catégories et classements
 
-Les catégories sont définies selon le **score vELO de [zwiftracing.app](https://www.zwiftracing.app/reference/categories)**.
+Les catégories sont définies selon le **score vELO de https://www.zwiftracing.app/reference/categories**.
 
 Le **classement général** est établi :
 - par **temps cumulé**,
-- par **catégorie vElo**.
+- par **catégorie vELO**.
 
 L’organisation se réserve le droit de **reclasser tout coureur** si nécessaire.
+
+---
+
+### 4.1 Changement de catégorie et reclassification
+
+Tout coureur qui change de catégorie vers une **catégorie supérieure** en cours de compétition poursuit la compétition dans le **classement de sa nouvelle catégorie**, en conservant l’ensemble des résultats obtenus précédemment, intégrés à ce nouveau classement.
+
+Tout coureur qui descend vers une **catégorie inférieure** en cours de compétition continue la compétition dans le **classement de sa catégorie initiale**, en conservant l’ensemble de ses résultats.
+
+Les organisateurs se réservent le droit de **reclasser manuellement un coureur**, en cours ou à l’issue de la compétition, en cas d’**écarts manifestes de niveau ou de performances**.
 
 ---
 
@@ -52,11 +62,11 @@ L’organisation se réserve le droit de **reclasser tout coureur** si nécessai
 
 Les sas de départ peuvent regrouper **une ou plusieurs catégories**, en fonction du nombre d’inscriptions.
 
-Les **sas de départ** sont attribués lors de l’inscription, en fonction de la catégorie du participant.
+Les **sas de départ** sont attribués lors de l’inscription, en fonction de la catégorie du participant.  
 Cette information est consultable sur le site officiel de la compétition (rubrique « Ma catégorie »).
 
-**Exemple :
-Catégorie attribuée 3 → Sas de départ B**
+**Exemple :**  
+Catégorie attribuée 3 → Sas de départ B
 
 Tout participant prenant le départ depuis un sas ne correspondant pas à sa catégorie se verra appliquer **une pénalité de 30 secondes** sur le temps de l’étape concernée.
 
@@ -73,12 +83,12 @@ Les paramètres de course sont les suivants :
 
 ## 7. Vérifications et contrôles
 
-Les home trainers doivent être conformes à la **liste définie en Annexe A**.  
+Les home trainers doivent être conformes à la **liste définie en Annexe A**.  
 À défaut, une **double capture de puissance** est obligatoire.
 
 Une **photo de vérification du home trainer** doit être transmise avant le début du championnat (protocole détaillé en **Annexe C**).
 
-Un **capteur de puissance externe** peut être utilisé comme source primaire **à condition de fournir le fichier FIT original généré par le compteur**.
+Un **capteur de puissance externe** peut être utilisé comme source primaire **à condition de fournir le fichier FIT original généré par le compteur**.  
 Les fichiers issus de **plateformes tierces sont refusés**.
 
 Une **vidéo de vérification du poids** doit être transmise avant le début du championnat (protocole détaillé en **Annexe B**).
@@ -112,32 +122,59 @@ La liste des étapes est définie en **Annexe C** et dans le **Roadbook officiel
 
 ---
 
+## 9 bis. Règle du Joker – Championnat en 5 étapes
+
+Dans le cadre du championnat disputé en **cinq (5) étapes**, chaque coureur dispose d’un **joker unique**.
+
+### Principe
+
+Le joker permet à un coureur manquant une étape d’être crédité, pour cette étape, du **meilleur temps réalisé dans sa catégorie**, **hors bonus de temps** éventuellement attribués lors des segments intermédiaires.
+
+Le joker est **automatiquement consommé** lors de la **première étape manquée**.
+
+### Étapes manquées supplémentaires
+
+À compter de la **deuxième étape manquée**, le coureur se verra attribuer le **dernier temps de sa catégorie** pour chaque étape non disputée.
+
+### Coureurs ayant disputé toutes les étapes
+
+Les coureurs ayant disputé l’ensemble des cinq étapes verront leur **moins bon résultat** remplacé par le **meilleur temps de la catégorie** pour l’épreuve concernée, **hors bonus intermédiaires**.
+
+### Exception – Contre-la-montre individuel (CLM)
+
+⚠️ Le joker **ne s’applique pas** à l’épreuve de **contre-la-montre individuel**, laquelle est **obligatoire**.
+
+Toute absence à cette étape entraîne l’attribution du **dernier temps de la catégorie**, **sans possibilité de joker**.
+
+### Objectif
+
+Cette règle vise à :
+- préserver l’équité sportive,
+- valoriser la participation complète au championnat,
+- offrir une souplesse limitée sans altérer la compétitivité du classement général.
+
+---
+
 ## 10. Diffusion en direct
 
-Les courses du championnat seront **diffusées et commentées en direct** sur la plateforme **Twitch**.
+Les courses du championnat seront **diffusées et commentées en direct** sur **Twitch**.
 
-La diffusion sera réalisée sur la **chaîne Twitch officielle de l’organisation** : 👉 *Lien à compléter*
+La diffusion sera réalisée sur la **chaîne Twitch officielle de l’organisation**.
 
-En participant au championnat, les coureurs acceptent que :
-- leur **pseudonyme Zwift**,
-- leurs **performances**
-
-puissent apparaître lors de cette diffusion.
+En participant, les coureurs acceptent que leur **pseudonyme Zwift** et leurs **performances** apparaissent lors de cette diffusion.
 
 ---
 
 ## 11. Données, images et acceptation
 
-La participation aux Jeux de la Francophonie implique l’acceptation par chaque participant que :
+La participation implique l’acceptation que :
 
-- les **données nécessaires** à l’organisation, au classement et à l’arbitrage sportif (performances, fichiers d’activité, éléments de contrôle) puissent être collectées et traitées par l’organisateur;
-- les **images, captures d’écran et vidéos** des courses puissent être utilisées et diffusées sur les supports officiels de la compétition (site internet, réseaux sociaux, Discord, plateformes de diffusion).
+- les **données nécessaires** à l’organisation, au classement et à l’arbitrage puissent être collectées ;
+- les **images, captures et vidéos** puissent être utilisées sur les supports officiels.
 
-Ces données et contenus sont utilisés **exclusivement dans le cadre de la compétition**.
+Les données sensibles sont traitées de manière **confidentielle** et **supprimées à l’issue de la compétition**.
 
-Les **données sensibles** (notamment les vidéos de contrôle) sont traitées de manière **confidentielle** et **supprimées à l’issue de la compétition**.
-
-La participation au championnat vaut **acceptation pleine et entière** du présent règlement et des décisions prises par l’organisation.
+La participation vaut **acceptation pleine et entière** du présent règlement.
 
 ---
 
