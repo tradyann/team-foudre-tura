@@ -25,7 +25,7 @@ export class MyCategory {
   category = signal<Category | null>(null);
   pen = signal<Pen | null>(null);
 
-  isOpen = signal(false);
+  isOpen = signal(true);
 
   constructor() {
 
