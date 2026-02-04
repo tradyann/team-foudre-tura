@@ -17,130 +17,185 @@
             <a class="text-primary font-medium" [routerLink]="['/zw/my-category']">"Ma catégorie"</a>
           </div>
         </div>
+
+
+        <div class="card bg-base-200 card-border card-sm overflow-hidden shadow-lg mb-5">
+          <div class="card-body gap-4">
+            <span class="font-bold text-error">Important</span>
+            Vous devez fournir : 
+            <ul>
+              <li>- une photo de votre home trainer</li>
+              <li>- une vidéo de vérification du poids si vous n'avez pas fourni de lien lors de l'inscription</li>
+            </ul>
+            <a class="text-primary font-medium" [routerLink]="['/user/file-upload']">"Téléverser un fichier"</a>
+          </div>
+        </div>
+
+        <!-- Logout -->
+        <div class="mt-10 border-t border-base-content/10 pt-6 text-center">
+          <p class="text-xs text-base-content/60 leading-relaxed">
+            Cette identification est stockée localement sur cet appareil.
+          </p>
+
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm mt-4"
+            (click)="logout()"
+          >
+            Se déconnecter
+          </button>
+        </div>
+      } 
+
+      @else {
+        <!-- Inscription -->
+        <section>
+            <!-- Title -->
+            <h1 class="text-center text-2xl font-bold">
+              Identification – Procédure simple
+            </h1>
+
+            <p class="mt-4 text-center text-sm text-base-content/70 leading-relaxed">
+              Cette procédure permet de vous <strong>déclarer comme participant</strong> à la compétition.<br>
+              Aucun compte n’est créé.
+            </p>
+
+            <p class="mt-2 text-center text-sm text-base-content/70 leading-relaxed">
+              Votre <strong>Zwift ID</strong> et une <strong>vidéo de vérification</strong> sont requis.
+            </p>
+
+            <!-- Form -->
+            <form
+              class="mt-8 space-y-6"
+              [formGroup]="userForm"
+              (ngSubmit)="onSubmitForm()"
+            >
+
+              <!-- Zwift ID -->
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend">
+                  Zwift ID
+                </legend>
+
+                <label class="input input-bordered w-full flex items-center gap-2">
+                  <span-lucide [img]="LinkIcon" class="text-base-content/60 size-5"></span-lucide>
+
+                  <input
+                    type="number"
+                    inputmode="numeric"
+                    placeholder="Ex : 1234567"
+                    class="grow"
+                    formControlName="zwiftId"
+                  />
+                </label>
+
+                <p class="mt-1 text-sm text-error"
+                  *ngIf="zwiftId?.errors?.['required'] && zwiftId?.touched">
+                  Le Zwift ID est obligatoire.
+                </p>
+
+                <p class="mt-1 text-sm text-error"
+                  *ngIf="zwiftId?.errors?.['min'] && zwiftId?.touched">
+                  Zwift ID invalide.
+                </p>
+              </fieldset>
+
+              <!-- Prénom -->
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend">Prénom</legend>
+
+                <label class="input input-bordered w-full">
+                  <input
+                    type="text"
+                    placeholder="Votre vrai prénom"
+                    class="grow"
+                    formControlName="firstname"
+                  />
+                </label>
+
+                <p class="mt-1 text-sm text-error"
+                  *ngIf="firstname?.errors?.['required'] && firstname?.touched">
+                  Le prénom est obligatoire.
+                </p>
+              </fieldset>
+
+              <!-- Nom -->
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend">Nom</legend>
+
+                <label class="input input-bordered w-full">
+                  <input
+                    type="text"
+                    placeholder="Votre vrai nom"
+                    class="grow"
+                    formControlName="lastname"
+                  />
+                </label>
+
+                <p class="mt-1 text-sm text-error"
+                  *ngIf="lastname?.errors?.['required'] && lastname?.touched">
+                  Le nom est obligatoire.
+                </p>
+              </fieldset>
+
+              <!-- Email -->
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend">Email</legend>
+
+                <label class="input input-bordered w-full flex items-center gap-2">
+                  <span-lucide [img]="MailIcon" class="text-base-content/60 size-5"></span-lucide>
+
+                  <input
+                    type="email"
+                    placeholder="email@exemple.com"
+                    class="grow"
+                    formControlName="email"
+                  />
+                </label>
+
+                <p class="mt-1 text-sm text-error"
+                  *ngIf="email?.errors?.['required'] && email?.touched">
+                  L’email est obligatoire.
+                </p>
+
+                <p class="mt-1 text-sm text-error"
+                  *ngIf="email?.errors?.['email'] && email?.touched">
+                  Email invalide.
+                </p>
+              </fieldset>
+
+              <!-- Video URL -->
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend">
+                  Si vous avez déjà un lien de vidéo de vérification du poids, indiquez l'URL
+                </legend>
+
+                <label class="input input-bordered w-full flex items-center gap-2">
+                  <span-lucide [img]="MailIcon" class="text-base-content/60 size-5"></span-lucide>
+
+                  <input
+                    type="url"
+                    placeholder="Lien YouTube / Drive / autre"
+                    class="grow"
+                    formControlName="urlVideo"
+                  />
+                </label>
+              </fieldset>
+
+              <!-- Submit -->
+              <button
+                type="submit"
+                class="btn btn-primary w-full"
+                [class.loading]="waiting()"
+                [disabled]="waiting()"
+              >
+                Valider mon inscription
+              </button>
+
+            </form>
+        </section>
       }
-
-      <!-- Title -->
-      <h1 class="text-center text-2xl font-bold">
-        Identification – Procédure simple
-      </h1>
-
-      <p class="mt-4 text-center text-sm text-base-content/70 leading-relaxed">
-        Cette procédure permet de vous <strong>déclarer comme participant</strong> à la compétition.<br>
-        Aucun compte n’est créé.
-      </p>
-
-      <p class="mt-2 text-center text-sm text-base-content/70 leading-relaxed">
-        Votre <strong>Zwift ID</strong> et une <strong>vidéo de vérification</strong> sont requis.
-      </p>
-
-      <!-- Form -->
-      <form
-        class="mt-8 space-y-6"
-        [formGroup]="userForm"
-        (ngSubmit)="onSubmitForm()"
-      >
-
-        <!-- Zwift ID -->
-        <fieldset class="fieldset">
-          <legend class="fieldset-legend">
-            Zwift ID
-          </legend>
-
-          <label class="input input-bordered w-full flex items-center gap-2">
-            <span-lucide
-              [img]="LinkIcon"
-              class="text-base-content/60 size-5">
-            </span-lucide>
-
-            <input
-              type="number"
-              inputmode="numeric"
-              placeholder="Ex : 1234567"
-              class="grow"
-              formControlName="zwiftId"
-            />
-          </label>
-
-          <p
-            class="mt-1 text-sm text-error"
-            *ngIf="zwiftId?.errors?.['required'] && zwiftId?.touched"
-          >
-            Le Zwift ID est obligatoire.
-          </p>
-
-          <p
-            class="mt-1 text-sm text-error"
-            *ngIf="zwiftId?.errors?.['min'] && zwiftId?.touched"
-          >
-            Zwift ID invalide.
-          </p>
-        </fieldset>
-
-        <!-- Video URL -->
-        <fieldset class="fieldset">
-          <legend class="fieldset-legend">
-            Lien de la vidéo de vérification.
-          </legend>
-
-          <label class="input input-bordered w-full flex items-center gap-2">
-            <span-lucide
-              [img]="MailIcon"
-              class="text-base-content/60 size-5">
-            </span-lucide>
-
-            <input
-              type="url"
-              placeholder="Lien YouTube / Drive / autre"
-              class="grow"
-              formControlName="urlVideo"
-            />
-          </label>
-
-          <p
-            class="mt-1 text-sm text-error"
-            *ngIf="urlVideo?.errors?.['required'] && urlVideo?.touched"
-          >
-            La vidéo est obligatoire pour valider l’inscription.
-            <br> 
-            Si impossibilité ou questions, contactez par email contact@teamfoudre.org ou rejoignez notre Discord.
-          </p>
-        </fieldset>
-
-        <!-- Submit -->
-        <button
-          type="submit"
-          class="btn btn-primary w-full"
-          [class.loading]="waiting()"
-          [disabled]="waiting()"
-        >
-          Valider mon inscription
-        </button>
-
-      </form>
-
-      <!-- Logout / reset -->
-      <div class="mt-10 border-t border-base-content/10 pt-6 text-center">
-        <p class="text-xs text-base-content/60 leading-relaxed">
-          Cette identification est stockée localement sur cet appareil.<br>
-          Si vous vous déconnectez, vous devrez à nouveau remplir ce formulaire
-          pour vous enregistrer à la compétition.
-        </p>
-
-        <button
-          type="button"
-          class="btn btn-ghost btn-sm mt-4"
-          (click)="logout()"
-        >
-          Se déconnecter
-        </button>
-      </div>
-
     </div>
-  </div>
-
-  <!-- Right panel (optional / décoratif) -->
-  <div class="hidden lg:block lg:col-span-7 xl:col-span-8 2xl:col-span-9 bg-base-200">
-    <!-- Visuel / infos compétition si tu veux -->
   </div>
 
 </div>

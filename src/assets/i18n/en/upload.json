@@ -1,0 +1,49 @@
+{
+  "UPLOAD": {
+    "TITLE": "Upload a file",
+    "INTRO": "Select a type, pick a file, then click <b>Start upload</b>.",
+
+    "KIND": {
+      "VIDEO": "Video",
+      "FIT": "FIT",
+      "IMAGE": "Image",
+      "LOG": "Log"
+    },
+
+    "MAX_LABEL": "Max size: {{size}}",
+
+    "PICK": {
+      "LABEL": "Pick a file ({{kind}})",
+      "HELP": "We will upload securely to our storage when you click <b>Start upload</b>."
+    },
+
+    "FILE": {
+      "BYTES": "{{size}} bytes",
+      "TYPE_FALLBACK": "application/octet-stream",
+      "CLEAR": "Clear"
+    },
+
+    "ACTION": {
+      "START": "Start upload"
+    },
+
+    "STATUS": {
+      "NO_FILE": "No file selected.",
+      "READY": "Ready to upload.",
+      "UPLOADING": "Uploading… please keep this tab open."
+    },
+
+    "PROGRESS": {
+      "PERCENT": "{{value}}%"
+    },
+
+    "SUCCESS": {
+      "TITLE": "Upload complete.",
+      "KEY": "Key: {{key}}"
+    },
+
+    "ERROR": {
+      "TITLE": "Upload failed"
+    }
+  }
+}

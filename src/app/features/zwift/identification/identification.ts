@@ -47,13 +47,28 @@ export class Identification {
 
   initForm(): void {
     this.userForm = this.formBuilder.group({
-      urlVideo: new FormControl(null, [Validators.required]),
+      urlVideo: new FormControl(null),
+      firstname: new FormControl(null, [Validators.required]),
+      lastname: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
       zwiftId: new FormControl(null, [Validators.required, Validators.min(1)])
     });
   }
 
   get urlVideo(): AbstractControl | null {
     return this.userForm.get('urlVideo');
+  }
+
+  get firstname(): AbstractControl | null {
+    return this.userForm.get('firstname');
+  }
+
+  get lastname(): AbstractControl | null {
+    return this.userForm.get('lastname');
+  }
+
+  get email(): AbstractControl | null {
+    return this.userForm.get('email');
   }
 
   get zwiftId(): AbstractControl | null {
@@ -67,13 +82,22 @@ export class Identification {
 
       const urlVideo = this.urlVideo?.value;
       const ZwiftId = +this.zwiftId?.value;
+      const FirstName = this.firstname?.value;
+      const LastName = this.lastname?.value;
+      const Email = this.email?.value;
 
       const payload: {
         zwiftId: number;
+        firstName: string;
+        lastName: string;
+        email: string;
         urlFile: string;
         controlType: 'VIDEO' | 'FIT' | 'LOG';
       } = {
         zwiftId: ZwiftId,
+        firstName : FirstName,
+        lastName: LastName,
+        email: Email,
         urlFile: urlVideo,
         controlType: 'VIDEO'
       };

@@ -1,12 +1,13 @@
 import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UploadService } from '../../../../shared/services/upload.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 type Kind = 'video' | 'fit' | 'image' | 'log';
 
 @Component({
   selector: 'app-file-upload',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './file-upload.html',
   styleUrl: './file-upload.css'
 })

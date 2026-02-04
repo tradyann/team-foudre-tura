@@ -1,0 +1,49 @@
+{
+  "UPLOAD": {
+    "TITLE": "Téléverser un fichier",
+    "INTRO": "Sélectionnez un type, choisissez un fichier, puis cliquez sur <b>Démarrer l’upload</b>.",
+
+    "KIND": {
+      "VIDEO": "Vidéo",
+      "FIT": "FIT",
+      "IMAGE": "Image",
+      "LOG": "Log"
+    },
+
+    "MAX_LABEL": "Taille max : {{size}}",
+
+    "PICK": {
+      "LABEL": "Choisir un fichier ({{kind}})",
+      "HELP": "Le fichier sera envoyé de manière sécurisée lorsque vous cliquerez sur <b>Démarrer l’upload</b>."
+    },
+
+    "FILE": {
+      "BYTES": "{{size}} octets",
+      "TYPE_FALLBACK": "application/octet-stream",
+      "CLEAR": "Effacer"
+    },
+
+    "ACTION": {
+      "START": "Démarrer l’upload"
+    },
+
+    "STATUS": {
+      "NO_FILE": "Aucun fichier sélectionné.",
+      "READY": "Prêt à être envoyé.",
+      "UPLOADING": "Envoi en cours… merci de garder cet onglet ouvert."
+    },
+
+    "PROGRESS": {
+      "PERCENT": "{{value}}%"
+    },
+
+    "SUCCESS": {
+      "TITLE": "Upload terminé.",
+      "KEY": "Clé : {{key}}"
+    },
+
+    "ERROR": {
+      "TITLE": "Échec de l’upload"
+    }
+  }
+}

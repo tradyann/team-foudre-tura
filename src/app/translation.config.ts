@@ -10,7 +10,8 @@ export function createTranslateLoader(http: HttpClient) {
         '/assets/i18n',
         '.json',
         [
-            'common'
+            'common',
+            'upload'
         ]
     );
 }
