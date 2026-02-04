@@ -26,6 +26,7 @@ export class MyCategory {
   pen = signal<Pen | null>(null);
 
   isOpen = signal(true);
+  waitCategory = signal(false);
 
   constructor() {
 
@@ -71,7 +72,7 @@ export class MyCategory {
 
           this.loading.set(false);
         } else {
-          this.error.set('Données indisponibles pour le moment.');
+          this.waitCategory.set(true);
           this.loading.set(false);
         }
       },

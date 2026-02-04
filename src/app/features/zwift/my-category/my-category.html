@@ -46,7 +46,22 @@
             Chargement de votre catégorie…
           </p>
         </div>
+      }
 
+      <!-- ================================================= -->
+      <!-- CAS attente update datas -->
+      <!-- ================================================= -->
+      @else if (waitCategory()) {
+        <div class="flex flex-col items-center gap-4">
+          <p class="text-sm text-base-content/60">
+            La récupération de votre catégorie est en cours de traitement.
+            <br>
+            Cela peut prendre plusieurs minutes.
+            <br>
+            Merci de patienter.
+          </p>
+          <p class="text-base-content">En cours de traitement <span class="loading loading-infinity loading-xl"></span></p>
+        </div>
       }
 
       <!-- ================================================= -->
