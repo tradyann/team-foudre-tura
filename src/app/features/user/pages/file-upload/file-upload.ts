@@ -106,7 +106,7 @@ export class FileUpload {
       }
 
       // 1) presign-v2
-      const ps = await this.up.presignV2(file, kind, meta);
+      const ps = await this.up.presignV2(file, kind, meta, zwiftId.toString());
       this.maxBytes.set(ps.maxBytes);
       this.requiredHeaders.set(ps.requiredHeaders);
 

@@ -12,24 +12,26 @@ export class UploadService {
     async presignV2(
         file: File,
         kind: 'video' | 'fit' | 'image' | 'log',
-        meta?: Record<string, string>
+        meta?: Record<string, string>,
+        clientId?: string
     ): Promise<{ key: string; url: string; requiredHeaders: Record<string, string>; maxBytes: number }> {
         const body = {
-        fileName: file.name,
-        contentType: file.type || 'application/octet-stream',
-        kind,
-        meta
+            fileName: file.name,
+            contentType: file.type || 'application/octet-stream',
+            kind,
+            meta,
+            clientId
         };
 
         const url = `${this.baseUrl.replace(/\/$/, '')}/api/storage/presign-v2`;
 
         return firstValueFrom(
-        this.http.post<{
-            key: string;
-            url: string;
-            requiredHeaders: Record<string, string>;
-            maxBytes: number;
-        }>(url, body)
+            this.http.post<{
+                key: string;
+                url: string;
+                requiredHeaders: Record<string, string>;
+                maxBytes: number;
+            }>(url, body)
         );
     }
 
