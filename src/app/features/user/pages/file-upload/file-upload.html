@@ -71,11 +71,11 @@
         <!-- Controls -->
         <div class="mt-3 flex flex-wrap items-center gap-2">
             <button
-            class="btn btn-primary"
-            (click)="startUpload(fileInput)"
-            [disabled]="!selectedFile() || uploading()">
-            @if (uploading()) { <span class="loading loading-spinner"></span> }
-            <span>Start upload</span>
+                class="btn btn-primary"
+                (click)="startUpload(fileInput)"
+                [disabled]="!selectedFile() || uploading()">
+                @if (uploading()) { <span class="loading loading-spinner"></span> }
+                <span>Start upload</span>
             </button>
         </div>
 

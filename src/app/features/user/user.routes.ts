@@ -12,7 +12,7 @@ export const USER_ROUTES: Routes = [
     },
     {
         path: 'file-upload',
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         loadComponent: () =>
         import('./pages/file-upload/file-upload').then(m => m.FileUpload),
     },

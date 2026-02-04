@@ -23,6 +23,16 @@ export class FileUpload {
   maxBytes = signal<number | null>(null);      // fourni par presign-v2
   requiredHeaders = signal<Record<string,string> | null>(null);
 
+  // identification
+  zwiftId = signal<number | null>(null);
+
+  ngOnInit(): void {
+    const storedZwiftId = localStorage.getItem('zwiftIdLinked');
+    if (storedZwiftId) {
+      this.zwiftId.set(+storedZwiftId);
+    }
+  }
+
   // accept mime selon kind
   accept = computed(() => {
     switch (this.kind()) {
@@ -61,6 +71,13 @@ export class FileUpload {
   }
 
   async startUpload(inputEl: HTMLInputElement) {
+
+    const zwiftId = this.zwiftId();
+    if(!zwiftId){
+      this.error.set('You must link your zwiftId before.');
+      return;
+    }
+
     const file = this.selectedFile();
     const kind = this.kind();
     if (!file) { this.error.set('No file selected.'); return; }
