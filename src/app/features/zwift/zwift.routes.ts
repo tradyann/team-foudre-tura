@@ -32,5 +32,10 @@ export const ZWIFT_ROUTES: Routes = [
         path: 'my-category',
         loadComponent: () =>
         import('./my-category/my-category').then(m => m.MyCategory)
-    }
+    },
+    {
+        path: 'registered',
+        loadComponent: () =>
+        import('./registered/registered').then(m => m.Registered)
+    },
 ];

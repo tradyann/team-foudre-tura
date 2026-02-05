@@ -82,4 +82,8 @@ export class ZwiftService {
       payload
     );
   }
+
+  getCompetitionRegistered(competitionId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}api/zwift/competition-registered?competitionId=${competitionId}`);
+  }
 }
