@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { ZwiftService } from '../zwift.service';
 import { CommonModule } from '@angular/common';
+import { ZwiftLinkState } from '../../../services/zwift-link.state';
 
 type Category = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 type Pen = 'A' | 'B' | 'C' | 'D';
@@ -16,6 +17,7 @@ export class MyCategory {
 
   private router = inject(Router);
   private zwiftService = inject(ZwiftService);
+  zwiftLinkState = inject(ZwiftLinkState);
 
   zwiftId = signal<number | null>(null);
   loading = signal(false);
@@ -29,30 +31,9 @@ export class MyCategory {
   waitCategory = signal(false);
 
   constructor() {
-
-    // =============================
-    // MOCK
-    // =============================
-    // const mockStored = 123456;
-    // if (mockStored) {
-    //   const score = 1825;
-
-    //   this.zwiftId.set(mockStored);
-    //   this.data.set({ zwiftId: mockStored, vEloScore: score });
-
-    //   const cat = this.computeCategory(score);
-    //   this.category.set(cat);
-    //   this.pen.set(this.computePen(cat));
-
-    //   return;
-    // }
-
-    // =============================
-    // NORMAL FLOW
-    // =============================
-    const stored = localStorage.getItem('zwiftIdLinked');
-    if (stored) {
-      this.zwiftId.set(+stored);
+    const zwiftId = this.zwiftLinkState.zwiftId();
+    if (zwiftId) {
+      this.zwiftId.set(zwiftId);
       this.loadData();
     }
   }

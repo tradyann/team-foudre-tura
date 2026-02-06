@@ -1,0 +1,109 @@
+<div class="mb-6">
+  <a
+    [routerLink]="['/game/competition', competitionId()]"
+    class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest hover:opacity-80 transition"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+    Retour
+  </a>
+</div>
+
+<div class="w-full text-base-content">
+  @if (loading()) {
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="skeleton h-36 w-full rounded-lg"></div>
+      <div class="skeleton h-36 w-full rounded-lg"></div>
+      <div class="skeleton h-36 w-full rounded-lg"></div>
+    </div>
+
+  } @else if (error()) {
+
+    <div class="alert alert-error">
+      <span class="font-semibold">{{ error() }}</span>
+    </div>
+
+  } 
+  
+  @else if (!isZwiftLinked()) {
+
+    <div class="alert alert-info border border-warning/40">
+        <span class="font-semibold">
+        Vous devez être connecté à votre compte pour accéder au racepass.
+        </span>
+
+        <a [routerLink]="['/zw/new-login']" class="btn btn-neutral text-white btn-sm ml-auto">
+        Login
+        </a>
+    </div>
+
+    }
+    
+  @else {
+
+    <!-- HEADER -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-black uppercase tracking-tight italic">
+        {{ datas()?.[0]?.routeName }}
+      </h2>
+      <span class="text-xs text-primary font-semibold uppercase tracking-widest">
+        Racepass
+      </span>
+    </div>
+
+    <!-- SLOTS -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (slot of datas(); track slot.slotId) {
+
+        <div class="card bg-base-200 border border-base-300 hover:border-primary/40 transition">
+
+          <div class="card-body p-5 gap-4">
+
+            <!-- SLOT HEADER -->
+            <div class="flex justify-between items-center">
+              <span class="text-sm font-bold uppercase">
+                Slot {{ slot.slotNumber }}
+              </span>
+
+              <span class="text-sm font-semibold text-primary">
+                {{ slot.slotStartTime | date:'HH:mm' }}
+              </span>
+            </div>
+
+            <!-- META -->
+            <div class="text-xs space-y-1 opacity-70">
+              <div class="flex justify-between">
+                <span>Date</span>
+                <span class="font-medium">
+                  {{ slot.slotStartTime | date:'EEEE dd MMMM' }}
+                </span>
+              </div>
+
+              <div class="flex justify-between">
+                <span>Zwift Event</span>
+                <span class="font-mono text-primary">
+                  {{ slot.eventId }}
+                </span>
+              </div>
+            </div>
+
+            <!-- ACTION -->
+            <div class="pt-2">
+              <a
+                class="btn btn-primary btn-sm btn-block"
+                target="_blank"
+                rel="noopener"
+                [href]="'https://www.zwift.com/events/view/' + slot.eventId + '?eventSecret=' + slot.eventSecret"
+              >
+                Join race
+              </a>
+            </div>
+
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

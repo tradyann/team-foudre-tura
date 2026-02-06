@@ -43,4 +43,9 @@ export const ZWIFT_ROUTES: Routes = [
         loadComponent: () =>
         import('./new-login/new-login').then(m => m.NewLogin)
     },
+    {
+        path: 'racepass/:competitionId/:stageId',
+        loadComponent: () =>
+        import('./racepass/racepass').then(m => m.Racepass)
+    },
 ];

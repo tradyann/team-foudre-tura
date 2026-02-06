@@ -52,60 +52,85 @@
         <div class="overflow-x-auto">
             <table class="table table-zebra w-full border-t border-base-300">
                 <thead>
-                    <tr class="text-xs uppercase opacity-50 tracking-widest">
-                        <th>Stage</th>
-                        <th>Date</th>
-                        <th>Format</th>
-                        <th>Type</th>
-                        <th>Route</th>
-                        <th class="text-right">Action</th>
-                    </tr>
+                <tr class="text-xs uppercase opacity-50 tracking-widest">
+                    <th>Stage</th>
+                    <th>Route</th>
+                    <th>Race</th>
+                    <th class="hidden sm:table-cell">Date</th>
+                    <th class="text-right">Action</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @for (t of results(); track t.stageId) {
-                        <tr class="hover:bg-base-200/50 transition-colors">
-                            <td class="font-black text-lg opacity-40 italic">{{ t.stageNumber }}</td>
-                            <td class="font-medium whitespace-nowrap">{{ t.stageDate | date: 'EEE, MMM d' }}</td>
-                            <td>
-                                <div class="flex flex-wrap gap-1 mb-1">
-                                    <!-- @for (d of t.divisionStructure; track d.id) {
-                                        @if(d.cat !== 'E') {
-                                            <span class="px-1 rounded text-[10px] font-bold text-white shadow-sm"
-                                            [ngClass]="{
-                                                'bg-red-600': d.cat === 'A',
-                                                'bg-green-500': d.cat === 'B',
-                                                'bg-cyan-500': d.cat === 'C',
-                                                'bg-yellow-400': d.cat === 'D',
-                                                'bg-pink-900': d.cat === 'E'
-                                            }">{{ d.cat }}</span>
-                                        }
-                                    } -->
-                                </div>
-                                <div class="text-[11px] font-bold opacity-70 uppercase">{{ t.roadbook.raceFormatName }} </div>
-                            </td>
-                            <td>{{ t.raceTypeName }} </td>
-                            <td>
-                                <div class="font-bold text-base-content">{{ t.roadbook.routeName }}</div>
-                                <div class="text-[10px] opacity-60 flex gap-2 font-bold uppercase">
-                                    @if (t.roadbook.laps) { 
-                                        <span>{{ t.roadbook.laps }} {{ t.roadbook.laps > 1 ? 'LAPS' : 'LAP' }}</span> 
-                                    }
-                                    @if (t.roadbook.distanceInMeters) { <span>{{ t.roadbook.distanceInMeters / 1000 }} KM</span> }
-                                    @if (t.roadbook.durationInSeconds) { <span>{{ t.roadbook.durationInSeconds / 60 }} MIN</span> }
-                                </div>
-                                <a [routerLink]="['/game/roadbook', t.roadbook.roadbookId]" 
-                                   class="text-[10px] text-primary hover:underline font-bold mt-1 inline-block">
-                                   ROADBOOK →
-                                </a>
-                            </td>
-                            <td class="text-right">
-                                <button class="btn btn-primary btn-xs sm:btn-sm" (click)="goToResults(t.stageNumber)">
-                                    Results
-                                </button>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
+  @for (t of results(); track t.stageId) {
+    <tr class="hover:bg-base-200/50 transition-colors align-top">
+      
+      <!-- STAGE -->
+      <td class="font-black text-lg opacity-40 italic whitespace-nowrap">
+        {{ t.stageNumber }}
+      </td>
+
+      <!-- ROUTE (colonne 2, centrale, mobile-first) -->
+      <td>
+        <div class="font-bold leading-tight">
+          {{ t.roadbook.routeName }}
+        </div>
+
+        <div class="text-[10px] opacity-60 flex flex-wrap gap-2 font-bold uppercase mt-1">
+          @if (t.roadbook.laps) {
+            <span>{{ t.roadbook.laps }} {{ t.roadbook.laps > 1 ? 'LAPS' : 'LAP' }}</span>
+          }
+          @if (t.roadbook.distanceInMeters) {
+            <span>{{ t.roadbook.distanceInMeters / 1000 }} KM</span>
+          }
+          @if (t.roadbook.durationInSeconds) {
+            <span>{{ t.roadbook.durationInSeconds / 60 }} MIN</span>
+          }
+        </div>
+
+        <a
+          [routerLink]="['/game/roadbook', t.roadbook.roadbookId]"
+          class="text-[10px] text-primary hover:underline font-bold inline-block mt-1"
+        >
+          ROADBOOK →
+        </a>
+      </td>
+
+      <!-- FORMAT + TYPE empilés -->
+      <td class="text-[11px] font-bold uppercase space-y-1">
+        <div class="opacity-80">
+          {{  t.raceTypeName }}
+        </div>
+        <div class="opacity-50 text-[10px]">
+          {{ t.roadbook.raceFormatName }}
+        </div>
+      </td>
+
+      <!-- DATE (masquée sur mobile) -->
+      <td class="hidden sm:table-cell whitespace-nowrap font-medium">
+        {{ t.stageDate | date: 'EEE, MMM d' }}
+      </td>
+
+      <!-- ACTION -->
+      <td class="text-right">
+        <button
+          class="btn btn-primary btn-xs sm:btn-sm"
+          (click)="goToResults(t.stageNumber)"
+        >
+          Results
+        </button>
+        <div>
+          <a
+            [routerLink]="['/zw/racepass', competition()!.competitionId, t.stageId]"
+            class="text-[14px] text-primary hover:underline font-bold inline-block mt-3"
+          >
+            RACEPASS >
+          </a>
+        </div>
+      </td>
+
+    </tr>
+  }
+</tbody>
             </table>
         </div>
         

@@ -164,6 +164,28 @@
                 </p>
               </fieldset>
 
+              <!-- HOME TRAINER -->
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend">
+                  Indiquez le modèle de votre Home Trainer
+                </legend>
+
+                <label class="input input-bordered w-full flex items-center gap-2">
+                  <span-lucide [img]="BikeIcon" class="text-base-content/60 size-5"></span-lucide>
+
+                  <input
+                    type="text"
+                    placeholder="Modèle Home Trainer"
+                    class="grow"
+                    formControlName="homeTrainer"
+                  />
+                </label>
+                <p class="mt-1 text-sm text-error"
+                  *ngIf="homeTrainer?.errors?.['required'] && homeTrainer?.touched">
+                  Le type de Home Trainer est obligatoire.
+                </p>
+              </fieldset>
+
               <!-- Video URL -->
               <fieldset class="fieldset">
                 <legend class="fieldset-legend">

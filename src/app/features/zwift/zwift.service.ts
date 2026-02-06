@@ -96,4 +96,9 @@ export class ZwiftService {
       payload
     );
   }
+
+  getRacepass(competitionId: number, stageId: number): Observable<any> {
+    return this.http.get<any>(
+      `${this.baseUrl}api/zwift/competition-racepass?competitionId=${competitionId}&stageId=${stageId}`);
+  }
 }

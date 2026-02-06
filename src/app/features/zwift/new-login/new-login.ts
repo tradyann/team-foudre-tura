@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { Router, RouterLink } from '@angular/router';
 import { ToastService } from '../../../shared/toast/toast.service';
+import { ZwiftLinkState } from '../../../services/zwift-link.state';
 
 @Component({
   selector: 'app-new-login',
@@ -17,6 +18,7 @@ export class NewLogin {
   userForm!: FormGroup;
   router = inject(Router);
   zwiftService = inject(ZwiftService);
+  zwiftLinkState = inject(ZwiftLinkState);
 
   waiting = signal(false);
   linked = signal(false);
@@ -34,9 +36,9 @@ constructor(
   ) {}
 
   ngOnInit(): void {
-    const storedZwiftId = localStorage.getItem('zwiftIdLinked');
-    if (storedZwiftId) {
-      this.alreadyLinked.set(+storedZwiftId);
+    const zwiftId = this.zwiftLinkState.zwiftId();
+    if (zwiftId) {
+      this.alreadyLinked.set(zwiftId);
       this.linked.set(true);
     }
     this.initForm();
@@ -110,10 +112,7 @@ constructor(
           this.toast.show('Account linked.', 'success');
 
           // Stockage local
-          localStorage.setItem(
-            'zwiftIdLinked',
-            payload.zwiftId.toString()
-          );
+          this.zwiftLinkState.setZwiftId(payload.zwiftId);
 
           if (res.validated) {
             localStorage.setItem('isValidated', 'true');
@@ -136,7 +135,8 @@ constructor(
   }
 
   logout(): void {
-    localStorage.removeItem('zwiftIdLinked');
+    this.zwiftLinkState.clear();
+    localStorage.removeItem('isValidated');
     this.router.navigate(['/']);
   }
 

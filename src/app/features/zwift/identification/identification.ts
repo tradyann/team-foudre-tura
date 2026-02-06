@@ -3,9 +3,10 @@ import { Component, inject, signal } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { LucideAngularModule, MailIcon, KeyRoundIcon, UserPlusIcon, LinkIcon } from 'lucide-angular';
+import { LucideAngularModule, MailIcon, KeyRoundIcon, UserPlusIcon, LinkIcon, BikeIcon } from 'lucide-angular';
 import { ToastService } from '../../../shared/toast/toast.service';
 import { ZwiftService } from '../zwift.service';
+import { ZwiftLinkState } from '../../../services/zwift-link.state';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class Identification {
 
   router = inject(Router);
   zwiftService = inject(ZwiftService);
+  zwiftLinkState = inject(ZwiftLinkState);
 
   waiting = signal(false);
   linked = signal(false);
@@ -29,6 +31,7 @@ export class Identification {
   KeyRoundIcon = KeyRoundIcon;
   UserPlusIcon = UserPlusIcon;
   LinkIcon = LinkIcon;
+  BikeIcon = BikeIcon;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,11 +39,13 @@ export class Identification {
   ) {}
 
   ngOnInit(): void {
-    const storedZwiftId = localStorage.getItem('zwiftIdLinked');
-    if (storedZwiftId) {
-      this.alreadyLinked.set(+storedZwiftId);
+    const zwiftId = this.zwiftLinkState.zwiftId();
+
+    if (zwiftId) {
+      this.alreadyLinked.set(zwiftId);
       this.linked.set(true);
     }
+
     this.initForm();
   }
 
@@ -50,7 +55,8 @@ export class Identification {
       firstname: new FormControl(null, [Validators.required]),
       lastname: new FormControl(null, [Validators.required]),
       email: new FormControl(null, [Validators.required, Validators.email]),
-      zwiftId: new FormControl(null, [Validators.required, Validators.min(1)])
+      zwiftId: new FormControl(null, [Validators.required, Validators.min(1)]),
+      homeTrainer: new FormControl(null, [Validators.required]),
     });
   }
 
@@ -74,6 +80,10 @@ export class Identification {
     return this.userForm.get('zwiftId');
   }
 
+  get homeTrainer(): AbstractControl | null {
+    return this.userForm.get('homeTrainer');
+  }
+
   onSubmitForm(): void {
     this.userForm.markAllAsTouched();
     if (this.userForm.valid) {
@@ -84,6 +94,7 @@ export class Identification {
       const FirstName = this.firstname?.value;
       const LastName = this.lastname?.value;
       const Email = this.email?.value;
+      const HomeTrainer = this.homeTrainer?.value;
 
       const payload: {
         zwiftId: number;
@@ -91,6 +102,7 @@ export class Identification {
         lastName: string;
         email: string;
         urlFile: string;
+        homeTrainer: string;
         controlType: 'VIDEO' | 'FIT' | 'LOG';
       } = {
         zwiftId: ZwiftId,
@@ -98,6 +110,7 @@ export class Identification {
         lastName: LastName,
         email: Email,
         urlFile: urlVideo,
+        homeTrainer: HomeTrainer,
         controlType: 'VIDEO'
       };
 
@@ -117,7 +130,7 @@ export class Identification {
             this.toast.show('Account linked.', 'success');
 
             // Stockage local
-            localStorage.setItem('zwiftIdLinked', ZwiftId.toString());
+            this.zwiftLinkState.setZwiftId(ZwiftId);
 
             // ⚠️ IMPORTANT :
             // un ajout ≠ validation du contrôle
@@ -164,7 +177,7 @@ export class Identification {
   }
 
   logout(): void {
-    localStorage.removeItem('zwiftIdLinked');
+    this.zwiftLinkState.clear();
     localStorage.removeItem('isValidated');
     this.router.navigate(['/']);
   }
