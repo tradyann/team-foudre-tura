@@ -52,16 +52,12 @@
         <section>
             <!-- Title -->
             <h1 class="text-center text-2xl font-bold">
-              Identification – Procédure simple
+              Reconnection simple
             </h1>
 
             <p class="mt-4 text-center text-sm text-base-content/70 leading-relaxed">
-              Cette procédure permet de vous <strong>déclarer comme participant</strong> à la compétition.<br>
-              Aucun compte n’est créé.
-            </p>
-
-            <p class="mt-2 text-center text-sm text-base-content/70 leading-relaxed">
-              Votre <strong>Zwift ID</strong> et une <strong>vidéo de vérification</strong> sont requis.
+              Si vous avez déjà effectué <strong>votre inscription</strong> à la compétition.<br>
+              Vous pouvez vous reconnecter par ce formulaire.
             </p>
 
             <!-- Form -->
@@ -100,43 +96,8 @@
                 </p>
               </fieldset>
 
-              <!-- Prénom -->
-              <fieldset class="fieldset">
-                <legend class="fieldset-legend">Prénom</legend>
 
-                <label class="input input-bordered w-full">
-                  <input
-                    type="text"
-                    placeholder="Votre vrai prénom"
-                    class="grow"
-                    formControlName="firstname"
-                  />
-                </label>
 
-                <p class="mt-1 text-sm text-error"
-                  *ngIf="firstname?.errors?.['required'] && firstname?.touched">
-                  Le prénom est obligatoire.
-                </p>
-              </fieldset>
-
-              <!-- Nom -->
-              <fieldset class="fieldset">
-                <legend class="fieldset-legend">Nom</legend>
-
-                <label class="input input-bordered w-full">
-                  <input
-                    type="text"
-                    placeholder="Votre vrai nom"
-                    class="grow"
-                    formControlName="lastname"
-                  />
-                </label>
-
-                <p class="mt-1 text-sm text-error"
-                  *ngIf="lastname?.errors?.['required'] && lastname?.touched">
-                  Le nom est obligatoire.
-                </p>
-              </fieldset>
 
               <!-- Email -->
               <fieldset class="fieldset">
@@ -164,23 +125,6 @@
                 </p>
               </fieldset>
 
-              <!-- Video URL -->
-              <fieldset class="fieldset">
-                <legend class="fieldset-legend">
-                  Si vous avez déjà un lien de vidéo de vérification du poids, indiquez l'URL
-                </legend>
-
-                <label class="input input-bordered w-full flex items-center gap-2">
-                  <span-lucide [img]="MailIcon" class="text-base-content/60 size-5"></span-lucide>
-
-                  <input
-                    type="url"
-                    placeholder="Lien YouTube / Drive / autre"
-                    class="grow"
-                    formControlName="urlVideo"
-                  />
-                </label>
-              </fieldset>
 
               <!-- Submit -->
               <button
@@ -189,12 +133,10 @@
                 [class.loading]="waiting()"
                 [disabled]="waiting()"
               >
-                Valider mon inscription
+                Me reconnecter
               </button>
 
             </form>
-
-            <a [routerLink]="['/zw/new-login']" class="btn btn-outline w-full mt-4" role="button">Me reconnecter sans nouvelle inscription</a>
         </section>
       }
     </div>

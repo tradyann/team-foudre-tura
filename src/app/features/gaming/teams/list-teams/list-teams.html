@@ -19,7 +19,7 @@
             <table class="table table-sm">
                 <thead>
                 <tr class="bg-base-200">
-                    <th class="sticky left-0 z-20">NAME</th>
+                    <th class="">NAME</th>
                     <th>CODE</th>
                     <th>RIDERS</th>
                     <th class="text-right">BALANCE</th>
@@ -28,7 +28,7 @@
                 <tbody>
                     @for (t of results(); track t.teamId) {
                         <tr>
-                            <td class="sticky left-0 bg-base-200 z-10 font-medium">
+                            <td class="bg-base-200 font-medium">
                                 @if (t.flag) {
                                     <img
                                         class="inline-block h-4 w-6 me-1"

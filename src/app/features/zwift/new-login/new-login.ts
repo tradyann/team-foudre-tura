@@ -1,22 +1,20 @@
-import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
-import { LucideAngularModule, MailIcon, KeyRoundIcon, UserPlusIcon, LinkIcon } from 'lucide-angular';
-import { ToastService } from '../../../shared/toast/toast.service';
 import { ZwiftService } from '../zwift.service';
-
+import { LucideAngularModule, MailIcon, KeyRoundIcon, UserPlusIcon, LinkIcon } from 'lucide-angular';
+import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { Router, RouterLink } from '@angular/router';
+import { ToastService } from '../../../shared/toast/toast.service';
 
 @Component({
-  selector: 'app-identification',
+  selector: 'app-new-login',
   imports: [CommonModule, FormsModule, ReactiveFormsModule, TranslateModule, LucideAngularModule, RouterLink],
-  templateUrl: './identification.html',
-  styleUrl: './identification.css'
+  templateUrl: './new-login.html',
+  styleUrl: './new-login.css'
 })
-export class Identification {
+export class NewLogin {
   userForm!: FormGroup;
-
   router = inject(Router);
   zwiftService = inject(ZwiftService);
 
@@ -30,7 +28,7 @@ export class Identification {
   UserPlusIcon = UserPlusIcon;
   LinkIcon = LinkIcon;
 
-  constructor(
+constructor(
     private formBuilder: FormBuilder,
     private toast: ToastService
   ) {}
@@ -46,24 +44,9 @@ export class Identification {
 
   initForm(): void {
     this.userForm = this.formBuilder.group({
-      urlVideo: new FormControl(null),
-      firstname: new FormControl(null, [Validators.required]),
-      lastname: new FormControl(null, [Validators.required]),
       email: new FormControl(null, [Validators.required, Validators.email]),
       zwiftId: new FormControl(null, [Validators.required, Validators.min(1)])
     });
-  }
-
-  get urlVideo(): AbstractControl | null {
-    return this.userForm.get('urlVideo');
-  }
-
-  get firstname(): AbstractControl | null {
-    return this.userForm.get('firstname');
-  }
-
-  get lastname(): AbstractControl | null {
-    return this.userForm.get('lastname');
   }
 
   get email(): AbstractControl | null {
@@ -79,48 +62,68 @@ export class Identification {
     if (this.userForm.valid) {
       this.waiting.set(true);
 
-      const urlVideo = this.urlVideo?.value;
       const ZwiftId = +this.zwiftId?.value;
-      const FirstName = this.firstname?.value;
-      const LastName = this.lastname?.value;
       const Email = this.email?.value;
 
       const payload: {
         zwiftId: number;
-        firstName: string;
-        lastName: string;
         email: string;
-        urlFile: string;
-        controlType: 'VIDEO' | 'FIT' | 'LOG';
       } = {
         zwiftId: ZwiftId,
-        firstName : FirstName,
-        lastName: LastName,
         email: Email,
-        urlFile: urlVideo,
-        controlType: 'VIDEO'
       };
 
-      this.zwiftService.addControlFile(payload).subscribe({
+      this.zwiftService.postNewLogin(payload).subscribe({
         next: (res: any) => {
-          if (res.added) {
-            this.linked.set(true);
-            this.alreadyLinked.set(ZwiftId);
-            this.toast.show('Account linked.', 'success');
 
-            // we must create a local storage item to store the zwiftId linked
-            localStorage.setItem('zwiftIdLinked', ZwiftId.toString());
-    
-          //  this.router.navigate(["/"]);
-          // } else if (res === -1) {
-          //   this.toast.show('We cannot find your email. Please register.', 'error');
-          // } else if (res === -2) {
-          //   this.toast.show('A ZwiftId is already linked to this email.', 'error');
-          } else if (res === -3) {
-            this.toast.show('We cannot find your Zwift ID. Please try again.', 'error');
-          } else {
+          // Sécurité
+          if (!res) {
             this.toast.show('Unknown error. Please try again.', 'error');
+            this.waiting.set(false);
+            return;
           }
+
+          // 1️⃣ ZwiftId inconnu
+          if (!res.found) {
+            this.toast.show(
+              'We cannot find your Zwift ID. Please try again.',
+              'error'
+            );
+            this.waiting.set(false);
+            return;
+          }
+
+          // 2️⃣ Email incorrect pour ce ZwiftId
+          if (!res.emailMatch) {
+            this.toast.show(
+              'This email does not match the Zwift ID provided.',
+              'error'
+            );
+            this.waiting.set(false);
+            return;
+          }
+
+          // 3️⃣ ZwiftId + email OK → compte lié
+          this.linked.set(true);
+          this.alreadyLinked.set(payload.zwiftId);
+
+          this.toast.show('Account linked.', 'success');
+
+          // Stockage local
+          localStorage.setItem(
+            'zwiftIdLinked',
+            payload.zwiftId.toString()
+          );
+
+          if (res.validated) {
+            localStorage.setItem('isValidated', 'true');
+          } else {
+            localStorage.removeItem('isValidated');
+          }
+
+          // Navigation éventuelle
+          // this.router.navigate(['/']);
+
           this.waiting.set(false);
         },
         error: (err) => {
@@ -136,4 +139,5 @@ export class Identification {
     localStorage.removeItem('zwiftIdLinked');
     this.router.navigate(['/']);
   }
+
 }

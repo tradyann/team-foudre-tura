@@ -38,4 +38,9 @@ export const ZWIFT_ROUTES: Routes = [
         loadComponent: () =>
         import('./registered/registered').then(m => m.Registered)
     },
+    {
+        path: 'new-login',
+        loadComponent: () =>
+        import('./new-login/new-login').then(m => m.NewLogin)
+    },
 ];

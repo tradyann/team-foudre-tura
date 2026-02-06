@@ -86,4 +86,14 @@ export class ZwiftService {
   getCompetitionRegistered(competitionId: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}api/zwift/competition-registered?competitionId=${competitionId}`);
   }
+
+  postNewLogin(payload: {
+    zwiftId: number;
+    email: string;
+  }): Observable<{ zwiftId: number; validated: boolean }> {
+    return this.http.post<{ zwiftId: number; validated: boolean }>(
+      `${this.baseUrl}api/zwift/new-login`,
+      payload
+    );
+  }
 }
