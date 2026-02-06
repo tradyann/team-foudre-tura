@@ -103,30 +103,61 @@ export class Identification {
 
       this.zwiftService.addControlFile(payload).subscribe({
         next: (res: any) => {
+
+          if (!res) {
+            this.toast.show('Unknown error. Please try again.', 'error');
+            this.waiting.set(false);
+            return;
+          }
+
           if (res.added) {
             this.linked.set(true);
             this.alreadyLinked.set(ZwiftId);
+
             this.toast.show('Account linked.', 'success');
 
-            // we must create a local storage item to store the zwiftId linked
+            // Stockage local
             localStorage.setItem('zwiftIdLinked', ZwiftId.toString());
-    
-          //  this.router.navigate(["/"]);
-          // } else if (res === -1) {
-          //   this.toast.show('We cannot find your email. Please register.', 'error');
-          // } else if (res === -2) {
-          //   this.toast.show('A ZwiftId is already linked to this email.', 'error');
-          } else if (res === -3) {
-            this.toast.show('We cannot find your Zwift ID. Please try again.', 'error');
-          } else {
-            this.toast.show('Unknown error. Please try again.', 'error');
+
+            // ⚠️ IMPORTANT :
+            // un ajout ≠ validation du contrôle
+            // donc on ne force PAS isValidated ici
+            localStorage.removeItem('isValidated');
+
+            this.waiting.set(false);
+            return;
           }
+
+          // ❌ Cas métier gérés par SQL
+          switch (res.reason) {
+            case 'ALREADY_EXISTS':
+              this.toast.show(
+                'A control already exists for this Zwift ID.',
+                'error'
+              );
+              break;
+
+            case 'INVALID_ZWIFT_ID':
+              this.toast.show(
+                'Invalid Zwift ID. Please check and try again.',
+                'error'
+              );
+              break;
+
+            default:
+              this.toast.show(
+                'Unable to submit your verification. Please try again.',
+                'error'
+              );
+              break;
+          }
+
           this.waiting.set(false);
         },
         error: (err) => {
           console.error(err);
           this.waiting.set(false);
-          this.toast.show('An error occurs. Please try again.', 'error');
+          this.toast.show('An error occurred. Please try again.', 'error');
         }
       });
     }
@@ -134,6 +165,7 @@ export class Identification {
 
   logout(): void {
     localStorage.removeItem('zwiftIdLinked');
+    localStorage.removeItem('isValidated');
     this.router.navigate(['/']);
   }
 }
