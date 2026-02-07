@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ZwiftService } from '../zwift.service';
 import { CommonModule } from '@angular/common';
 import { ZwiftLinkState } from '../../../services/zwift-link.state';
@@ -9,7 +9,7 @@ type Pen = 'A' | 'B' | 'C' | 'D';
 
 @Component({
   selector: 'app-my-category',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './my-category.html',
   styleUrl: './my-category.css'
 })

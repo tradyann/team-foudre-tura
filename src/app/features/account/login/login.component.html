@@ -26,16 +26,16 @@
       </h3>
 
       <!-- Info Maintenance -->
-      <section class="note note-primary my-4 text-sm text-info text-center" *ngIf="infoMaintenance() && infoMaintenance() !== ''">
+      <!-- <section class="note note-primary my-4 text-sm text-info text-center" *ngIf="infoMaintenance() && infoMaintenasnce() !== ''">
         <span class="font-medium"><i class="fas fa-info-circle me-2"></i>{{ infoMaintenance() }}</span>
-      </section>
+      </section> -->
 
       <!-- Login Form -->
       <div class="mt-6 md:mt-10">
         <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
 
           <fieldset class="fieldset">
-            <legend class="fieldset-legend">Email Address</legend>
+            <label class="fieldset-legend">Email Address</label>
             <label class="input w-full">
               <span-lucide [img]="MailIcon" class="text-base-content/80 size-5"></span-lucide>
               <input class="grow" placeholder="Email Address" type="email" formControlName="email" />
@@ -49,7 +49,7 @@
           </fieldset>
 
           <fieldset class="fieldset">
-            <legend class="fieldset-legend">Password</legend>
+            <label class="fieldset-legend">Password</label>
             <label class="input w-full">
               <span-lucide [img]="KeyRoundIcon" class="text-base-content/80 size-5"></span-lucide>
               <input

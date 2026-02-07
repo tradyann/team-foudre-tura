@@ -1,10 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
 import { ZwiftService } from '../zwift.service';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-registered',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './registered.html',
   styleUrl: './registered.css'
 })

@@ -23,7 +23,7 @@
               <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()" *ngIf="!isRegistered() && !linkInvalid()">
 
                 <fieldset class="fieldset">
-                    <legend class="fieldset-legend">Email Address</legend>
+                    <label class="fieldset-legend">Email Address</label>
                     <label class="input w-full focus:outline-0">
                         <span-lucide
                           [img]="MailIcon"
@@ -45,7 +45,7 @@
                   </div>
                 </fieldset>
                 <fieldset class="fieldset">
-                    <legend class="fieldset-legend">Password</legend>
+                    <label class="fieldset-legend">Password</label>
                     <label class="input w-full focus:outline-0">
                         <span-lucide
                           [img]="KeyRoundIcon"

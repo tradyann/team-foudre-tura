@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MarkdownComponent } from 'ngx-markdown';
 import { RulesService } from '../../../services/rules.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-rules',
   imports: [
     CommonModule,
     TranslateModule,
-    MarkdownComponent
+    MarkdownComponent,
+    RouterLink
   ],
   templateUrl: './rules.html',
   styleUrl: './rules.css'

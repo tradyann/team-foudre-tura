@@ -1,5 +1,17 @@
 <div class="max-w-4xl mx-auto p-8">
 
+  <div class="mb-6">
+  <a
+    [routerLink]="['/']"
+    class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest hover:opacity-80 transition"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+    Retour
+  </a>
+</div>
+
   <!-- Main panel -->
   <div class="col-span-12 lg:col-span-10 xl:col-span-8 2xl:col-span-6 bg-base-100">
     <div class="flex flex-col justify-center h-full p-8 lg:p-16">
@@ -73,9 +85,9 @@
 
               <!-- Zwift ID -->
               <fieldset class="fieldset">
-                <legend class="fieldset-legend">
+                <label  class="fieldset-legend">
                   Zwift ID
-                </legend>
+                </label >
 
                 <label class="input input-bordered w-full flex items-center gap-2">
                   <span-lucide [img]="LinkIcon" class="text-base-content/60 size-5"></span-lucide>
@@ -102,7 +114,7 @@
 
               <!-- Prénom -->
               <fieldset class="fieldset">
-                <legend class="fieldset-legend">Prénom</legend>
+                <label class="fieldset-legend">Prénom</label>
 
                 <label class="input input-bordered w-full">
                   <input
@@ -121,7 +133,7 @@
 
               <!-- Nom -->
               <fieldset class="fieldset">
-                <legend class="fieldset-legend">Nom</legend>
+                <label class="fieldset-legend">Nom</label>
 
                 <label class="input input-bordered w-full">
                   <input
@@ -140,7 +152,7 @@
 
               <!-- Email -->
               <fieldset class="fieldset">
-                <legend class="fieldset-legend">Email</legend>
+                <label class="fieldset-legend">Email</label>
 
                 <label class="input input-bordered w-full flex items-center gap-2">
                   <span-lucide [img]="MailIcon" class="text-base-content/60 size-5"></span-lucide>
@@ -166,9 +178,9 @@
 
               <!-- HOME TRAINER -->
               <fieldset class="fieldset">
-                <legend class="fieldset-legend">
+                <label class="fieldset-legend">
                   Indiquez le modèle de votre Home Trainer
-                </legend>
+                </label>
 
                 <label class="input input-bordered w-full flex items-center gap-2">
                   <span-lucide [img]="BikeIcon" class="text-base-content/60 size-5"></span-lucide>
@@ -188,9 +200,9 @@
 
               <!-- Video URL -->
               <fieldset class="fieldset">
-                <legend class="fieldset-legend">
+                <label class="fieldset-legend">
                   Si vous avez déjà un lien de vidéo de vérification du poids, indiquez l'URL
-                </legend>
+                </label>
 
                 <label class="input input-bordered w-full flex items-center gap-2">
                   <span-lucide [img]="MailIcon" class="text-base-content/60 size-5"></span-lucide>
