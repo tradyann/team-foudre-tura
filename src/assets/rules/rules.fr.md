@@ -138,7 +138,7 @@ Le joker est **automatiquement consommé** lors de la **première étape manqué
 
 ### Coureurs ayant disputé toutes les étapes
 
-Les coureurs ayant disputé l’ensemble des cinq étapes verront leur **moins bon résultat** remplacé par le **meilleur temps de la catégorie** pour l’épreuve concernée, **hors bonus intermédiaires**.
+Les coureurs ayant disputé l’ensemble des cinq étapes verront leur **moins bon résultat** remplacé par le **meilleur temps de la catégorie** pour l’épreuve concernée, **hors bonus intermédiaires**. Ce bonus de temps sera attribué dans le classement de la dernière étape.
 
 ### Exception – Contre-la-montre individuel (CLM)
 
