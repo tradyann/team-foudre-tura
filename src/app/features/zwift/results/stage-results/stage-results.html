@@ -122,8 +122,10 @@
                                 }
                             </td>
                             <td class="text-right font-medium">
-                                @if(rider.bonusTime !== null && rider.bonusTime !== 0) {
-                                    -{{ rider.bonusTime | number: '1.0-1' }}s
+                                @if(rider.bonusTime > 60) {
+                                    {{ rider.bonusTime | duration }}                               
+                                } @else if(rider.bonusTime > 0) {
+                                    {{ rider.bonusTime | number: '1.0-1' }}s                             
                                 }
                             </td>
                             <td class="text-right font-black">
