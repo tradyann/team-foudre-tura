@@ -1,5 +1,5 @@
 import { Component, effect, inject, signal } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { GamingService } from '../gaming.service';
 import { Jersey } from '../../../shared/jersey/jersey';
 
@@ -23,7 +23,7 @@ export interface SegmentTime {
 
 @Component({
   selector: 'app-roadbook',
-  imports: [Jersey],
+  imports: [RouterLink, Jersey],
   templateUrl: './roadbook.html',
   styleUrl: './roadbook.css'
 })
