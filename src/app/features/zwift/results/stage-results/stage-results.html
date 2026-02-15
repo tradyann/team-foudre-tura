@@ -92,52 +92,52 @@
                 </thead>
                 <tbody>
                     @if (data?.results?.length) {
-                    @for (rider of displayedResults(); track rider.rowNumber) {
-                        <tr [ngClass]="{'opacity-40 grayscale' : rider.isMissed}" class="hover:bg-base-200/50 transition-colors">
-                            <td class="font-bold">@if (!rider.isMissed) { <span>{{ rider.rowNumber }}</span> }</td>
-                            <td>
-                                <div class="flex items-center">
-                                    @if (rider.flag) {
-                                    <img
-                                        class="inline h-4 w-5 me-2 rounded-sm shadow-sm"
-                                        [src]="'assets/flags/4x3/' + rider.flag + '.svg'"
-                                        [attr.alt]="rider.flag"
-                                    />
+                        @for (rider of displayedResults(); track rider.rowNumber) {
+                            <tr [ngClass]="{'opacity-40 grayscale' : rider.isMissed}" class="hover:bg-base-200/50 transition-colors">
+                                <td class="font-bold">@if (!rider.isMissed) { <span>{{ rider.rowNumber }}</span> }</td>
+                                <td>
+                                    <div class="flex items-center">
+                                        @if (rider.flag) {
+                                        <img
+                                            class="inline h-4 w-5 me-2 rounded-sm shadow-sm"
+                                            [src]="'assets/flags/4x3/' + rider.flag + '.svg'"
+                                            [attr.alt]="rider.flag"
+                                        />
+                                        }
+                                        <span 
+                                            (click)="goToZwiftPovwer(rider.zwiftId)"
+                                            class="hover:underline hover:text-primary cursor-pointer font-medium"
+                                            [innerHTML]="rider.racerName"
+                                            >
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="text-right font-mono">
+                                    @if(rider.rowNumber === 1 && rider.wasTimeNeutral) {
+                                        <span-lucide [img]="TimerOffIcon" [size]="16" class="inline-block align-middle text-warning" title="Time-Neutral"></span-lucide>
+                                    } @else {
+                                        <span class="tooltip" [attr.data-tip]="rider.eGap | duration:true">
+                                            {{ rider.eGap | duration }}
+                                        </span>
                                     }
-                                    <span 
-                                        (click)="goToZwiftPovwer(rider.zwiftId)"
-                                        class="hover:underline hover:text-primary cursor-pointer font-medium"
-                                        [innerHTML]="rider.racerName"
-                                        >
+                                </td>
+                                <td class="text-right font-medium">
+                                    @if(rider.bonusTime > 60) {
+                                        {{ rider.bonusTime | duration }}                               
+                                    } @else if(rider.bonusTime > 0) {
+                                        {{ rider.bonusTime | number: '1.0-1' }}s                             
+                                    }
+                                </td>
+                                <td class="text-right font-black">
+                                    <span class="tooltip" [attr.data-tip]="rider.cGapNet | duration:true">
+                                        {{ rider.cGapNet | duration }}
                                     </span>
-                                </div>
-                            </td>
-                            <td class="text-right font-mono">
-                                @if(rider.rowNumber === 1 && rider.wasTimeNeutral) {
-                                    <span-lucide [img]="TimerOffIcon" [size]="16" class="inline-block align-middle text-warning" title="Time-Neutral"></span-lucide>
-                                } @else {
-                                    <span class="tooltip" [attr.data-tip]="rider.eGap | duration:true">
-                                        {{ rider.eGap | duration }}
-                                    </span>
-                                }
-                            </td>
-                            <td class="text-right font-medium">
-                                @if(rider.bonusTime > 60) {
-                                    {{ rider.bonusTime | duration }}                               
-                                } @else if(rider.bonusTime > 0) {
-                                    {{ rider.bonusTime | number: '1.0-1' }}s                             
-                                }
-                            </td>
-                            <td class="text-right font-black">
-                                <span class="tooltip" [attr.data-tip]="rider.cGapNet | duration:true">
-                                    {{ rider.cGapNet | duration }}
-                                </span>
-                            </td>
-                            <td class="text-center font-bold opacity-60">
-                                @if (!rider.isMissed) { <span>{{ rider.slotNumber }}</span> } @else { <span class="text-error text-xs uppercase">Missed</span> }
-                            </td>
-                        </tr>
-                    }
+                                </td>
+                                <td class="text-center font-bold opacity-60">
+                                    @if (!rider.isMissed) { <span>{{ rider.slotNumber }}</span> } @else { <span class="text-error text-xs uppercase">Missed</span> }
+                                </td>
+                            </tr>
+                        }
                     }
                 </tbody>
                 </table>
