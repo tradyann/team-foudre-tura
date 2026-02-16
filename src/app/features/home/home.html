@@ -26,6 +26,29 @@
     </div>
   } @else {
 
+
+    <div class="relative w-full overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary/80 to-black p-8 md:p-12 shadow-2xl group border border-white/5">
+      <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white/80 text-xs font-bold uppercase tracking-widest mb-2 border border-white/10">
+            Saison 2026
+          </div>
+          <h2 class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter leading-none">
+            Racepass
+          </h2>
+          <p class="text-white/90 font-medium text-lg">
+            Rejoins la 1ère course du tour, le mardi 17 février et tente de remporter le classement général de ta catégorie !
+          </p>
+        </div>
+        <a 
+          [routerLink]="['/zw/racepass/236/348']" 
+          target="_blank"
+          class="btn btn-lg btn-primary border-none hover:bg-primary/90 px-12 shadow-xl transition-transform group-hover:scale-105">
+          S'inscrire
+        </a>
+      </div>
+    </div>
+
     <!-- ====================================================== -->
     <!-- UPCOMING / HERO EVENT -->
     <!-- ====================================================== -->
