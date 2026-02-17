@@ -198,8 +198,6 @@ export class Home {
     this.zwiftService.getHomeJerseys(235).subscribe(
       {
         next: (data) => {
-          // mock here!!!
-          //this.competition.set(this.CompetitionDetailsMocked);
           this.competition.set(data);
           
           this.competitionLoading.set(false);
