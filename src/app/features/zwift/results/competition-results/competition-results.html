@@ -106,14 +106,25 @@
                                     <td class="font-black italic text-lg text-base-content/20">{{ rider.gcRank }}</td>
                                     <td>
                                         <div class="flex items-center gap-2">
+
                                             @if (rider.flag) {
                                                 <img class="h-3.5 w-5 rounded-sm shadow-sm" [src]="'assets/flags/4x3/' + rider.flag + '.svg'" />
                                             }
                                             <span 
                                                 (click)="goToZwiftPovwer(rider.zwiftId)"
+                                                [ngClass]="{ 'opacity-40 grayscale italic': !rider.checkWeight || !rider.checkTrainer }"
                                                 class="hover:underline hover:text-primary cursor-pointer font-bold" 
                                                 [innerHTML]="rider.racerName">
                                             </span>
+
+                                            @if(!rider.checkWeight) {
+                                                <span class="text-xs bg-error/10 text-error px-1 rounded-sm cursor-pointer"
+                                                [routerLink]="['/zw/identification']">Poids à vérfier ></span>
+                                            }
+                                            @if(!rider.checkTrainer) {
+                                                <span class="text-xs bg-error/10 text-error px-1 rounded-sm cursor-pointer"
+                                                [routerLink]="['/zw/identification']">HT à vérifier ></span>
+                                            }
                                         </div>
                                     </td>
                                     <td class="text-right">
