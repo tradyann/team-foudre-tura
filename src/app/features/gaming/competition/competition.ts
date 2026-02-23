@@ -122,4 +122,14 @@ export class Competition {
     this.router.navigate(['/zw/competition-results', this.competId(), favoriteCat, 0])
   }
 
+  isRacepassOpen(stageDate: string | Date): boolean {
+    if (!stageDate) return false;
+
+    // On force UTC
+    const stageUtc = new Date(stageDate).getTime();
+    const nowUtc = Date.now();
+
+    return nowUtc < stageUtc;
+  }
+
 }
