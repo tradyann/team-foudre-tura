@@ -69,7 +69,8 @@
 
               <span class="text-sm font-semibold text-primary">
                 {{ formatTime(slot.slotStartTime, 'UTC') }} UTC /
-                {{ formatTime(slot.slotStartTime, 'Europe/Paris') }} Paris
+                {{ formatTime(slot.slotStartTime, 'Europe/Paris') }} Paris /
+                {{ slot.slotStartTime | date:'HH:mm z' }}
               </span>
             </div>
 
@@ -78,7 +79,7 @@
               <div class="flex justify-between">
                 <span>Date</span>
                 <span class="font-medium">
-                  {{ slot.slotStartTime | date:'EEEE dd MMMM':'Europe/Paris' }}
+                  {{ slot.slotStartTime | date:'EEEE dd MMMM' }}
                 </span>
               </div>
 
