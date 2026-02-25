@@ -79,6 +79,9 @@ export class Home {
 
   ShirtIcon = ShirtIcon;
 
+  displayBroadcast = signal(false);
+  displayRacepass = signal(false);
+
 //   CompetitionDetailsMocked: CompetitionDetails[] = [
 //   {
 //     competitionId: 236,

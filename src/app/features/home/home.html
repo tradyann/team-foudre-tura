@@ -75,6 +75,7 @@
       </div>
     }
 
+  @if (displayRacepass()){
     <!-- RACEPASS -->
     <div class="relative w-full overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary/80 to-black p-8 md:p-12 shadow-2xl group border border-white/5">
       <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
@@ -97,7 +98,9 @@
         </a>
       </div>
     </div> 
+  }
     
+    @if (displayBroadcast()){
         <!-- ====================================================== -->
         <!-- ULTRA LIVE BROADCAST SECTION -->
         <!-- ====================================================== -->
@@ -118,7 +121,7 @@
             <!-- YOUTUBE HERO CARD -->
             <!-- ============================= -->
             <a 
-              href="https://www.youtube.com/live/S3OFusgvrC8?feature=share"
+              href="https://youtube.com/@lecyclistebelge"
               target="_blank"
               rel="noopener"
               class="lg:col-span-2 relative rounded-3xl overflow-hidden shadow-2xl group border border-white/10">
@@ -198,6 +201,7 @@
           </div>
 
         </div>
+      }
 
 
     <!-- ====================================================== -->
