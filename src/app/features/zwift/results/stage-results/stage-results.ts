@@ -38,7 +38,7 @@ export class StageResults {
   });
 
   displayedResults = signal<any[]>([]);
-  sortBySlot = signal(true);
+  sortBySlot = signal(false);
   ListIcon = ListIcon;
   ListOrderedIcon = ListOrderedIcon;
   TimerOffIcon = TimerOffIcon;
@@ -95,23 +95,29 @@ export class StageResults {
       // filtre les "missed"
       src = src.filter(r => !r.isMissed);
 
-      // tri par slotNumber puis cGapNet
+      // tri par cGapNet
       src = [...src].sort((a, b) => {
-        const sa = a.slotNumber ?? 999, sb = b.slotNumber ?? 999;
-        if (sa !== sb) return sa - sb;
-
         const ea = a.cGapNet ?? 0, eb = b.cGapNet ?? 0;
         return ea - eb;
       });
+
+      // // tri par slotNumber puis cGapNet
+      // src = [...src].sort((a, b) => {
+      //   const sa = a.slotNumber ?? 999, sb = b.slotNumber ?? 999;
+      //   if (sa !== sb) return sa - sb;
+
+      //   const ea = a.cGapNet ?? 0, eb = b.cGapNet ?? 0;
+      //   return ea - eb;
+      // });
     }
 
     this.displayedResults.set(src);
   }
 
-  toggleSlotSort() {
-    this.sortBySlot.update(v => !v);
-    this.applySort();
-  }
+  // toggleSlotSort() {
+  //   this.sortBySlot.update(v => !v);
+  //   this.applySort();
+  // }
 
   // NAVIGATION — même style que CompetitionResults
   goToCategory(cat: string) {
