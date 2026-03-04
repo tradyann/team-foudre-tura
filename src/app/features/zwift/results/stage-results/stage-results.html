@@ -116,9 +116,11 @@
                                     @if(rider.rowNumber === 1 && rider.wasTimeNeutral) {
                                         <span-lucide [img]="TimerOffIcon" [size]="16" class="inline-block align-middle text-warning" title="Time-Neutral"></span-lucide>
                                     } @else {
-                                        <span class="tooltip" [attr.data-tip]="rider.eGap | duration:true">
-                                            {{ rider.eGap | duration }}
-                                        </span>
+                                        @if(rider.cGap < stageInfos()?.timeNeutralLimit) {
+                                            <span class="tooltip" [attr.data-tip]="rider.eGap | duration:true">
+                                                {{ rider.eGap | duration }}
+                                            </span>
+                                        }
                                     }
                                 </td>
                                 <td class="text-right font-medium">
@@ -129,12 +131,18 @@
                                     }
                                 </td>
                                 <td class="text-right font-black">
-                                    <span class="tooltip" [attr.data-tip]="rider.cGapNet | duration:true">
-                                        {{ rider.cGapNet | duration }}
-                                    </span>
+                                    @if(rider.cGap < stageInfos()?.timeNeutralLimit) {
+                                        <span class="tooltip" [attr.data-tip]="rider.cGapNet | duration:true">
+                                            {{ rider.cGapNet | duration }}
+                                        </span> 
+                                    }
                                 </td>
                                 <td class="text-center font-bold opacity-60">
-                                    @if (!rider.isMissed) { <span>{{ rider.slotNumber }}</span> } @else { <span class="text-error text-xs uppercase">Missed</span> }
+                                    @if (!rider.isMissed) {
+                                        <span>{{ rider.slotNumber }}</span> 
+                                    } @else { 
+                                        <span class="text-error text-xs uppercase">Missed</span> 
+                                    }
                                 </td>
                             </tr>
                         }
