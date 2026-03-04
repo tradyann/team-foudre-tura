@@ -93,11 +93,11 @@
                                 @if (rider.isTimeDisabled && !data.results[i - 1]?.isTimeDisabled) {
                                     <tr>
                                         <td colspan="3" class="text-[10px] text-center font-bold text-base-content/50 bg-base-200/50 p-2 uppercase tracking-tighter italic border-y border-base-300">
-                                            Time-neutral threshold 
+                                            COUREURS ELIMINES
                                             @if (competitionInfos()?.showTimeThreshold) {
                                                 <span class="px-1 text-primary font-black">{{ competitionInfos()?.timeNeutralLimit | duration }}</span>
                                             }
-                                            <span class="opacity-70">— Neutral zone for GC base</span>
+                                            <span class="opacity-70">— Temps neutralisés pour le classement général</span>
                                         </td>
                                     </tr>
                                 }
@@ -128,9 +128,13 @@
                                         </div>
                                     </td>
                                     <td class="text-right">
-                                        <div class="tooltip tooltip-left font-black text-sm text-base-content" [attr.data-tip]="rider.cGapGC | duration:true">
-                                            {{ rider.cGapGC | duration }}
-                                        </div>
+                                        @if(rider.cGapGC < competitionInfos()?.timeNeutralLimit) {
+                                            <div class="tooltip tooltip-left font-black text-sm text-base-content" [attr.data-tip]="rider.cGapGC | duration:true">
+                                                {{ rider.cGapGC | duration }}
+                                            </div>
+                                        } @else {
+                                            ELIMINATED
+                                        }
                                     </td>
                                 </tr>
                             }
