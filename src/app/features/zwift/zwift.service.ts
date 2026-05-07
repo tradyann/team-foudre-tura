@@ -7,19 +7,35 @@ import { environment } from '../../../environments/environment';
     providedIn: 'root'
 })
 export class ZwiftService {
-    http = inject(HttpClient);
-    private baseUrl = environment.ApiBaseUrl;
+  http = inject(HttpClient);
+  private baseUrl = environment.ApiBaseUrl;
+
+  private useMock = true; // toggle
 
   getHomeCompetitions(): Observable<any> {
+    if (this.useMock) {
+      return this.http.get<any[]>('/assets/mock/home-competitions.json');
+    }
+
     return this.http.get(this.baseUrl + 'api/gaming/home-competitions');
   }
 
   getHomeJerseys(competitionid: number): Observable<any> {
+    if (this.useMock) {
+      return this.http.get<any[]>('/assets/mock/home-jerseys.json');
+    }
+
     const params = new HttpParams().set('competitionid', competitionid);
     return this.http.get(this.baseUrl + 'api/gaming/home-jerseys', { params });
   }
 
   getStageResults(competitionid: number, category: string, stageNumber: number): Observable<any> {
+    if (this.useMock) {
+        return this.http.get<any>(
+        `/assets/mock/stage-results/${stageNumber}/${category}.json`
+        );
+    }
+
     const params = new HttpParams()
       .set('competitionid', competitionid)
       .set('stagenumber', stageNumber)
@@ -37,6 +53,11 @@ export class ZwiftService {
   }
 
   getCompetitonResults(competitionid: number, category: string, stageNumber: number): Observable<any> {
+    if (this.useMock) {
+        return this.http.get<any>(
+        `/assets/mock/competition-results/${stageNumber}/${category}.json`
+        );
+    }
     const params = new HttpParams()
       .set('competitionid', competitionid)
       .set('category', category)

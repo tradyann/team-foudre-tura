@@ -204,7 +204,6 @@ export class Home {
           this.competition.set(data);
           
           this.competitionLoading.set(false);
-          console.log('jerseys', data);
         },
         error: (err) => {
           this.error.set('Error loading results');

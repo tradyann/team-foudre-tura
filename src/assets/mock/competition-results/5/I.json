@@ -1,0 +1,49 @@
+{
+    "totalRows": 3,
+    "totalPages": 1,
+    "totalNumber": 1000,
+    "entries": "1 - 1000 of 3",
+    "competitionInfos": "{\"competitionName\":\"Jeux de la Francophonie\",\"fromDate\":\"2026-02-17T00:00:00\",\"toDate\":\"2026-03-17T00:00:00\",\"typeCompetition\":\"Tour\",\"timeNeutralLimit\":43200.00,\"showTimeThreshold\":0}",
+    "lastStageNumber": 5,
+    "results": [
+        {
+            "zwiftId": 2822541,
+            "racerName": "Armando Boom [Ghost]",
+            "sumGapNet": -17,
+            "cGapGC": 0,
+            "category": "I",
+            "competitionId": 236,
+            "flag": "fr",
+            "gcRank": 1,
+            "isTimeDisabled": false,
+            "checkTrainer": 1,
+            "checkWeight": 1
+        },
+        {
+            "zwiftId": 1424588,
+            "racerName": "2711 Sandrine Lobre ",
+            "sumGapNet": 64800.003,
+            "cGapGC": 64817.003,
+            "category": "I",
+            "competitionId": 236,
+            "flag": "fr",
+            "gcRank": 2,
+            "isTimeDisabled": true,
+            "checkTrainer": 0,
+            "checkWeight": 0
+        },
+        {
+            "zwiftId": 6839924,
+            "racerName": "Dmitry Rzeutskiy[D]MTBtraining ",
+            "sumGapNet": 64800.006,
+            "cGapGC": 64817.006,
+            "category": "I",
+            "competitionId": 236,
+            "flag": "ru",
+            "gcRank": 3,
+            "isTimeDisabled": true,
+            "checkTrainer": 0,
+            "checkWeight": 0
+        }
+    ]
+}

@@ -1,0 +1,62 @@
+{
+    "totalRows": 4,
+    "totalPages": 1,
+    "totalNumber": 1000,
+    "entries": "1 - 1000 of 4",
+    "competitionInfos": "{\"competitionName\":\"Jeux de la Francophonie\",\"fromDate\":\"2026-02-17T00:00:00\",\"toDate\":\"2026-03-17T00:00:00\",\"typeCompetition\":\"Tour\",\"timeNeutralLimit\":43200.00,\"showTimeThreshold\":0}",
+    "lastStageNumber": 5,
+    "results": [
+        {
+            "zwiftId": 3137166,
+            "racerName": "Willy Jacquet [US Maule 78] ",
+            "sumGapNet": -11,
+            "cGapGC": 0,
+            "category": "H",
+            "competitionId": 236,
+            "flag": "fr",
+            "gcRank": 1,
+            "isTimeDisabled": false,
+            "checkTrainer": 1,
+            "checkWeight": 1
+        },
+        {
+            "zwiftId": 6329241,
+            "racerName": "vincent lambert",
+            "sumGapNet": 248.117,
+            "cGapGC": 259.117,
+            "category": "H",
+            "competitionId": 236,
+            "flag": "fr",
+            "gcRank": 2,
+            "isTimeDisabled": false,
+            "checkTrainer": 1,
+            "checkWeight": 1
+        },
+        {
+            "zwiftId": 118250,
+            "racerName": "⚡️ Alain⚡ [Foudre]",
+            "sumGapNet": 64937.447,
+            "cGapGC": 64948.447,
+            "category": "H",
+            "competitionId": 236,
+            "flag": "fr",
+            "gcRank": 3,
+            "isTimeDisabled": true,
+            "checkTrainer": 1,
+            "checkWeight": 0
+        },
+        {
+            "zwiftId": 4678079,
+            "racerName": "Anaël Rausch (Foudre)",
+            "sumGapNet": 64937.447,
+            "cGapGC": 64948.447,
+            "category": "H",
+            "competitionId": 236,
+            "flag": "be",
+            "gcRank": 3,
+            "isTimeDisabled": true,
+            "checkTrainer": 0,
+            "checkWeight": 0
+        }
+    ]
+}

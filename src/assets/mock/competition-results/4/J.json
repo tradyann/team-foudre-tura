@@ -1,0 +1,23 @@
+{
+    "totalRows": 1,
+    "totalPages": 1,
+    "totalNumber": 1000,
+    "entries": "1 - 1000 of 1",
+    "competitionInfos": "{\"competitionName\":\"Jeux de la Francophonie\",\"fromDate\":\"2026-02-17T00:00:00\",\"toDate\":\"2026-03-17T00:00:00\",\"typeCompetition\":\"Tour\",\"timeNeutralLimit\":43200.00,\"showTimeThreshold\":0}",
+    "lastStageNumber": 5,
+    "results": [
+        {
+            "zwiftId": 4666192,
+            "racerName": "Pauline Routaboul ",
+            "sumGapNet": 43200,
+            "cGapGC": 0,
+            "category": "J",
+            "competitionId": 236,
+            "flag": "fr",
+            "gcRank": 1,
+            "isTimeDisabled": false,
+            "checkTrainer": 0,
+            "checkWeight": 0
+        }
+    ]
+}

@@ -1,0 +1,194 @@
+{
+    "idClient": 0,
+    "competitionId": 236,
+    "competitionName": "Jeux de la Francophonie",
+    "fromDate": "2026-02-17T00:00:00",
+    "toDate": "2026-03-17T00:00:00",
+    "typeCompetition": "Tour",
+    "accessType": 1,
+    "stagesCount": 5,
+    "isClosed": false,
+    "timeNeutralLimit": 43200,
+    "prestigeId": 2,
+    "dateValidated": true,
+    "stages": [
+        {
+            "stageId": 348,
+            "stageNumber": 1,
+            "division": 4,
+            "divisionStructure": [
+                {
+                    "id": 1,
+                    "cat": "A"
+                },
+                {
+                    "id": 2,
+                    "cat": "B"
+                },
+                {
+                    "id": 3,
+                    "cat": "C"
+                },
+                {
+                    "id": 4,
+                    "cat": "D"
+                }
+            ],
+            "stageDate": "2026-02-17",
+            "stageType": 1,
+            "timeMultiplier": 1,
+            "raceTypeName": "SCRATCH",
+            "roadbook": {
+                "roadbookId": 679,
+                "distanceInMeters": 0,
+                "durationInSeconds": 0,
+                "laps": 10,
+                "raceFormatName": "Autres SAS invisibles",
+                "routeName": "Glasgow Crit Circuit",
+                "links": "https://whatsonzwift.com/world/scotland/route/glasgow-crit-circuit"
+            }
+        },
+        {
+            "stageId": 349,
+            "stageNumber": 2,
+            "division": 4,
+            "divisionStructure": [
+                {
+                    "id": 1,
+                    "cat": "A"
+                },
+                {
+                    "id": 2,
+                    "cat": "B"
+                },
+                {
+                    "id": 3,
+                    "cat": "C"
+                },
+                {
+                    "id": 4,
+                    "cat": "D"
+                }
+            ],
+            "stageDate": "2026-02-24",
+            "stageType": 1,
+            "timeMultiplier": 1,
+            "raceTypeName": "SCRATCH",
+            "roadbook": {
+                "roadbookId": 680,
+                "distanceInMeters": 0,
+                "durationInSeconds": 0,
+                "laps": 1,
+                "raceFormatName": "Autres SAS invisibles",
+                "routeName": "NYC KOM After Party"
+            }
+        },
+        {
+            "stageId": 350,
+            "stageNumber": 3,
+            "division": 4,
+            "divisionStructure": [
+                {
+                    "id": 1,
+                    "cat": "A"
+                },
+                {
+                    "id": 2,
+                    "cat": "B"
+                },
+                {
+                    "id": 3,
+                    "cat": "C"
+                },
+                {
+                    "id": 4,
+                    "cat": "D"
+                }
+            ],
+            "stageDate": "2026-03-03",
+            "stageType": 2,
+            "timeMultiplier": 1,
+            "raceTypeName": "ITT",
+            "roadbook": {
+                "roadbookId": 681,
+                "distanceInMeters": 0,
+                "durationInSeconds": 0,
+                "laps": 2,
+                "raceFormatName": "Autres SAS invisibles",
+                "routeName": "Champs-Élysées",
+                "links": "https://whatsonzwift.com/world/paris/route/champs-elysees"
+            }
+        },
+        {
+            "stageId": 351,
+            "stageNumber": 4,
+            "division": 4,
+            "divisionStructure": [
+                {
+                    "id": 1,
+                    "cat": "A"
+                },
+                {
+                    "id": 2,
+                    "cat": "B"
+                },
+                {
+                    "id": 3,
+                    "cat": "C"
+                },
+                {
+                    "id": 4,
+                    "cat": "D"
+                }
+            ],
+            "stageDate": "2026-03-10",
+            "stageType": 1,
+            "timeMultiplier": 1,
+            "raceTypeName": "SCRATCH",
+            "roadbook": {
+                "roadbookId": 682,
+                "distanceInMeters": 0,
+                "durationInSeconds": 0,
+                "laps": 1,
+                "raceFormatName": "Autres SAS invisibles",
+                "routeName": "Climb Control"
+            }
+        },
+        {
+            "stageId": 353,
+            "stageNumber": 5,
+            "division": 4,
+            "divisionStructure": [
+                {
+                    "id": 1,
+                    "cat": "A"
+                },
+                {
+                    "id": 2,
+                    "cat": "B"
+                },
+                {
+                    "id": 3,
+                    "cat": "C"
+                },
+                {
+                    "id": 4,
+                    "cat": "D"
+                }
+            ],
+            "stageDate": "2026-03-17",
+            "stageType": 1,
+            "timeMultiplier": 1,
+            "raceTypeName": "SCRATCH",
+            "roadbook": {
+                "roadbookId": 683,
+                "distanceInMeters": 0,
+                "durationInSeconds": 0,
+                "laps": 2,
+                "raceFormatName": "Autres SAS invisibles",
+                "routeName": "Richmond 2015 Worlds Reverse",
+                "links": "https://whatsonzwift.com/world/richmond/route/richmond-2015-worlds-reverse"
+            }
+        }
+    ]
+}

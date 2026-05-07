@@ -1,0 +1,174 @@
+[
+    {
+        "competitionId": 236,
+        "competitionName": "Jeux de la Francophonie",
+        "fromDate": "2026-02-17T00:00:00",
+        "toDate": "2026-03-17T00:00:00",
+        "typeCompetition": "Tour",
+        "gcVariant": "full",
+        "climberVariant": "full",
+        "sprinterVariant": "full",
+        "gcFillColor": "#3abdf7",
+        "climberFillColor": "white",
+        "sprinterFillColor": "white",
+        "categories": [
+            {
+                "catId": 1,
+                "category": "A",
+                "leaders": [
+                    {
+                        "jerseyId": 1,
+                        "jerseyKey": "GC",
+                        "category": "A",
+                        "idClient": 627192,
+                        "zwiftId": 627192,
+                        "racerName": " Adrien Legriffon",
+                        "value": -8.618,
+                        "valueKind": "sumGapNet"
+                    }
+                ]
+            },
+            {
+                "catId": 2,
+                "category": "B",
+                "leaders": [
+                    {
+                        "jerseyId": 1,
+                        "jerseyKey": "GC",
+                        "category": "B",
+                        "zwiftId": 185764,
+                        "racerName": "Pavel Solovyev[DRA]MTBTr",
+                        "value": -7,
+                        "valueKind": "sumGapNet"
+                    }
+                ]
+            },
+            {
+                "catId": 3,
+                "category": "C",
+                "leaders": [
+                    {
+                        "jerseyId": 1,
+                        "jerseyKey": "GC",
+                        "category": "C",
+                        "idClient": 3401875,
+                        "zwiftId": 3401875,
+                        "racerName": "Jf  Kohl (foudre)",
+                        "value": 6.281,
+                        "valueKind": "sumGapNet"
+                    }
+                ]
+            },
+            {
+                "catId": 4,
+                "category": "D",
+                "leaders": [
+                    {
+                        "jerseyId": 1,
+                        "jerseyKey": "GC",
+                        "category": "D",
+                        "idClient": 3482544,
+                        "zwiftId": 3482544,
+                        "racerName": "T. ony [Foudre]",
+                        "value": 22.56,
+                        "valueKind": "sumGapNet"
+                    }
+                ]
+            },
+            {
+                "catId": 5,
+                "category": "E",
+                "leaders": [
+                    {
+                        "jerseyId": 1,
+                        "jerseyKey": "GC",
+                        "category": "E",
+                        "idClient": 1049884,
+                        "zwiftId": 1049884,
+                        "racerName": "Yves Corriou⚡️[Foudre TCA]",
+                        "value": -8.133,
+                        "valueKind": "sumGapNet"
+                    }
+                ]
+            },
+            {
+                "catId": 6,
+                "category": "F",
+                "leaders": [
+                    {
+                        "jerseyId": 1,
+                        "jerseyKey": "GC",
+                        "category": "F",
+                        "idClient": 1534082,
+                        "zwiftId": 1534082,
+                        "racerName": "B runo Riollet (Foudre)",
+                        "value": -3.107,
+                        "valueKind": "sumGapNet"
+                    }
+                ]
+            },
+            {
+                "catId": 7,
+                "category": "G",
+                "leaders": [
+                    {
+                        "jerseyId": 1,
+                        "jerseyKey": "GC",
+                        "category": "G",
+                        "idClient": 1634441,
+                        "zwiftId": 1634441,
+                        "racerName": "Steve Fiesta [Foudre]",
+                        "value": -0.792,
+                        "valueKind": "sumGapNet"
+                    }
+                ]
+            },
+            {
+                "catId": 8,
+                "category": "H",
+                "leaders": [
+                    {
+                        "jerseyId": 1,
+                        "jerseyKey": "GC",
+                        "category": "H",
+                        "zwiftId": 3137166,
+                        "racerName": "Willy Jacquet [US Maule 78] ",
+                        "value": -21,
+                        "valueKind": "sumGapNet"
+                    }
+                ]
+            },
+            {
+                "catId": 9,
+                "category": "I",
+                "leaders": [
+                    {
+                        "jerseyId": 1,
+                        "jerseyKey": "GC",
+                        "category": "I",
+                        "zwiftId": 2822541,
+                        "racerName": "Armando Boom [Ghost]",
+                        "value": -17,
+                        "valueKind": "sumGapNet"
+                    }
+                ]
+            },
+            {
+                "catId": 10,
+                "category": "J",
+                "leaders": [
+                    {
+                        "jerseyId": 1,
+                        "jerseyKey": "GC",
+                        "category": "J",
+                        "idClient": 4666192,
+                        "zwiftId": 4666192,
+                        "racerName": "Pauline Routaboul ",
+                        "value": 43200,
+                        "valueKind": "sumGapNet"
+                    }
+                ]
+            }
+        ]
+    }
+]

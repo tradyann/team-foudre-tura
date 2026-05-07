@@ -1,0 +1,30 @@
+{
+    "totalRows": 1,
+    "totalPages": 1,
+    "totalNumber": 1000,
+    "entries": "1 - 1000 of 1",
+    "stageInfos": "{\"competitionName\":\"Jeux de la Francophonie\",\"fromDate\":\"2026-02-17T00:00:00\",\"toDate\":\"2026-03-17T00:00:00\",\"typeCompetition\":\"Tour\",\"timeNeutralLimit\":43200.00,\"roadbookId\":681,\"stageNumber\":3,\"stageDate\":\"2026-03-03\",\"routeName\":\"Champs-Élysées\",\"lastStageNumber\":5}",
+    "results": [
+        {
+            "penId": 776,
+            "zwiftId": 4666192,
+            "racerName": "Pauline Routaboul ",
+            "eGap": 43200,
+            "bonusTime": 0,
+            "rowNumber": 1,
+            "category": "J",
+            "eventId": 5399417,
+            "slotNumber": 3,
+            "slotStartTime": "2026-03-03T18:00:00",
+            "stageId": 350,
+            "stageNumber": 3,
+            "competitionId": 236,
+            "flag": "fr",
+            "isMissed": true,
+            "wasTimeNeutral": false,
+            "reductionFactor": 0,
+            "cGap": 43200,
+            "cGapNet": 43200
+        }
+    ]
+}

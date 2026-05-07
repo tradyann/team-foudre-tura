@@ -119,7 +119,7 @@ export class Competition {
 
   goToClassification() {
     const favoriteCat = localStorage.getItem('favCat') || 'E';
-    this.router.navigate(['/zw/competition-results', this.competId(), favoriteCat, 0])
+    this.router.navigate(['/zw/competition-results', this.competId(), favoriteCat, 5]) // 5 last stage for classification
   }
 
   isRacepassOpen(stageDate: string | Date): boolean {

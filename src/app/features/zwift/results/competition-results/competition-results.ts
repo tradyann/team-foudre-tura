@@ -69,6 +69,7 @@ export class CompetitionResults {
 
       this.zwiftService.getCompetitonResults(id, cat, stageNumber).subscribe({
         next: (data) => {
+                    console.log('API response', data);
           this.results.set(data);
           this.loading.set(false);
         },

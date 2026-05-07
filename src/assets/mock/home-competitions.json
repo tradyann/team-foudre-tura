@@ -1,0 +1,15 @@
+[
+    {
+        "competitionId": 236,
+        "competitionName": "Jeux de la Francophonie",
+        "fromDate": "2026-02-17T00:00:00",
+        "toDate": "2026-03-17T00:00:00",
+        "typeCompetition": "Tour",
+        "accessType": 1,
+        "stagesCount": 5,
+        "isClosed": false,
+        "timeNeutralLimit": 43200,
+        "eventClassName": "Premium",
+        "banner": "/images/worlds/innsbruck014.jpg"
+    }
+]

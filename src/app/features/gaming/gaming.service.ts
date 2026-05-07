@@ -11,6 +11,8 @@ export class GamingService {
     private http = inject(HttpClient);
     private baseUrl = environment.ApiBaseUrl;
 
+    private useMock = true; // toggle
+
     listRiders(query: string, pageIndex: number, rowsPerPage: number): Observable<any> {
         return this.http.get(this.baseUrl + 'api/gaming/riders-list/', {
         params: { query, pageIndex, rowsPerPage }
@@ -32,14 +34,24 @@ export class GamingService {
     }
 
     getCompetition(competitionId: number): Observable<any> {
+        if (this.useMock) {
+            return this.http.get<any[]>('/assets/mock/game-competition.json');
+        }
+
         return this.http.get(this.baseUrl + 'api/gaming/competition/', {
         params: { competitionId }
         });
     }
 
     getRoadbook(roadbookId: number): Observable<any> {
+        if (this.useMock) {
+            return this.http.get<any>(
+            `/assets/mock/roadbooks/roadbook-${roadbookId}.json`
+            );
+        }
+        
         return this.http.get(this.baseUrl + 'api/gaming/roadbook/', {
-        params: { roadbookId }
+            params: { roadbookId }
         });
     }
 

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ApiBaseUrl:  'https://api.turaracing.com/' //'http://localhost:5000/' // 'https://api.turaracing.com/'// 'https://localhost:5001/' // 
+  ApiBaseUrl:  '' //'http://localhost:5000/' // 'https://api.turaracing.com/'// 'https://localhost:5001/' // 
 };
 
 /*
